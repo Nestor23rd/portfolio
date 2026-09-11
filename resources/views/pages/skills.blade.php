@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="fr"><head>
+<html class="dark" lang="{{ app()->getLocale() }}"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Compétences techniques | Nestor KPADJA — Développeur Backend &amp; Blockchain</title>
+<title>{{ __('site.title_skills') }}</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -178,13 +178,13 @@
 <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-outline-variant/30">
 <div class="space-y-3">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-low border border-outline-variant/40">
-<span class="text-primary font-code-sm text-code-sm tracking-wide">Ma boîte à outils</span>
+<span class="text-primary font-code-sm text-code-sm tracking-wide">{{ __('site.technical_skills') }}</span>
 </div>
 <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
-            Compétences <span class="bg-gradient-to-r from-primary via-primary-fixed-dim to-secondary bg-clip-text text-transparent">techniques</span>
+            {{ __('site.technical_skills') }}
 </h1>
 <p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl">
-            Technologies maîtrisées, architectures éprouvées et standards de développement appliqués en production sur des systèmes transactionnels et distribués.
+            {{ __('site.skills_intro') }}
           </p>
 </div>
 <div class="flex flex-col items-start lg:items-end gap-2 shrink-0">
@@ -194,7 +194,7 @@
 <span class="text-on-surface font-semibold">ACTIVE_TOOLCHAIN</span>
 </div>
 <p class="font-code-sm text-code-sm text-outline">
-            {{ $skills->count() }} compétences · {{ $skills->pluck('category')->unique()->count() }} catégories
+            {{ $skills->count() }} {{ __('site.stat_skills') }} · {{ $skills->pluck('category')->unique()->count() }} {{ app()->getLocale() === 'en' ? 'categories' : 'catégories' }}
           </p>
 </div>
 </div>
@@ -225,7 +225,7 @@
 </div>
 <div>
 <span class="font-code-sm text-code-sm text-secondary block leading-none mb-1">MODULE_{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-<h2 class="font-headline-sm text-headline-sm text-on-surface">{{ $category }}</h2>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">{{ __($category) }}</h2>
 </div>
 </div>
 <span class="font-code-sm text-code-sm text-outline px-2 py-0.5 rounded bg-surface-container">{{ $categorySkills->count() }} ITEMS</span>
@@ -245,7 +245,7 @@
 </div>
 @if($skill->description)
 <p class="text-on-surface-variant font-body-sm text-body-sm pl-3.5">
-                  {{ $skill->description }}
+                  {{ __($skill->description) }}
                 </p>
 @endif
 </div>
@@ -255,7 +255,7 @@
 <!-- Bottom Footer Metric -->
 <div class="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between text-outline font-code-sm text-code-sm">
 <span>{{ Str::upper(Str::slug($category, '_')) }}</span>
-<span class="text-primary font-mono font-medium">{{ $categorySkills->count() }} ACTIFS</span>
+<span class="text-primary font-mono font-medium">{{ $categorySkills->count() }} {{ app()->getLocale() === 'en' ? 'ACTIVE' : 'ACTIFS' }}</span>
 </div>
 </div>
 @endforeach
@@ -343,15 +343,15 @@
 <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
 <div class="max-w-2xl space-y-3">
 <h2 class="font-headline-md text-headline-md text-on-surface">
-              Un projet technique spécifique en tête ?
+              {{ __('site.skills_cta_title') }}
             </h2>
 <p class="text-on-surface-variant font-body-md text-body-md">
-              Échangeons sur l'architecture adaptée, le dimensionnement des bases de données ou la robustesse de vos futures APIs.
+              {{ __('site.skills_cta_desc') }}
             </p>
 </div>
 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
 <a class="bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3.5 rounded-lg hover:bg-secondary-fixed-dim transition-all duration-150 text-center shadow-lg active:scale-95 flex items-center justify-center gap-2" href="{{ route('contact') }}">
-<span>Me contacter</span>
+<span>{{ __('site.contact') }}</span>
 <span class="material-symbols-outlined text-[18px]">send</span>
 </a>
 </div>
@@ -387,7 +387,7 @@
 @endforeach
 @endif
 <a class="font-code-sm text-code-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="{{ route('contact') }}">
-          Contact
+          {{ __('site.contact') }}
         </a>
 </div>
 </div>

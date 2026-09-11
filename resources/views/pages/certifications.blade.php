@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="fr"><head>
+<html class="dark" lang="{{ app()->getLocale() }}"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Certifications — Nestor KPADJA</title>
+<title>{{ __('site.title_certifications') }}</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -136,38 +136,38 @@
         <div class="mb-10 flex items-center gap-3 border-b border-slate-700/40 pb-5">
             <span class="font-mono text-sm font-bold text-amber-400">&gt;_</span>
             <div>
-                <p class="font-mono text-xs uppercase tracking-widest text-amber-400">verified_credentials</p>
-                <h1 class="mt-2 font-display text-4xl font-bold tracking-tight text-slate-100 md:text-5xl">Certifications &amp; distinctions</h1>
+                <p class="font-mono text-xs uppercase tracking-widest text-amber-400">{{ __('site.certifications_tag') }}</p>
+                <h1 class="mt-2 font-display text-4xl font-bold tracking-tight text-slate-100 md:text-5xl">{{ __('site.certifications_distinctions') }}</h1>
             </div>
         </div>
-        <p class="mb-10 max-w-3xl text-base leading-7 text-slate-400">Les validations officielles et distinctions de mon parcours, publiées et administrées depuis le tableau de bord.</p>
+        <p class="mb-10 max-w-3xl text-base leading-7 text-slate-400">{{ __('site.certifications_intro') }}</p>
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
             @forelse($certifications as $certification)
                 <article class="flex flex-col justify-between rounded-xl border border-slate-700/60 bg-[#131c31] p-6 transition-all duration-200 hover:border-blue-400/60 md:p-8">
                     <div>
                         <div class="mb-5 flex items-start justify-between gap-4">
                             <div class="min-w-0">
-                                <span class="block truncate font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">{{ $certification->issuer ?: 'Organisme non renseigné' }}</span>
-                                <h2 class="mt-2 font-display text-2xl font-bold leading-tight text-slate-100">{{ $certification->title }}</h2>
+                                <span class="block truncate font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">{{ __($certification->issuer ?: (app()->getLocale() === 'en' ? 'Issuer not specified' : 'Organisme non renseigné')) }}</span>
+                                <h2 class="mt-2 font-display text-2xl font-bold leading-tight text-slate-100">{{ __($certification->title) }}</h2>
                             </div>
-                            <span class="shrink-0 rounded border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-xs font-medium text-emerald-400">{{ $certification->status }}</span>
+                            <span class="shrink-0 rounded border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-xs font-medium text-emerald-400">{{ __($certification->status) }}</span>
                         </div>
-                        <p class="leading-7 text-slate-400">{{ $certification->description ?: 'Aucune description renseignée.' }}</p>
+                        <p class="leading-7 text-slate-400">{{ __($certification->description ?: (app()->getLocale() === 'en' ? 'No description provided.' : 'Aucune description renseignée.')) }}</p>
                         <div class="mt-6 grid gap-3 rounded-lg border border-slate-700/50 bg-[#0b1120] p-4 font-mono text-xs text-slate-400 sm:grid-cols-2">
-                            <div><span class="text-slate-500">IDENTIFIANT :</span> {{ $certification->credential_id ?: 'Non renseigné' }}</div>
-                            <div><span class="text-slate-500">DATE :</span> {{ $certification->issued_at?->format('d/m/Y') ?: 'Non renseignée' }}</div>
+                            <div><span class="text-slate-500">{{ __('site.credential_id') }}</span> {{ $certification->credential_id ?: (app()->getLocale() === 'en' ? 'Not provided' : 'Non renseigné') }}</div>
+                            <div><span class="text-slate-500">{{ __('site.issue_date') }}</span> {{ $certification->issued_at?->format('d/m/Y') ?: (app()->getLocale() === 'en' ? 'Not provided' : 'Non renseignée') }}</div>
                         </div>
                     </div>
                     <div class="mt-6 border-t border-slate-700/50 pt-5">
                         @if($certification->credential_url)
-                            <a href="{{ $certification->credential_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-sm font-semibold text-blue-400 transition hover:text-blue-300 hover:underline">Vérifier la certification <span aria-hidden="true">↗</span></a>
+                            <a href="{{ $certification->credential_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-sm font-semibold text-blue-400 transition hover:text-blue-300 hover:underline">{{ __('site.verify_certification') }} <span aria-hidden="true">↗</span></a>
                         @else
-                            <span class="font-mono text-xs text-slate-500">Lien de vérification non renseigné dans l’administration</span>
+                            <span class="font-mono text-xs text-slate-500">{{ __('site.no_cert_url') }}</span>
                         @endif
                     </div>
                 </article>
             @empty
-                <div class="rounded-xl border border-dashed border-slate-700 p-10 text-slate-400">Aucune certification publiée pour le moment.</div>
+                <div class="rounded-xl border border-dashed border-slate-700 p-10 text-slate-400">{{ __('site.no_certifications') }}</div>
             @endforelse
         </div>
     </section>
@@ -185,7 +185,7 @@
         <a class="text-slate-400 hover:text-white transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
         @endforeach
         @endif
-        <a class="text-slate-400 hover:text-white transition-colors" href="{{ route('contact') }}">Contact</a>
+        <a class="text-slate-400 hover:text-white transition-colors" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
     </nav>
 </footer>
 </body>

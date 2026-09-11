@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="fr"><head>
+<html class="dark" lang="{{ app()->getLocale() }}"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contact — Nestor KPADJA | Ingénierie Backend &amp; Systèmes Distribués</title>
+<title>{{ __('site.title_contact') }}</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -176,13 +176,13 @@
         <div class="text-center space-y-4 max-w-2xl mx-auto">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/40">
                 <span class="material-symbols-outlined text-primary text-xs">terminal</span>
-                <span class="font-code-sm text-code-sm text-primary font-medium tracking-wide">&gt;_ CANAL DE COMMUNICATION</span>
+                <span class="font-code-sm text-code-sm text-primary font-medium tracking-wide">&gt;_ {{ __('site.communication_channel') }}</span>
             </div>
             <h1 class="font-headline-lg md:font-headline-xl text-headline-lg md:text-headline-xl text-on-surface font-bold tracking-tight">
-                Discutons de votre <span class="bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">projet</span>
+                {{ __('site.contact_title') }} <span class="bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">{{ __('site.project') }}</span>
             </h1>
             <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Une architecture backend à concevoir, un besoin en systèmes distribués ou une opportunité professionnelle ? Remplissez le formulaire ci-dessous ou contactez-moi directement.
+                {{ __('site.contact_intro') }}
             </p>
         </div>
 
@@ -202,7 +202,7 @@
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span class="font-code-sm text-code-sm text-emerald-400 font-semibold uppercase tracking-wider">PRÊT</span>
+                    <span class="font-code-sm text-code-sm text-emerald-400 font-semibold uppercase tracking-wider">{{ __('site.ready') }}</span>
                     </div>
                 </div>
 
@@ -211,8 +211,8 @@
                 <div class="mx-6 mt-6 rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-4 font-code-sm text-code-sm text-emerald-300 md:mx-8 flex items-center gap-3">
                     <span class="material-symbols-outlined text-emerald-400 text-xl">check_circle</span>
                     <div>
-                        <strong class="block text-emerald-200 font-semibold">Message envoyé avec succès !</strong>
-                        <span>{{ session('contact_success') }} Vous recevrez une réponse par e-mail sous 24h.</span>
+                        <strong class="block text-emerald-200 font-semibold">{{ __('site.sent_success') }}</strong>
+                        <span>{{ __(session('contact_success')) }} {{ __('site.reply_24h_notice') }}</span>
                     </div>
                 </div>
                 @endif
@@ -221,11 +221,11 @@
                 <div class="mx-6 mt-6 rounded-lg border border-red-500/40 bg-red-500/10 p-4 text-sm text-red-300 md:mx-8">
                     <div class="flex items-center gap-2 font-semibold text-red-200 mb-2">
                         <span class="material-symbols-outlined text-red-400 text-base">error</span>
-                        <span>Veuillez corriger les informations suivantes :</span>
+                        <span>{{ __('site.correct_errors') }}</span>
                     </div>
                     <ul class="list-inside list-disc space-y-1 font-body-sm text-body-sm">
                         @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li>{{ __($error) }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -241,10 +241,10 @@
                         <div class="space-y-2">
                             <label class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5" for="fullname">
                                 <span class="text-primary font-bold">&gt;</span>
-                                <span>Nom complet</span>
+                                <span>{{ __('site.full_name') }}</span>
                                 <span class="text-error font-mono">*</span>
                             </label>
-                            <input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all @error('name') border-red-500 @enderror" id="fullname" name="name" value="{{ old('name') }}" placeholder="ex. Marc Dupont" required type="text"/>
+                            <input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all @error('name') border-red-500 @enderror" id="fullname" name="name" value="{{ old('name') }}" placeholder="{{ __('site.full_name_placeholder') }}" required type="text"/>
                             @error('name')
                             <p class="text-xs text-red-400 mt-1 font-code-sm">{{ $message }}</p>
                             @enderror
@@ -254,10 +254,10 @@
                         <div class="space-y-2">
                             <label class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5" for="email">
                                 <span class="text-primary font-bold">&gt;</span>
-                                <span>Adresse e-mail</span>
+                                <span>{{ __('site.email') }}</span>
                                 <span class="text-error font-mono">*</span>
                             </label>
-                            <input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all @error('email') border-red-500 @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="ex. marc.dupont@entreprise.com" required type="email"/>
+                            <input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all @error('email') border-red-500 @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="{{ __('site.email_placeholder') }}" required type="email"/>
                             @error('email')
                             <p class="text-xs text-red-400 mt-1 font-code-sm">{{ $message }}</p>
                             @enderror
@@ -268,7 +268,7 @@
                     <div class="space-y-2">
                         <label class="block font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5">
                             <span class="text-primary font-bold">&gt;</span>
-                            <span>Type de projet ou opportunité</span>
+                            <span>{{ __('site.project_type') }}</span>
                         </label>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                             <label class="cursor-pointer">
@@ -286,13 +286,13 @@
                             <label class="cursor-pointer">
                                 <input class="peer sr-only" name="project_type" type="radio" value="Recrutement" @checked(old('project_type') === 'Recrutement')/>
                                 <div class="border border-outline-variant/40 rounded-lg px-2.5 py-2 bg-surface-container-lowest text-center peer-checked:border-primary peer-checked:bg-surface-container-high peer-checked:text-primary text-on-surface-variant font-code-sm text-code-sm transition-colors">
-                                    Recrutement
+                                    {{ __('site.project_recruitment') }}
                                 </div>
                             </label>
                             <label class="cursor-pointer">
                                 <input class="peer sr-only" name="project_type" type="radio" value="Autre" @checked(old('project_type') === 'Autre')/>
                                 <div class="border border-outline-variant/40 rounded-lg px-2.5 py-2 bg-surface-container-lowest text-center peer-checked:border-primary peer-checked:bg-surface-container-high peer-checked:text-primary text-on-surface-variant font-code-sm text-code-sm transition-colors">
-                                    Autre projet
+                                    {{ __('site.project_other') }}
                                 </div>
                             </label>
                         </div>
@@ -302,12 +302,12 @@
                     <div class="space-y-2">
                         <label class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5" for="message">
                             <span class="text-primary font-bold">&gt;</span>
-                            <span>Votre message / Spécifications</span>
+                            <span>{{ __('site.message_specs') }}</span>
                             <span class="text-error font-mono">*</span>
                         </label>
-                        <textarea class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-3.5 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-y min-h-[140px] @error('message') border-red-500 @enderror" id="message" name="message" placeholder="Décrivez brièvement vos objectifs, le contexte technique ou l'opportunité de collaboration..." required minlength="20" rows="5">{{ old('message') }}</textarea>
+                        <textarea class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-3.5 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-y min-h-[140px] @error('message') border-red-500 @enderror" id="message" name="message" placeholder="{{ __('site.message_placeholder') }}" required minlength="20" rows="5">{{ old('message') }}</textarea>
                         <div class="flex items-center justify-between text-xs text-on-surface-variant font-code-sm">
-                            <span>Minimum 20 caractères</span>
+                            <span>{{ __('site.minimum_20') }}</span>
                             @error('message')
                             <span class="text-red-400 font-code-sm">{{ $message }}</span>
                             @enderror
@@ -318,10 +318,10 @@
                     <div class="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-outline-variant/20">
                         <div class="flex items-center gap-2 text-on-surface-variant font-code-sm text-code-sm">
                             <span class="material-symbols-outlined text-emerald-400 text-base">mail</span>
-                            <span>Réponse par e-mail sous 24h</span>
+                            <span>{{ __('site.reply_24h') }}</span>
                         </div>
                         <button class="w-full sm:w-auto bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3 rounded-lg hover:bg-secondary-container transition-all duration-200 active:scale-95 shadow-md flex items-center justify-center gap-2 group cursor-pointer" type="submit">
-                            <span>Envoyer le message</span>
+                            <span>{{ __('site.send_message') }}</span>
                             <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">send</span>
                         </button>
                     </div>
@@ -338,17 +338,17 @@
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                         </span>
-                        <span class="font-code-sm text-code-sm text-emerald-400 font-semibold tracking-wide">STATUT : DISPONIBLE</span>
+                        <span class="font-code-sm text-code-sm text-emerald-400 font-semibold tracking-wide">{{ __('site.available') }}</span>
                     </div>
                     <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">
-                        Ouvert aux nouvelles opportunités
+                        {{ __('site.open_opportunities') }}
                     </h2>
                     <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                        Disponible pour des opportunités en CDI, des missions freelance en architecture backend, la conception d'APIs résilientes et le développement de solutions blockchain.
+                        {{ __('site.availability_desc') }}
                     </p>
                     <div class="pt-2 flex items-center gap-2 text-xs font-code-sm text-primary">
                         <span class="material-symbols-outlined text-sm">schedule</span>
-                        <span>Mode Remote mondial ou Hybride</span>
+                        <span>{{ __('site.remote_hybrid') }}</span>
                     </div>
                 </div>
 
@@ -356,7 +356,7 @@
                 <div class="specular-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 space-y-5">
                     <div class="font-code-sm text-code-sm text-primary flex items-center gap-2 pb-2 border-b border-outline-variant/20">
                         <span class="material-symbols-outlined text-sm">hub</span>
-                        <span class="font-semibold uppercase tracking-wider">Coordonnées Directes</span>
+                        <span class="font-semibold uppercase tracking-wider">{{ __('site.direct_coordinates') }}</span>
                     </div>
 
                     <!-- Email with Copy Action -->
@@ -366,13 +366,13 @@
                                 <span class="material-symbols-outlined text-lg">mail</span>
                             </div>
                             <div class="min-w-0">
-                                <span class="block font-code-sm text-code-sm text-on-surface-variant">Email direct</span>
+                                <span class="block font-code-sm text-code-sm text-on-surface-variant">{{ __('site.direct_email') }}</span>
                                 <a class="font-body-md text-body-md text-on-surface font-medium hover:text-primary transition-colors block truncate" href="mailto:{{ $emailAddress }}">
                                     {{ $emailAddress }}
                                 </a>
                             </div>
                         </div>
-                        <button class="p-2 rounded-lg border border-outline-variant/30 bg-surface-container hover:border-primary text-on-surface-variant hover:text-primary transition-colors text-xs flex items-center justify-center shrink-0 ml-2 font-code-sm cursor-pointer" id="copyBtn" onclick="copyEmail('{{ $emailAddress }}')" title="Copier l'email" type="button">
+                        <button class="p-2 rounded-lg border border-outline-variant/30 bg-surface-container hover:border-primary text-on-surface-variant hover:text-primary transition-colors text-xs flex items-center justify-center shrink-0 ml-2 font-code-sm cursor-pointer" id="copyBtn" onclick="copyEmail('{{ $emailAddress }}')" title="{{ __('site.copy_email') }}" type="button">
                             <span class="material-symbols-outlined text-sm" id="copyIcon">content_copy</span>
                         </button>
                     </div>
@@ -383,10 +383,10 @@
                             <span class="material-symbols-outlined text-lg">call</span>
                         </div>
                         <div class="space-y-1">
-                            <span class="block font-code-sm text-code-sm text-on-surface-variant">Téléphone &amp; WhatsApp</span>
+                            <span class="block font-code-sm text-code-sm text-on-surface-variant">{{ __('site.phone_whatsapp') }}</span>
                             <div class="font-body-md text-body-md text-on-surface font-medium space-y-0.5">
                                 <a class="block hover:text-primary transition-colors" href="tel:+22896908492">
-                                    Appel : +228 96 90 84 92
+                                    {{ __('site.call') }} : +228 96 90 84 92
                                 </a>
                                 <a class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm" href="https://wa.me/22891311705" target="_blank" rel="noopener noreferrer">
                                     <span>WhatsApp : +228 91 31 17 05</span>
@@ -402,7 +402,7 @@
                             <span class="material-symbols-outlined text-lg">location_on</span>
                         </div>
                         <div>
-                            <span class="block font-code-sm text-code-sm text-on-surface-variant">Localisation &amp; Fuseau</span>
+                            <span class="block font-code-sm text-code-sm text-on-surface-variant">{{ __('site.location_timezone') }}</span>
                             <span class="font-body-md text-body-md text-on-surface font-medium">
                                 {{ $locationText }} <span class="text-on-surface-variant text-sm font-normal">(GMT+0)</span>
                             </span>
@@ -411,7 +411,7 @@
 
                     <!-- Professional Links -->
                     <div class="pt-3 border-t border-outline-variant/20 flex flex-wrap items-center gap-3">
-                        <span class="font-code-sm text-xs text-on-surface-variant mr-1">Réseaux :</span>
+                        <span class="font-code-sm text-xs text-on-surface-variant mr-1">{{ __('site.networks') }}</span>
                         @if(!empty($siteSettings['github_url']))
                         <a class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 font-code-sm text-xs" href="{{ $siteSettings['github_url'] }}" target="_blank" rel="noopener noreferrer">
                             <span class="material-symbols-outlined text-sm">code</span>
@@ -440,25 +440,25 @@
                     <div class="font-code-sm text-code-sm text-on-surface flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-secondary text-base">route</span>
-                            <span class="font-semibold uppercase tracking-wider">Comment se passe la suite ?</span>
+                            <span class="font-semibold uppercase tracking-wider">{{ __('site.process_title') }}</span>
                         </div>
                         <span class="text-xs font-code-sm text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded flex items-center gap-1">
                             <span class="material-symbols-outlined text-xs">mail</span>
-                            <span>Suivi par e-mail</span>
+                            <span>{{ __('site.process_email_badge') }}</span>
                         </span>
                     </div>
                     <ol class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
                         <li class="flex items-start gap-2.5">
                             <span class="font-code-sm text-xs font-bold text-primary px-1.5 py-0.5 rounded bg-surface-container-high shrink-0 mt-0.5">01</span>
-                            <span><strong>Analyse du besoin :</strong> Je lis votre message et examine le contexte technique sous 24h. Vous recevez un e-mail en retour pour confirmer la bonne réception de votre demande.</span>
+                            <span><strong>{{ __('site.process_step1_title') }}</strong> {{ __('site.process_step1_desc') }}</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <span class="font-code-sm text-xs font-bold text-primary px-1.5 py-0.5 rounded bg-surface-container-high shrink-0 mt-0.5">02</span>
-                            <span><strong>Premier contact :</strong> Proposition d'un créneau d'échange (visio ou téléphone) envoyée directement par e-mail pour clarifier les enjeux.</span>
+                            <span><strong>{{ __('site.process_step2_title') }}</strong> {{ __('site.process_step2_desc') }}</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <span class="font-code-sm text-xs font-bold text-primary px-1.5 py-0.5 rounded bg-surface-container-high shrink-0 mt-0.5">03</span>
-                            <span><strong>Proposition concrète :</strong> Recommandation d'architecture, devis ou modalités de démarrage.</span>
+                            <span><strong>{{ __('site.process_step3_title') }}</strong> {{ __('site.process_step3_desc') }}</span>
                         </li>
                     </ol>
                 </div>
@@ -488,8 +488,8 @@
             <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
             @endforeach
             @endif
-            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('home') }}">Accueil</a>
-            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('about') }}">À propos</a>
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('home') }}">{{ __('site.home') }}</a>
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('about') }}">{{ __('site.about') }}</a>
         </div>
     </div>
 </footer>

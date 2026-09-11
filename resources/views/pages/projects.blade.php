@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="fr"><head>
+<html class="dark" lang="{{ app()->getLocale() }}"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Mes Projets — Nestor KPADJA | Développeur Backend &amp; Blockchain</title>
+<title>{{ __('site.title_projects') }}</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -202,17 +202,17 @@
 <!-- Terminal Tag -->
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface-container-high/80 border border-outline-variant/40 mb-4">
 <span class="text-primary font-code-sm text-code-sm">&gt;_</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant">Ce que j'ai construit</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">{{ __('site.my_projects') }}</span>
 <span class="w-2 h-3.5 bg-primary/70 inline-block animate-pulse"></span>
 </div>
 <!-- Main Headline with Accent -->
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
 <div>
 <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight">
-            Mes <span class="text-primary-container bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">projets</span>
+            {{ __('site.my_projects') }}
 </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mt-3 max-w-2xl">
-            Architectures distribuées, protocoles décentralisés et solutions à impact sociétal livrées en production.
+            {{ __('site.projects_intro') }}
           </p>
 </div>
 <!-- Terminal Status Pill -->
@@ -231,16 +231,16 @@
 <!-- "Tous" (ACTIF) -->
 <a href="{{ route('projects') }}" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg {{ !$selectedCategory ? 'bg-primary-container text-on-primary' : 'bg-surface-container-low text-on-surface-variant' }} font-code-md text-code-sm font-semibold shadow-sm transition-all">
 <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
-<span>Tous</span>
+<span>{{ __('site.all_projects') }}</span>
 </a>
 @foreach($categories as $category)
-<a href="{{ route('projects', ['category' => $category]) }}" class="px-3.5 py-1.5 rounded-lg {{ $selectedCategory === $category ? 'bg-primary-container text-on-primary' : 'bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:border-primary/50' }} font-code-md text-code-sm transition-all">{{ $category }}</a>
+<a href="{{ route('projects', ['category' => $category]) }}" class="px-3.5 py-1.5 rounded-lg {{ $selectedCategory === $category ? 'bg-primary-container text-on-primary' : 'bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:border-primary/50' }} font-code-md text-code-sm transition-all">{{ __($category) }}</a>
 @endforeach
 </div>
 <!-- Count Badge -->
 <div class="font-code-sm text-code-sm text-outline flex items-center gap-2">
 <span class="material-symbols-outlined text-[16px]">data_object</span>
-<span>[ {{ $projects->total() }} livrable(s) répertorié(s) ]</span>
+<span>[ {{ $projects->total() }} {{ app()->getLocale() === 'en' ? 'deliverable(s) listed' : 'livrable(s) répertorié(s)' }} ]</span>
 </div>
 </div>
 <!-- ===================================================================== -->
@@ -316,7 +316,7 @@
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
 <a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>Voir le projet</span>
+<span>{{ __('site.see_projects') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -402,7 +402,7 @@
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
 <a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>Voir le projet</span>
+<span>{{ __('site.see_projects') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -483,7 +483,7 @@
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
 <a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>Voir le projet</span>
+<span>{{ __('site.see_projects') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -565,7 +565,7 @@
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
 <a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>Voir le projet</span>
+<span>{{ __('site.see_projects') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -642,7 +642,7 @@
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
 <a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>Voir le projet</span>
+<span>{{ __('site.see_projects') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -661,10 +661,10 @@
 <span class="material-symbols-outlined text-primary text-2xl">add</span>
 </div>
 <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">
-          + D'autres projets bientôt ajoutés
+          {{ __('site.more_projects_title') }}
         </h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mb-5">
-          En cours de synchronisation via le tableau de bord d'administration et pipelines CI/CD.
+          {{ __('site.more_projects_desc') }}
         </p>
 <!-- Monospace Status Badge -->
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-lowest border border-outline-variant/40">
@@ -683,12 +683,12 @@
 <span class="material-symbols-outlined text-2xl">terminal</span>
 </div>
 <div>
-<h4 class="font-headline-sm text-headline-sm text-on-surface">Besoin d'une revue technique ou d'un audit de smart contracts ?</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Discutons de vos enjeux d'architecture distribuée et de sécurité cryptographique.</p>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">{{ __('site.projects_cta_title') }}</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">{{ __('site.projects_cta_desc') }}</p>
 </div>
 </div>
 <a class="inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-primary-container font-headline-sm text-label-md px-6 py-2.5 rounded-lg font-semibold transition-all duration-150 shadow-md active:scale-95 whitespace-nowrap" href="{{ route('contact') }}">
-<span>Initier une discussion</span>
+<span>{{ __('site.start_conversation') }}</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </a>
 </div>
@@ -706,7 +706,7 @@
 </div>
 <span class="text-outline-variant hidden sm:inline">|</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-          © 2025 Nestor KPADJA. Architectures Distribuées &amp; Protocoles Décentralisés. Lomé, Togo.
+          © {{ date('Y') }} {{ $siteSettings['footer_text'] ?? 'Nestor KPADJA · Lomé, Togo' }}
         </p>
 </div>
 <!-- Links from JSON -->
@@ -722,7 +722,7 @@
 <a class="text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
 @endforeach
 @endif
-<a class="text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="{{ route('contact') }}">Contact</a>
+<a class="text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
 </nav>
 </div>
 </footer>

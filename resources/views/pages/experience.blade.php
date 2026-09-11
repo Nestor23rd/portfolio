@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="fr"><head>
+<html class="dark" lang="{{ app()->getLocale() }}"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Expérience &amp; Parcours — Nestor KPADJA</title>
+<title>{{ __('site.title_experience') }}</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -186,15 +186,15 @@
                 <!-- Terminal Sub-badge -->
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface-container-high border border-outline-variant/50 text-primary font-code-sm text-code-sm">
                     <span class="text-secondary">&gt;_</span>
-                    <span>Mon parcours</span>
+                    <span>{{ __('site.exp_tag') }}</span>
                     <span class="inline-block w-1.5 h-3.5 bg-primary cursor-blink ml-0.5"></span>
                 </div>
                 <!-- Page Title -->
                 <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
-                    Parcours &amp; <span class="bg-gradient-to-r from-primary via-primary-fixed to-secondary bg-clip-text text-transparent">Expérience</span>
+                    {{ __('site.journey_experience') }}
                 </h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant">
-                    Chronologie des réalisations techniques, responsabilités en ingénierie logicielle et cursus académique administrés depuis l'espace de gestion.
+                    {{ __('site.experience_intro') }}
                 </p>
             </div>
 
@@ -202,13 +202,13 @@
             <div class="flex flex-col items-start md:items-end gap-2 font-code-sm text-code-sm text-outline p-4 bg-surface-container-lowest/90 rounded-lg border border-outline-variant/40 shrink-0">
                 <div class="flex items-center gap-2 text-on-surface">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 status-pulse"></span>
-                    <span class="font-bold tracking-wider">HISTORIQUE VÉRIFIÉ</span>
+                    <span class="font-bold tracking-wider">{{ __('HISTORIQUE VÉRIFIÉ') }}</span>
                 </div>
                 <div class="flex items-center gap-3 text-on-surface-variant">
-                    <span>{{ $experiences->count() }} jalon(s) enregistré(s)</span>
+                    <span>{{ $experiences->count() }} {{ app()->getLocale() === 'en' ? 'milestone(s) recorded' : 'jalon(s) enregistré(s)' }}</span>
                     @if($experiences->where('is_current', true)->count() > 0)
                     <span class="text-outline-variant">|</span>
-                    <span class="text-emerald-400 font-semibold">{{ $experiences->where('is_current', true)->count() }} en cours</span>
+                    <span class="text-emerald-400 font-semibold">{{ $experiences->where('is_current', true)->count() }} {{ __('site.current_position') }}</span>
                     @endif
                 </div>
             </div>
@@ -253,40 +253,40 @@
                                     <span>
                                         {{ $exp->start_date ? $exp->start_date->translatedFormat('M Y') : '' }}
                                         →
-                                        {{ $exp->is_current ? 'Présent' : ($exp->end_date ? $exp->end_date->translatedFormat('M Y') : 'Présent') }}
+                                        {{ $exp->is_current ? __('Présent') : ($exp->end_date ? $exp->end_date->translatedFormat('M Y') : __('Présent')) }}
                                     </span>
                                 </div>
 
                                 @if($exp->is_current)
                                 <span class="font-code-sm text-code-sm text-emerald-400 font-semibold tracking-wider bg-emerald-950/40 border border-emerald-800/50 px-2 py-0.5 rounded flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                    EN COURS
+                                    {{ __('EN COURS') }}
                                 </span>
                                 @elseif($isAcademic)
                                 <span class="font-code-sm text-code-sm text-on-surface-variant font-semibold tracking-wider bg-surface-container px-2 py-0.5 rounded border border-outline-variant/30">
-                                    CURSUS
+                                    {{ __('CURSUS') }}
                                 </span>
                                 @else
                                 <span class="font-code-sm text-code-sm text-primary font-semibold tracking-wider bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
-                                    TERMINÉ
+                                    {{ __('TERMINÉ') }}
                                 </span>
                                 @endif
                             </div>
 
                             <!-- Titles -->
                             <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-1">
-                                {{ $exp->role }}
+                                {{ __($exp->role) }}
                             </h2>
                             @if($exp->company || $exp->location)
                             <div class="font-code-md text-code-md {{ $exp->is_current ? 'text-secondary' : 'text-on-surface-variant' }} mb-4 flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-sm">{{ $isAcademic ? 'school' : 'business_center' }}</span>
-                                <span>{{ $exp->company ?: 'Indépendant' }}{{ $exp->location ? ' • ' . $exp->location : '' }}</span>
+                                <span>{{ __($exp->company ?: 'Indépendant') }}{{ $exp->location ? ' • ' . __($exp->location) : '' }}</span>
                             </div>
                             @endif
 
                             <!-- Body Description -->
                             <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
-                                {{ $exp->description }}
+                                {{ __($exp->description) }}
                             </p>
 
                             <!-- Tech Badges -->
@@ -318,40 +318,40 @@
                                     <span>
                                         {{ $exp->start_date ? $exp->start_date->translatedFormat('M Y') : '' }}
                                         →
-                                        {{ $exp->is_current ? 'Présent' : ($exp->end_date ? $exp->end_date->translatedFormat('M Y') : 'Présent') }}
+                                        {{ $exp->is_current ? __('Présent') : ($exp->end_date ? $exp->end_date->translatedFormat('M Y') : __('Présent')) }}
                                     </span>
                                 </div>
 
                                 @if($exp->is_current)
                                 <span class="font-code-sm text-code-sm text-emerald-400 font-semibold tracking-wider bg-emerald-950/40 border border-emerald-800/50 px-2 py-0.5 rounded flex items-center gap-1">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                    EN COURS
+                                    {{ __('EN COURS') }}
                                 </span>
                                 @elseif($isAcademic)
                                 <span class="font-code-sm text-code-sm text-on-surface-variant font-semibold tracking-wider bg-surface-container px-2 py-0.5 rounded border border-outline-variant/30">
-                                    CURSUS
+                                    {{ __('CURSUS') }}
                                 </span>
                                 @else
                                 <span class="font-code-sm text-code-sm text-primary font-semibold tracking-wider bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
-                                    TERMINÉ
+                                    {{ __('TERMINÉ') }}
                                 </span>
                                 @endif
                             </div>
 
                             <!-- Titles -->
                             <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-1">
-                                {{ $exp->role }}
+                                {{ __($exp->role) }}
                             </h2>
                             @if($exp->company || $exp->location)
                             <div class="font-code-md text-code-md {{ $exp->is_current ? 'text-secondary' : 'text-on-surface-variant' }} mb-4 flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-sm">{{ $isAcademic ? 'school' : 'business_center' }}</span>
-                                <span>{{ $exp->company ?: 'Indépendant' }}{{ $exp->location ? ' • ' . $exp->location : '' }}</span>
+                                <span>{{ __($exp->company ?: 'Indépendant') }}{{ $exp->location ? ' • ' . __($exp->location) : '' }}</span>
                             </div>
                             @endif
 
                             <!-- Body Description -->
                             <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
-                                {{ $exp->description }}
+                                {{ __($exp->description) }}
                             </p>
 
                             <!-- Tech Badges -->
@@ -372,8 +372,8 @@
             @empty
             <div class="specular-card bg-surface-container-low border border-dashed border-outline-variant/60 rounded-xl p-12 text-center max-w-xl mx-auto">
                 <span class="material-symbols-outlined text-4xl text-outline mb-3">work_outline</span>
-                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Aucune expérience répertoriée</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant">Les expériences publiées depuis le tableau de bord d'administration apparaîtront ici.</p>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">{{ __('site.no_experience') }}</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">{{ app()->getLocale() === 'en' ? 'Published experiences from the admin dashboard will appear here.' : 'Les expériences publiées depuis le tableau de bord d\'administration apparaîtront ici.' }}</p>
             </div>
             @endforelse
         </div>
@@ -387,28 +387,28 @@
                     <span class="w-3 h-3 rounded-full bg-error/80 inline-block"></span>
                     <span class="w-3 h-3 rounded-full bg-secondary/80 inline-block"></span>
                     <span class="w-3 h-3 rounded-full bg-primary/80 inline-block"></span>
-                    <span class="font-code-sm text-code-sm text-primary ml-3 font-semibold">&gt;_ COLLABORATION_DISPONIBLE</span>
+                    <span class="font-code-sm text-code-sm text-primary ml-3 font-semibold">&gt;_ {{ app()->getLocale() === 'en' ? 'AVAILABLE_FOR_COLLABORATION' : 'COLLABORATION_DISPONIBLE' }}</span>
                 </div>
                 <span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    DISPONIBLE POUR MISSIONS
+                    {{ app()->getLocale() === 'en' ? 'AVAILABLE FOR MISSIONS' : 'DISPONIBLE POUR MISSIONS' }}
                 </span>
             </div>
 
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
                 <div class="max-w-2xl space-y-3">
                     <h3 class="font-headline-md text-headline-md text-on-surface tracking-tight font-bold">
-                        Envie d'échanger sur un projet ou une opportunité ?
+                        {{ __('site.exp_cta_title') }}
                     </h3>
                     <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                        Disponible pour des opportunités en architecture backend, intégration blockchain ou direction de chantiers applicatifs.
+                        {{ __('site.exp_cta_desc') }}
                     </p>
                 </div>
 
                 <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
                     <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3 rounded-lg hover:bg-secondary-container transition-all active:scale-95 shadow-md duration-150" href="{{ route('contact') }}">
                         <span class="material-symbols-outlined text-lg">mail</span>
-                        <span>Prendre contact</span>
+                        <span>{{ __('site.contact') }}</span>
                     </a>
                 </div>
             </div>
@@ -437,7 +437,7 @@
             <a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
             @endforeach
             @endif
-            <a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ route('contact') }}">Contact</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ route('contact') }}">{{ __('site.contact_short') }}</a>
         </div>
     </div>
 </footer>

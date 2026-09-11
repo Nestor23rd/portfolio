@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="fr"><head>
+<html class="dark" lang="{{ app()->getLocale() }}"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>À propos — Nestor KPADJA | Développeur Backend &amp; Blockchain</title>
+<title>{{ __('site.title_about') }}</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -172,23 +172,23 @@
                     <span>profil_developpeur.md</span>
                 </div>
                 <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold tracking-tight">
-                    À propos de <span class="bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">Nestor KPADJA</span>
+                    {{ __('site.about_heading_pre') }} <span class="bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">Nestor KPADJA</span>
                 </h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl font-normal leading-relaxed">
-                    Développeur Backend &amp; Blockchain, titulaire d'une Licence en Génie Logiciel. Je conçois des applications fiables, des APIs bien structurées et des solutions adaptées aux besoins concrets.
+                    {{ __('site.about_tagline') }}
                 </p>
             </div>
             <!-- Quick Status Badge -->
             <div class="flex flex-col items-start lg:items-end gap-2 shrink-0">
                 <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 font-code-sm text-code-sm text-on-surface-variant shadow-inner">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-outline">STATUT :</span>
-                    <span class="text-emerald-400 font-semibold">DISPONIBLE</span>
+                    <span class="text-outline">{{ __('site.status_label') }}</span>
+                    <span class="text-emerald-400 font-semibold">{{ __('site.available') }}</span>
                     <span class="text-outline-variant">|</span>
-                    <span class="text-on-surface">Remote &amp; Hybride</span>
+                    <span class="text-on-surface">{{ __('site.remote_hybrid') }}</span>
                 </div>
                 <p class="font-code-sm text-code-sm text-outline">
-                    Lomé, Togo (GMT+0) · Français &amp; Anglais technique
+                    {{ __('site.location_val') }}
                 </p>
             </div>
         </div>
@@ -214,7 +214,7 @@
                         Kokoussè Nestor KPADJA
                     </h2>
                     <div class="font-code-sm text-code-sm text-primary mt-1 font-semibold">
-                        Développeur Backend &amp; Blockchain
+                        {{ __('site.backend_blockchain') }}
                     </div>
                 </div>
 
@@ -223,7 +223,7 @@
                     <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
                         <span class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-base text-primary">location_on</span>
-                            <span>Localisation</span>
+                            <span>{{ __('site.location_label') }}</span>
                         </span>
                         <span class="text-on-surface font-semibold">Lomé, Togo</span>
                     </div>
@@ -231,27 +231,27 @@
                     <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
                         <span class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-base text-secondary">school</span>
-                            <span>Formation</span>
+                            <span>{{ __('site.education_label') }}</span>
                         </span>
-                        <span class="text-on-surface font-semibold">Licence Génie Logiciel</span>
+                        <span class="text-on-surface font-semibold">{{ __('site.education_val') }}</span>
                     </div>
 
                     <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
                         <span class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-base text-emerald-400">deployed_code</span>
-                            <span>Spécialisation</span>
+                            <span>{{ __('site.specialization_label') }}</span>
                         </span>
-                        <span class="text-on-surface font-semibold">Backend, APIs &amp; Blockchain</span>
+                        <span class="text-on-surface font-semibold">{{ __('site.specialization_val') }}</span>
                     </div>
 
                     <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
                         <span class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-base text-primary">work_outline</span>
-                            <span>Disponibilité</span>
+                            <span>{{ __('site.availability_label') }}</span>
                         </span>
                         <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            Immédiate
+                            {{ __('site.immediate_val') }}
                         </span>
                     </div>
                 </div>
@@ -260,7 +260,7 @@
                 <div class="mt-6 pt-5 border-t border-outline-variant/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
                     <a class="px-4 py-2.5 rounded-lg bg-secondary-container hover:bg-secondary text-on-secondary-container font-label-md font-bold text-center transition-all duration-150 active:scale-95 shadow-sm flex items-center justify-center gap-2" href="{{ route('contact') }}">
                         <span class="material-symbols-outlined text-base">mail</span>
-                        <span>Me contacter</span>
+                        <span>{{ __('site.contact') }}</span>
                     </a>
                     <div class="flex items-center justify-center gap-2">
                         @if(!empty($siteSettings['github_url']))
@@ -307,7 +307,8 @@
                     if ($dbBackendFrameworks->isEmpty()) {
                         $dbBackendFrameworks = $skills->where('category', 'Frameworks')->values();
                     }
-                    $frameworksHtml = $dbBackendFrameworks->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', ' et ');
+                    $joinWord = app()->getLocale() === 'en' ? ' and ' : ' et ';
+                    $frameworksHtml = $dbBackendFrameworks->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', $joinWord);
 
                     $dbDatabases = $skills->where('category', 'Data & Infra')
                         ->filter(fn($s) => in_array(strtolower($s->name), ['postgresql', 'mysql', 'sqlite', 'mongodb']))
@@ -315,45 +316,57 @@
                     if ($dbDatabases->isEmpty()) {
                         $databasesHtml = '<strong class="text-on-surface font-semibold">PostgreSQL</strong>';
                     } else {
-                        $databasesHtml = $dbDatabases->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', ' et ');
+                        $databasesHtml = $dbDatabases->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', $joinWord);
                     }
                 @endphp
 
                 <div class="space-y-4 font-body-md text-on-surface-variant leading-relaxed">
-                    <p class="text-on-surface font-body-lg text-body-lg font-medium leading-relaxed">
-                        Développeur passionné par le backend et l'écosystème blockchain, titulaire d'une Licence en Génie Logiciel.
-                    </p>
-                    
-                    <p>
-                        Mon parcours est guidé par l'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous {!! $databasesHtml !!}, à la réalisation d'APIs REST sous {!! $frameworksHtml !!}, j'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.
-                    </p>
-
-                    <p>
-                        Au fil de mes expériences — notamment sur un projet d'exploration autour d'une monnaie numérique de banque centrale (<strong class="text-secondary font-semibold">CBDC Blockchain</strong>) et sur des applications comme <strong class="text-primary font-semibold">Titan / TitanEduc</strong> —, j'applique de bonnes pratiques de développement : tests automatisés, conteneurisation avec <strong class="text-on-surface font-semibold">Docker</strong>, versionnement Git et déploiement continu.
-                    </p>
-
-                    <p>
-                        Certifié par la <strong class="text-on-surface font-semibold">Linux Foundation</strong> en technologies Blockchain et finaliste du Hackathon <strong class="text-on-surface font-semibold">CodeQuity</strong>, je privilégie toujours le pragmatisme et le travail soigné pour répondre concrètement aux besoins des utilisateurs.
-                    </p>
+                    @if(app()->getLocale() === 'en')
+                        <p class="text-on-surface font-body-lg text-body-lg font-medium leading-relaxed">
+                            A backend and blockchain enthusiast with a Bachelor's degree in Software Engineering.
+                        </p>
+                        <p>
+                            My journey is driven by the desire to build reliable, clean and well-structured applications. From relational modeling with {!! $databasesHtml !!} to building REST APIs with {!! $frameworksHtml !!}, I place strong emphasis on code clarity, security and maintainability.
+                        </p>
+                        <p>
+                            Throughout my experience — including an exploratory project around a central bank digital currency (<strong class="text-secondary font-semibold">CBDC Blockchain</strong>) and applications such as <strong class="text-primary font-semibold">Titan / TitanEduc</strong> — I apply sound development practices: automated testing, Docker containerization, Git version control and continuous delivery.
+                        </p>
+                        <p>
+                            Certified by the <strong class="text-on-surface font-semibold">Linux Foundation</strong> in Blockchain technologies and a finalist in the <strong class="text-on-surface font-semibold">CodeQuity</strong> Hackathon, I always favor pragmatism and careful execution to deliver concrete value to users.
+                        </p>
+                    @else
+                        <p class="text-on-surface font-body-lg text-body-lg font-medium leading-relaxed">
+                            Développeur passionné par le backend et l'écosystème blockchain, titulaire d'une Licence en Génie Logiciel.
+                        </p>
+                        <p>
+                            Mon parcours est guidé par l'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous {!! $databasesHtml !!}, à la réalisation d'APIs REST sous {!! $frameworksHtml !!}, j'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.
+                        </p>
+                        <p>
+                            Au fil de mes expériences — notamment sur un projet d'exploration autour d'une monnaie numérique de banque centrale (<strong class="text-secondary font-semibold">CBDC Blockchain</strong>) et sur des applications comme <strong class="text-primary font-semibold">Titan / TitanEduc</strong> —, j'applique de bonnes pratiques de développement : tests automatisés, conteneurisation avec <strong class="text-on-surface font-semibold">Docker</strong>, versionnement Git et déploiement continu.
+                        </p>
+                        <p>
+                            Certifié par la <strong class="text-on-surface font-semibold">Linux Foundation</strong> en technologies Blockchain et finaliste du Hackathon <strong class="text-on-surface font-semibold">CodeQuity</strong>, je privilégie toujours le pragmatisme et le travail soigné pour répondre concrètement aux besoins des utilisateurs.
+                        </p>
+                    @endif
                 </div>
 
                 <!-- Stats Ribbon inside Bio Card -->
                 <div class="mt-8 pt-6 border-t border-outline-variant/30 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                     <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
                         <span class="font-headline-md text-headline-md font-bold text-primary block">{{ $projectsCount }}+</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Projets livrés</span>
+                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_projects') }}</span>
                     </div>
                     <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
                         <span class="font-headline-md text-headline-md font-bold text-secondary block">{{ $skillsCount }}</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Compétences</span>
+                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_skills') }}</span>
                     </div>
                     <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
                         <span class="font-headline-md text-headline-md font-bold text-emerald-400 block">{{ $certificationsCount }}</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Certifications</span>
+                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_certifications') }}</span>
                     </div>
                     <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
                         <span class="font-headline-md text-headline-md font-bold text-on-surface block">{{ $experiences->count() }}</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">Expériences</span>
+                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_experiences') }}</span>
                     </div>
                 </div>
             </div>
@@ -366,7 +379,7 @@
         <div class="flex items-center gap-3 mb-8">
             <span class="text-secondary font-code-md text-code-md font-bold">&gt;_</span>
             <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
-                Principes &amp; Bonnes Pratiques de Développement
+                {{ __('site.principles_title') }}
             </h2>
             <div class="h-px bg-outline-variant/30 flex-grow ml-4"></div>
             <span class="font-code-sm text-code-sm text-outline hidden sm:inline">CORE_METHODOLOGY</span>
@@ -380,12 +393,12 @@
                         <span class="material-symbols-outlined text-2xl">architecture</span>
                     </div>
                     <div>
-                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">PILIER 01</span>
+                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">{{ __('site.pillar1_tag') }}</span>
                         <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">
-                            Rigueur Architecturale &amp; Code Propre
+                            {{ __('site.principle1_title') }}
                         </h3>
                         <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                            Application stricte des principes SOLID, Clean Architecture et séparation des responsabilités. Le code n'est pas seulement écrit pour la machine, mais pour être lisible, auditable et maintenable sur le long terme par toute l'équipe.
+                            {{ __('site.principle1_desc') }}
                         </p>
                     </div>
                 </div>
@@ -398,12 +411,12 @@
                         <span class="material-symbols-outlined text-2xl">database</span>
                     </div>
                     <div>
-                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">PILIER 02</span>
+                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">{{ __('site.pillar2_tag') }}</span>
                         <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">
-                            Intégrité des Données &amp; Résilience
+                            {{ __('site.principle2_title') }}
                         </h3>
                         <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                            Modélisation relationnelle soignée, conformité ACID, gestion des verrous et transactions concurrentes. Utilisation stratégique de caches mémoires (Redis) et conteneurisation isolée (Docker) pour des déploiements sans surprise.
+                            {{ __('site.principle2_desc') }}
                         </p>
                     </div>
                 </div>
@@ -416,12 +429,12 @@
                         <span class="material-symbols-outlined text-2xl">bolt</span>
                     </div>
                     <div>
-                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">PILIER 03</span>
+                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">{{ __('site.pillar3_tag') }}</span>
                         <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">
-                            Culture Produit &amp; Pragmatisme
+                            {{ __('site.principle3_title') }}
                         </h3>
                         <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                            Un bon système résout d'abord un problème métier réel. Je privilégie l'efficacité opérationnelle, la simplicité judicieuse et la valeur délivrée à l'utilisateur final plutôt que la sur-ingénierie inutile.
+                            {{ __('site.principle3_desc') }}
                         </p>
                     </div>
                 </div>
@@ -434,12 +447,12 @@
                         <span class="material-symbols-outlined text-2xl">groups</span>
                     </div>
                     <div>
-                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">PILIER 04</span>
+                        <span class="font-code-sm text-code-sm text-secondary font-semibold uppercase tracking-wider block mb-1">{{ app()->getLocale() === 'en' ? 'PILLAR 04' : 'PILIER 04' }}</span>
                         <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">
-                            Esprit d'Équipe &amp; Démarche Agile
+                            {{ __('site.principle4_title') }}
                         </h3>
                         <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                            Communication proactive, revues de code constructives et respect des cadences Agile (Scrum). Je m'intègre avec aisance dans des équipes pluridisciplinaires, en remote comme en présentiel.
+                            {{ __('site.principle4_desc') }}
                         </p>
                     </div>
                 </div>
@@ -453,11 +466,11 @@
             <div class="flex items-center gap-3">
                 <span class="text-secondary font-code-md text-code-md font-bold">&gt;_</span>
                 <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
-                    Parcours &amp; Évolution
+                    {{ __('site.career_title') }}
                 </h2>
             </div>
             <a class="text-primary font-code-sm text-code-sm hover:underline flex items-center gap-1" href="{{ route('experience') }}">
-                <span>Voir le détail complet</span>
+                <span>{{ __('site.see_details') }}</span>
                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </a>
         </div>
@@ -474,25 +487,25 @@
                     <div>
                         <div class="flex flex-wrap items-center gap-2 mb-1">
                             <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
-                                {{ $exp->role }}
+                                {{ __($exp->role) }}
                             </h3>
                             @if($exp->is_current)
                             <span class="font-code-sm text-[11px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">
-                                En cours
+                                {{ __('site.current_position') }}
                             </span>
                             @endif
                         </div>
                         <div class="font-code-sm text-code-sm text-secondary mb-2">
-                            {{ $exp->company ?: 'Indépendant / Projet' }}
+                            {{ __($exp->company ?: 'Indépendant / Projet') }}
                         </div>
                         <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-3xl">
-                            {{ $exp->description }}
+                            {{ __($exp->description) }}
                         </p>
                     </div>
                 </div>
 
                 <div class="shrink-0 md:text-right font-code-sm text-code-sm text-outline border-t md:border-t-0 border-outline-variant/20 pt-3 md:pt-0">
-                    <div>{{ $exp->start_date ? $exp->start_date->format('Y') : '' }} — {{ $exp->is_current ? 'Présent' : ($exp->end_date ? $exp->end_date->format('Y') : '') }}</div>
+                    <div>{{ $exp->start_date ? $exp->start_date->format('Y') : '' }} — {{ $exp->is_current ? __('site.current_position') : ($exp->end_date ? $exp->end_date->format('Y') : '') }}</div>
                     @if($exp->location)
                     <div class="text-[11px] text-on-surface-variant mt-0.5">{{ $exp->location }}</div>
                     @endif
@@ -500,7 +513,7 @@
             </div>
             @empty
             <div class="p-8 text-center text-on-surface-variant bg-surface-container-low border border-outline-variant/30 rounded-xl">
-                Parcours en cours de mise à jour.
+                {{ __('site.no_experience') }}
             </div>
             @endforelse
         </div>
@@ -511,7 +524,7 @@
         <div class="flex items-center gap-3 mb-8">
             <span class="text-secondary font-code-md text-code-md font-bold">&gt;_</span>
             <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
-                Environnement &amp; Pratiques Opérationnelles
+                {{ __('site.workflow_title') }}
             </h2>
             <div class="h-px bg-outline-variant/30 flex-grow ml-4"></div>
             <span class="font-code-sm text-code-sm text-outline hidden sm:inline">WORKFLOW_STACK</span>
@@ -522,12 +535,12 @@
             <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
                 <div class="flex items-center gap-3 mb-4 text-primary">
                     <span class="material-symbols-outlined text-2xl">terminal</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Systèmes &amp; Outils</h3>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.tools_title') }}</h3>
                 </div>
                 <ul class="space-y-2.5 font-code-sm text-code-sm text-on-surface-variant">
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Environnement Linux &amp; Bash</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Linux & Bash environment' : 'Environnement Linux & Bash' }}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
@@ -539,7 +552,7 @@
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Pipelines CI/CD automatisés</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Automated CI/CD pipelines' : 'Pipelines CI/CD automatisés' }}</span>
                     </li>
                 </ul>
             </div>
@@ -548,24 +561,24 @@
             <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
                 <div class="flex items-center gap-3 mb-4 text-secondary">
                     <span class="material-symbols-outlined text-2xl">api</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Conception &amp; Qualité</h3>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.quality_title') }}</h3>
                 </div>
                 <ul class="space-y-2.5 font-code-sm text-code-sm text-on-surface-variant">
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>APIs RESTful &amp; Contrats OpenAPI</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'RESTful APIs & OpenAPI contracts' : 'APIs RESTful & Contrats OpenAPI' }}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Tests unitaires &amp; d'intégration</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Unit & integration testing' : "Tests unitaires & d'intégration" }}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Architecture en couches &amp; MVC</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Layered architecture & MVC' : 'Architecture en couches & MVC' }}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Authentification sécurisée (OAuth2, JWT)</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Secure authentication (OAuth2, JWT)' : 'Authentification sécurisée (OAuth2, JWT)' }}</span>
                     </li>
                 </ul>
             </div>
@@ -574,24 +587,24 @@
             <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
                 <div class="flex items-center gap-3 mb-4 text-emerald-400">
                     <span class="material-symbols-outlined text-2xl">handshake</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Collaboration</h3>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.collaboration_title') }}</h3>
                 </div>
                 <ul class="space-y-2.5 font-code-sm text-code-sm text-on-surface-variant">
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Méthodologie Scrum / Sprints</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Scrum methodology & Sprints' : 'Méthodologie Scrum / Sprints' }}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Revues de code systématiques</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Systematic code reviews' : 'Revues de code systématiques' }}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Documentation technique soignée</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Careful technical documentation' : 'Documentation technique soignée' }}</span>
                     </li>
                     <li class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Autonomie et prise d'initiative</span>
+                        <span>{{ app()->getLocale() === 'en' ? 'Autonomy & proactive initiative' : "Autonomie et prise d'initiative" }}</span>
                     </li>
                 </ul>
             </div>
@@ -603,31 +616,31 @@
         <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8">
             <div class="flex items-center gap-2 font-code-sm text-code-sm text-primary mb-4">
                 <span>&gt;_</span>
-                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Au-delà de l'écran &amp; passions</h3>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.passions_title') }}</h3>
             </div>
             <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed max-w-3xl">
-                Le développement logiciel demande de la rigueur et de la créativité. Pour maintenir cet équilibre, je nourris plusieurs passions qui stimulent l'esprit d'équipe, l'analyse logique et la curiosité :
+                {{ __('site.passions_intro') }}
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-3">
                     <span class="text-2xl shrink-0">⚽</span>
                     <div>
-                        <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">Football</strong>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">Culture de l'effort collectif, tactique sur le terrain et solidarité d'équipe.</p>
+                        <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">{{ __('site.passion_football') }}</strong>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('site.passion_football_desc') }}</p>
                     </div>
                 </div>
                 <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-3">
                     <span class="text-2xl shrink-0">🎮</span>
                     <div>
-                        <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">Jeux Vidéo &amp; Systèmes</strong>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">Analyse des mécaniques complexes, résolution d'énigmes et prise de décision rapide.</p>
+                        <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">{{ __('site.passion_gaming') }}</strong>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('site.passion_gaming_desc') }}</p>
                     </div>
                 </div>
                 <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-3">
                     <span class="text-2xl shrink-0">⚡</span>
                     <div>
-                        <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">Veille Technologique</strong>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">Exploration des tendances Web3, protocoles décentralisés et outils d'assistance IA.</p>
+                        <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">{{ __('site.passion_watch') }}</strong>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('site.passion_watch_desc') }}</p>
                     </div>
                 </div>
             </div>
@@ -642,22 +655,22 @@
                 <div class="max-w-2xl space-y-3">
                     <div class="flex items-center gap-2 text-secondary font-code-sm text-code-sm">
                         <span class="material-symbols-outlined text-[18px]">terminal</span>
-                        <span>// COLLABORATION_DISPONIBLE</span>
+                        <span>// {{ app()->getLocale() === 'en' ? 'AVAILABLE_FOR_COLLABORATION' : 'COLLABORATION_DISPONIBLE' }}</span>
                     </div>
                     <h2 class="font-headline-md text-headline-md text-on-surface font-bold">
-                        Envie d'échanger sur un projet ou une opportunité ?
+                        {{ __('site.about_cta_title') }}
                     </h2>
                     <p class="font-body-md text-body-md text-on-surface-variant">
-                        Que ce soit pour concevoir une API, structurer une base de données ou collaborer sur une application web ou mobile, je suis disponible pour échanger avec vous.
+                        {{ __('site.about_cta_desc') }}
                     </p>
                 </div>
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
                     <a class="bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3.5 rounded-lg hover:bg-secondary-fixed-dim transition-all duration-150 text-center shadow-lg active:scale-95 flex items-center justify-center gap-2" href="{{ route('contact') }}">
-                        <span>Démarrer une conversation</span>
+                        <span>{{ __('site.start_conversation') }}</span>
                         <span class="material-symbols-outlined text-[18px]">send</span>
                     </a>
                     <a class="border border-outline-variant/50 text-on-surface hover:border-primary font-code-md text-code-md px-5 py-3.5 rounded-lg text-center transition-colors bg-surface-container hover:bg-surface-container-high" href="{{ route('projects') }}">
-                        Voir les projets &gt;
+                        {{ __('site.projects') }} &gt;
                     </a>
                 </div>
             </div>
@@ -684,7 +697,7 @@
             <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
             @endforeach
             @endif
-            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('contact') }}">Contact</a>
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
         </div>
     </div>
 </footer>
