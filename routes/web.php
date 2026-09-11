@@ -31,7 +31,8 @@ Route::get('/projets', function () {
 })->name('projects');
 Route::get('/competences', function () {
     $skills = Skill::query()->where('is_visible', true)->orderBy('category')->orderBy('sort_order')->get();
-    return view('pages.skills', compact('skills'));
+    $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
+    return view('pages.skills', compact('skills', 'certifications'));
 })->name('skills');
 Route::get('/certifications', function () {
     $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
