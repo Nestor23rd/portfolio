@@ -385,15 +385,23 @@
 
 </main>
 
-<!-- FOOTER -->
 <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30">
 <div class="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-          © {{ date('Y') }} Nestor KPADJA · Lomé, Togo
+          © {{ date('Y') }} {{ $siteSettings['footer_text'] ?? 'Nestor KPADJA · Lomé, Togo' }}
         </p>
 <div class="flex items-center flex-wrap justify-center gap-6 font-code-sm text-code-sm">
-<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a>
-<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+@if(!empty($siteSettings['github_url']))
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+@endif
+@if(!empty($siteSettings['linkedin_url']))
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+@endif
+@if(isset($socialLinks))
+@foreach($socialLinks as $sLink)
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
+@endforeach
+@endif
 <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('contact') }}">Contact</a>
 </div>
 </div>

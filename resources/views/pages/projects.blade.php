@@ -711,14 +711,18 @@
 </div>
 <!-- Links from JSON -->
 <nav class="flex flex-wrap items-center justify-center gap-6">
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">GitHub</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">LinkedIn</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">Documentation</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">PGP Key</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface font-code-sm text-code-sm transition-colors flex items-center gap-1.5" href="#">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          Status
-        </a>
+@if(!empty($siteSettings['github_url']))
+<a class="text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+@endif
+@if(!empty($siteSettings['linkedin_url']))
+<a class="text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+@endif
+@if(isset($socialLinks))
+@foreach($socialLinks as $sLink)
+<a class="text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
+@endforeach
+@endif
+<a class="text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="{{ route('contact') }}">Contact</a>
 </nav>
 </div>
 </footer>

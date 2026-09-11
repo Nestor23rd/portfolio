@@ -263,12 +263,23 @@
                         <span>Me contacter</span>
                     </a>
                     <div class="flex items-center justify-center gap-2">
-                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="https://github.com" rel="noopener noreferrer" target="_blank" title="Profil GitHub">
+                        @if(!empty($siteSettings['github_url']))
+                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank" title="Profil GitHub">
                             <span class="material-symbols-outlined text-base">code</span>
                         </a>
-                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="https://linkedin.com" rel="noopener noreferrer" target="_blank" title="Profil LinkedIn">
+                        @endif
+                        @if(!empty($siteSettings['linkedin_url']))
+                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank" title="Profil LinkedIn">
                             <span class="material-symbols-outlined text-base">link</span>
                         </a>
+                        @endif
+                        @if(isset($socialLinks))
+                        @foreach($socialLinks as $sLink)
+                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-emerald-400 text-on-surface-variant hover:text-emerald-400 transition-colors flex items-center justify-center" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank" title="{{ $sLink->label }}">
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -640,11 +651,20 @@
 <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30 mt-auto">
     <div class="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
         <p class="font-body-sm text-body-sm text-on-surface-variant">
-            © {{ date('Y') }} Nestor KPADJA · Architectures Distribuées &amp; Ingénierie Logicielle. Lomé, Togo.
+            © {{ date('Y') }} {{ $siteSettings['footer_text'] ?? 'Nestor KPADJA · Lomé, Togo' }}
         </p>
         <div class="flex items-center flex-wrap justify-center gap-6 font-code-sm text-code-sm">
-            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a>
-            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            @if(!empty($siteSettings['github_url']))
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+            @endif
+            @if(!empty($siteSettings['linkedin_url']))
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            @endif
+            @if(isset($socialLinks))
+            @foreach($socialLinks as $sLink)
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
+            @endforeach
+            @endif
             <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('contact') }}">Contact</a>
         </div>
     </div>

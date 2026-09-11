@@ -365,15 +365,29 @@
 <div class="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
 <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
 <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant">
-          © {{ date('Y') }} Nestor KPADJA. Architectures Distribuées &amp; Protocoles Décentralisés. Lomé, Togo.
+          © {{ date('Y') }} {{ $siteSettings['footer_text'] ?? 'Nestor KPADJA · Lomé, Togo' }}
         </p>
 </div>
 <div class="flex flex-wrap items-center justify-center gap-6">
-<a class="font-code-sm text-code-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="https://github.com" rel="noopener noreferrer" target="_blank">
+@if(!empty($siteSettings['github_url']))
+<a class="font-code-sm text-code-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">
           GitHub
         </a>
-<a class="font-code-sm text-code-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+@endif
+@if(!empty($siteSettings['linkedin_url']))
+<a class="font-code-sm text-code-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">
           LinkedIn
+        </a>
+@endif
+@if(isset($socialLinks))
+@foreach($socialLinks as $sLink)
+<a class="font-code-sm text-code-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">
+          {{ $sLink->label }}
+        </a>
+@endforeach
+@endif
+<a class="font-code-sm text-code-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="{{ route('contact') }}">
+          Contact
         </a>
 </div>
 </div>

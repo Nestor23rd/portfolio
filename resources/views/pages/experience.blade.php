@@ -512,14 +512,18 @@
 </div>
 <!-- Links -->
 <div class="flex flex-wrap items-center justify-center gap-6 font-code-sm text-code-sm">
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#">GitHub</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#">LinkedIn</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#">Documentation</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#">PGP Key</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-150 flex items-center gap-1.5" href="#">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-<span>Status</span>
-</a>
+@if(!empty($siteSettings['github_url']))
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+@endif
+@if(!empty($siteSettings['linkedin_url']))
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+@endif
+@if(isset($socialLinks))
+@foreach($socialLinks as $sLink)
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
+@endforeach
+@endif
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ route('contact') }}">Contact</a>
 </div>
 </div>
 </footer>

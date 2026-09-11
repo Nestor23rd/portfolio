@@ -410,16 +410,28 @@
                     </div>
 
                     <!-- Professional Links -->
-                    <div class="pt-3 border-t border-outline-variant/20 flex items-center gap-3">
+                    <div class="pt-3 border-t border-outline-variant/20 flex flex-wrap items-center gap-3">
                         <span class="font-code-sm text-xs text-on-surface-variant mr-1">Réseaux :</span>
-                        <a class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 font-code-sm text-xs" href="{{ $githubUrl }}" target="_blank" rel="noopener noreferrer">
+                        @if(!empty($siteSettings['github_url']))
+                        <a class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 font-code-sm text-xs" href="{{ $siteSettings['github_url'] }}" target="_blank" rel="noopener noreferrer">
                             <span class="material-symbols-outlined text-sm">code</span>
                             <span>GitHub</span>
                         </a>
-                        <a class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 font-code-sm text-xs" href="{{ $linkedinUrl }}" target="_blank" rel="noopener noreferrer">
+                        @endif
+                        @if(!empty($siteSettings['linkedin_url']))
+                        <a class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 font-code-sm text-xs" href="{{ $siteSettings['linkedin_url'] }}" target="_blank" rel="noopener noreferrer">
                             <span class="material-symbols-outlined text-sm">link</span>
                             <span>LinkedIn</span>
                         </a>
+                        @endif
+                        @if(isset($socialLinks))
+                        @foreach($socialLinks as $sLink)
+                        <a class="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-emerald-400 text-on-surface-variant hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-code-sm text-xs" href="{{ $sLink->url }}" target="_blank" rel="noopener noreferrer">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>
+                            <span>{{ $sLink->label }}</span>
+                        </a>
+                        @endforeach
+                        @endif
                     </div>
                 </div>
 
@@ -456,11 +468,20 @@
 <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30 mt-auto">
     <div class="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
         <p class="font-body-sm text-body-sm text-on-surface-variant">
-            © {{ date('Y') }} Nestor KPADJA · Architectures Distribuées &amp; Ingénierie Logicielle. Lomé, Togo.
+            © {{ date('Y') }} {{ $siteSettings['footer_text'] ?? 'Nestor KPADJA · Lomé, Togo' }}
         </p>
         <div class="flex items-center flex-wrap justify-center gap-6 font-code-sm text-code-sm">
-            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a>
-            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            @if(!empty($siteSettings['github_url']))
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+            @endif
+            @if(!empty($siteSettings['linkedin_url']))
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            @endif
+            @if(isset($socialLinks))
+            @foreach($socialLinks as $sLink)
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
+            @endforeach
+            @endif
             <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('home') }}">Accueil</a>
             <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('about') }}">À propos</a>
         </div>

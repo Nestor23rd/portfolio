@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const settings = @json($publicSettings ?? []);
     const socialLinks = @json(\App\Models\SocialLink::where('is_visible', true)->orderBy('sort_order')->get(['label', 'url']));
     const links = { GitHub: 'github_url', LinkedIn: 'linkedin_url', Telegram: 'telegram_url', Documentation: 'documentation_url', 'PGP Key': 'pgp_url' };
-    document.querySelectorAll('footer a, main a').forEach(link => {
-        const key = Object.keys(links).find(label => link.textContent.trim().includes(label) || (label === 'Telegram' && link.title?.includes('Telegram')));
+    document.querySelectorAll('footer a, main a, header a').forEach(link => {
+        const text = (link.textContent + ' ' + (link.getAttribute('title') || '') + ' ' + (link.getAttribute('aria-label') || '')).trim();
+        const key = Object.keys(links).find(label => text.toLowerCase().includes(label.toLowerCase()) || link.href.toLowerCase().includes(label.toLowerCase().replace(' ', '')));
         if (key && settings[links[key]]) { link.href = settings[links[key]]; link.target = '_blank'; link.rel = 'noopener noreferrer'; }
     });
     document.querySelectorAll('footer nav').forEach(nav => {

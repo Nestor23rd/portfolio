@@ -171,7 +171,22 @@
             @endforelse
         </div>
     </section>
-</main>
-<footer class="border-t border-slate-700/40 bg-[#080e1d] px-6 py-8 text-center font-mono text-xs text-slate-500"><p data-site-footer>© {{ date('Y') }} Nestor KPADJA</p><nav class="mt-4 flex flex-wrap justify-center gap-5"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">Documentation</a><a href="#">PGP Key</a></nav></footer>
+<footer class="border-t border-slate-700/40 bg-[#080e1d] px-6 py-8 text-center font-mono text-xs text-slate-500">
+    <p data-site-footer>© {{ date('Y') }} {{ $siteSettings['footer_text'] ?? 'Nestor KPADJA · Lomé, Togo' }}</p>
+    <nav class="mt-4 flex flex-wrap justify-center gap-5">
+        @if(!empty($siteSettings['github_url']))
+        <a class="text-slate-400 hover:text-white transition-colors" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+        @endif
+        @if(!empty($siteSettings['linkedin_url']))
+        <a class="text-slate-400 hover:text-white transition-colors" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+        @endif
+        @if(isset($socialLinks))
+        @foreach($socialLinks as $sLink)
+        <a class="text-slate-400 hover:text-white transition-colors" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
+        @endforeach
+        @endif
+        <a class="text-slate-400 hover:text-white transition-colors" href="{{ route('contact') }}">Contact</a>
+    </nav>
+</footer>
 </body>
 </html>
