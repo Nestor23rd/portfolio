@@ -148,88 +148,62 @@
 @include('partials.full-width')
 </head>
 <body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
-<!-- TOP NAV BAR (Shared Component Anchor) -->
-@if(false)<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md docked full-width top-0 fixed z-50 border-b border-outline-variant/30">
-<div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
-<!-- Brand Anchor -->
-<a class="font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="#">
-<span class="text-primary group-hover:text-secondary transition-colors">&gt;_</span>
-<span class="text-on-surface tracking-tight">Nestor KPADJA</span>
-<span class="flex items-center gap-1.5 ml-2.5 px-2 py-0.5 rounded-full bg-surface-container-low border border-outline-variant/40">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-<span class="font-code-sm text-code-sm text-emerald-400 tracking-normal font-semibold">Online</span>
-</span>
-</a>
-<!-- Desktop Nav Links -->
-<nav class="hidden md:flex items-center gap-8 lg:gap-10">
-<a class="text-primary dark:text-primary font-code-md text-code-md border-b-2 border-primary pb-1" href="#">Accueil</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#apropos">À propos</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#projets">Projets</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#competences">Compétences</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#experience">Expérience</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#contact">Contact</a>
-</nav>
-<!-- Trailing Primary Action -->
-<div class="flex items-center gap-3">
-<button class="hidden sm:inline-flex p-2 text-on-surface-variant hover:text-primary transition-colors duration-150" title="Terminal Interface" type="button">
-<span class="material-symbols-outlined">terminal</span>
-</button>
-<a class="inline-flex items-center gap-2 bg-secondary-container hover:bg-secondary text-surface-container-lowest font-body-md text-label-md font-semibold px-4 py-2 rounded-lg transition-all duration-150 shadow-[0_0_16px_rgba(245,158,11,0.25)] hover:shadow-[0_0_20px_rgba(245,158,11,0.45)] active:scale-95" href="#contact">
-<span>Me contacter</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</header>@endif
+
+@include('partials.navigation')
+
 <!-- MAIN CANVAS -->
 <main class="flex-grow pt-16">
-<!-- HERO SECTION -->
+
+<!-- ==================== HERO SECTION ==================== -->
 <section class="relative min-h-[calc(100vh-4rem)] flex flex-col justify-between max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
-<!-- Subtle Grid Background Overlay -->
+<!-- Subtle Grid Background -->
 <div class="absolute inset-0 bg-[radial-gradient(#191f2f_1px,transparent_1px)] [background-size:28px_28px] opacity-40 pointer-events-none -z-10"></div>
-<!-- Hero Core Content (2 Columns Desktop) -->
+
+<!-- Hero Content (2 Columns Desktop) -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center flex-grow py-8">
-<!-- Left Column: Content & Engineering Identity -->
+<!-- Left Column: Content & Identity -->
 <div class="lg:col-span-7 flex flex-col items-start gap-6">
-<!-- Terminal Badge Indicator -->
+<!-- Badge -->
 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/60 shadow-sm">
-<span class="text-primary font-code-md text-code-md font-bold">&gt;</span>
 <span class="font-code-md text-code-sm text-primary tracking-wide">Développeur Backend &amp; Blockchain</span>
-<span class="w-2 h-2 rounded-full bg-secondary animate-ping ml-1"></span>
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
 </div>
-<!-- Main Title (H1) -->
+
+<!-- Main Title -->
 <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-tight">
             Kokoussè Nestor <br/>
 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-fixed to-secondary">KPADJA</span>
 </h1>
-<!-- Lead Subtitle -->
+
+<!-- Subtitle -->
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
             Je conçois des architectures backend robustes et des solutions blockchain pour des projets à impact réel.
           </p>
-<!-- Dual CTAs -->
+
+<!-- CTAs -->
 <div class="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
-<a class="inline-flex items-center justify-center gap-2.5 bg-primary-container text-on-surface font-body-md text-label-md font-semibold px-6 py-3 rounded-lg shadow-[0_0_20px_rgba(77,142,255,0.35)] hover:bg-primary hover:text-on-primary transition-all duration-150 active:scale-95 group" href="#projets">
+<a class="inline-flex items-center justify-center gap-2.5 bg-primary-container text-on-surface font-body-md text-label-md font-semibold px-6 py-3 rounded-lg shadow-[0_0_20px_rgba(77,142,255,0.35)] hover:bg-primary hover:text-on-primary transition-all duration-150 active:scale-95 group" href="{{ route('projects') }}">
 <span>Voir mes projets</span>
 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">east</span>
 </a>
-<a class="inline-flex items-center justify-center gap-2.5 bg-transparent border border-outline-variant/70 hover:border-primary text-on-surface hover:bg-surface-container-low font-body-md text-label-md font-medium px-6 py-3 rounded-lg transition-all duration-150 active:scale-95" href="#cv">
-<span class="material-symbols-outlined">download</span>
-<span>Télécharger mon CV</span>
+<a class="inline-flex items-center justify-center gap-2.5 bg-transparent border border-outline-variant/70 hover:border-primary text-on-surface hover:bg-surface-container-low font-body-md text-label-md font-medium px-6 py-3 rounded-lg transition-all duration-150 active:scale-95" href="{{ route('contact') }}">
+<span class="material-symbols-outlined">mail</span>
+<span>Me contacter</span>
 </a>
 </div>
-<!-- Cryptographic Signature / Commit Stamp -->
+
+<!-- Location -->
 <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
-<span class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-[16px]">verified</span>
-<span>GPG Signed</span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-emerald-400">location_on</span>
+<span>Lomé, Togo</span>
 </span>
 <span class="text-outline-variant">•</span>
-<span class="text-on-surface-variant">Commit: <span class="text-on-surface">3f88c21a</span></span>
-<span class="text-outline-variant">•</span>
-<span class="text-on-surface-variant">Lomé, TG (+00:00 UTC)</span>
+<span>Disponible en remote &amp; hybride</span>
 </div>
 </div>
-<!-- Right Column: Interactive Distributed System & Terminal Architecture Window -->
+
+<!-- Right Column: Terminal Card -->
 <div class="lg:col-span-5">
 <div class="specular-card bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-2xl">
 <!-- Terminal Header -->
@@ -238,185 +212,158 @@
 <span class="w-3 h-3 rounded-full bg-error/70"></span>
 <span class="w-3 h-3 rounded-full bg-secondary/70"></span>
 <span class="w-3 h-3 rounded-full bg-emerald-500/70"></span>
-<span class="ml-2 font-code-sm text-code-sm text-on-surface-variant font-mono">~/cluster/mainnet-observer.sh</span>
+<span class="ml-2 font-code-sm text-code-sm text-on-surface-variant font-mono">~/portfolio/status.sh</span>
 </div>
-<span class="font-code-sm text-code-sm text-secondary bg-surface-container-high px-2 py-0.5 rounded border border-outline-variant/30">L1 :: SYNC</span>
+<span class="font-code-sm text-code-sm text-emerald-400 bg-surface-container-high px-2 py-0.5 rounded border border-outline-variant/30">LIVE</span>
 </div>
-<!-- Terminal Visual & Distributed Blocks -->
+<!-- Terminal Content -->
 <div class="p-5 font-code-md text-code-sm space-y-4 text-on-surface-variant bg-surface-container-lowest/90">
+<!-- Status Header -->
 <div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
 <span class="text-primary flex items-center gap-1.5 font-semibold">
 <span class="material-symbols-outlined text-[16px]">dns</span>
-<span>CONSENSUS_ENGINE</span>
+<span>PORTFOLIO_ENGINE</span>
 </span>
-<span class="text-emerald-400">POW_BYZANTINE_OK</span>
+<span class="text-emerald-400">ALL_SYSTEMS_OK</span>
 </div>
-<!-- Interconnected Block 1 -->
-<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/60 transition-colors">
-<div class="flex items-center justify-between">
-<span class="text-secondary font-mono font-bold">BLOCK #18,492,104</span>
-<span class="text-[10px] text-on-surface-variant">3s ago</span>
+<!-- Projets récents -->
+@if($projects->count() > 0)
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/40">
+<div class="flex items-center justify-between mb-2">
+<span class="text-secondary font-mono font-bold text-[12px]">PROJETS RÉCENTS</span>
+<span class="text-[10px] text-emerald-400">{{ $projects->count() }} publiés</span>
 </div>
-<p class="text-on-surface text-[12px] truncate mt-1">Hash: <span class="text-primary font-mono">0x7f8a849d...c3a9cf10</span></p>
-<div class="flex items-center justify-between mt-2 pt-2 border-t border-outline-variant/20 text-[11px]">
-<span>Tx Count: 142</span>
-<span class="text-emerald-400">Validated by 32 Nodes</span>
+@foreach($projects->take(3) as $project)
+<div class="flex items-center gap-2 {{ !$loop->last ? 'mb-1.5' : '' }}">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+<span class="text-on-surface text-[12px] truncate">{{ $project->title }}</span>
+</div>
+@endforeach
+</div>
+@endif
+<!-- Stack technique -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/40">
+<div class="flex items-center justify-between mb-2">
+<span class="text-secondary font-mono font-bold text-[12px]">STACK TECHNIQUE</span>
+<span class="text-[10px] text-on-surface-variant">{{ $skills->count() }} skills</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+@foreach($skills->pluck('name')->unique()->take(6) as $name)
+<span class="text-[10px] px-2 py-0.5 rounded bg-surface-container-high text-primary border border-primary/20">{{ $name }}</span>
+@endforeach
 </div>
 </div>
-<!-- Connecting Line with glowing accent -->
-<div class="flex items-center justify-center -my-2 relative z-10">
-<div class="h-5 w-0.5 bg-gradient-to-b from-primary to-secondary"></div>
-</div>
-<!-- Interconnected Block 2 -->
-<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/60 transition-colors">
-<div class="flex items-center justify-between">
-<span class="text-secondary font-mono font-bold">BLOCK #18,492,105</span>
-<span class="text-[10px] text-emerald-400 animate-pulse">MINED NOW</span>
-</div>
-<p class="text-on-surface text-[12px] truncate mt-1">Merkle Root: <span class="text-primary font-mono">0x4b91a92e...f8120be7</span></p>
-<div class="flex items-center justify-between mt-2 pt-2 border-t border-outline-variant/20 text-[11px]">
-<span>Gas Used: 84.2%</span>
-<span class="text-primary">EVM Execution OK</span>
-</div>
-</div>
-<!-- Live Stream Micro-Console Log -->
+<!-- Console Log -->
 <div class="p-2.5 rounded bg-surface-dim font-code-sm text-[11px] leading-tight space-y-1 text-on-surface-variant border border-outline-variant/30">
 <div class="flex items-center gap-2">
 <span class="text-primary">&gt;&gt;</span>
-<span>[RPC:8545] Handshake verified via TLS 1.3</span>
+<span>Compétences chargées : {{ $skills->count() }} actives</span>
 </div>
 <div class="flex items-center gap-2 text-secondary">
 <span class="text-secondary">&gt;&gt;</span>
-<span>Hyperledger Fabric channel 'supply-chain' active</span>
+<span>Projets déployés : {{ $projects->count() }} en production</span>
 </div>
 <div class="flex items-center gap-2 text-on-surface">
 <span class="text-emerald-400">&gt;&gt;</span>
-<span>Zero-Knowledge Proof verified (Groth16 - 12ms)</span>
+<span>Expériences : {{ $experiences->count() }} postes vérifiés</span>
 </div>
 </div>
 </div>
-<!-- Card Bottom Metrics Tray -->
+<!-- Bottom Metrics -->
 <div class="grid grid-cols-3 px-4 py-2.5 bg-surface-container-high/60 border-t border-outline-variant/40 text-center font-code-sm text-code-sm">
 <div>
-<span class="text-on-surface-variant text-[10px] uppercase block">Throughput</span>
-<span class="font-bold text-on-surface">4,200 TPS</span>
+<span class="text-on-surface-variant text-[10px] uppercase block">Projets</span>
+<span class="font-bold text-on-surface">{{ $projects->count() }}</span>
 </div>
 <div class="border-x border-outline-variant/30">
-<span class="text-on-surface-variant text-[10px] uppercase block">Latency</span>
-<span class="font-bold text-emerald-400">14 ms</span>
+<span class="text-on-surface-variant text-[10px] uppercase block">Skills</span>
+<span class="font-bold text-primary">{{ $skills->count() }}</span>
 </div>
 <div>
-<span class="text-on-surface-variant text-[10px] uppercase block">Network Uptime</span>
-<span class="font-bold text-primary">99.99%</span>
+<span class="text-on-surface-variant text-[10px] uppercase block">Expériences</span>
+<span class="font-bold text-emerald-400">{{ $experiences->count() }}</span>
 </div>
 </div>
 </div>
 </div>
 </div>
-<!-- Bottom Tech Stack Ribbon / Ticker -->
+</div>
+
+<!-- Location -->
+<div class="flex items-center gap-3 pt-4 border-t border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-emerald-400">location_on</span>
+<span>Lomé, Togo</span>
+</span>
+<span class="text-outline-variant">•</span>
+<span>Disponible en remote &amp; hybride</span>
+</div>
+</div>
+
+<!-- Bottom Tech Stack Ribbon -->
 <div class="pt-8 pb-4 border-t border-outline-variant/30">
 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
 <div class="flex items-center gap-2 text-on-surface-variant font-code-md text-code-sm shrink-0">
-<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
-<span class="uppercase tracking-wider">Technologies Clés</span>
+<span class="uppercase tracking-wider">Technologies clés</span>
 </div>
-<!-- Stack Badges -->
 <div class="flex flex-wrap items-center gap-2.5 justify-center md:justify-end">
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 transition-colors">
-<span class="font-code-md text-code-sm text-on-surface font-semibold">Java</span>
-<span class="text-[11px] text-secondary font-mono">SE 21+</span>
+@foreach($skills->pluck('name')->unique()->take(8) as $skillName)
+<div class="inline-flex items-center px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 transition-colors">
+<span class="font-code-md text-code-sm text-on-surface font-semibold">{{ $skillName }}</span>
 </div>
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 transition-colors">
-<span class="font-code-md text-code-sm text-on-surface font-semibold">Spring Boot</span>
-<span class="text-[11px] text-primary font-mono">3.x</span>
-</div>
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 transition-colors">
-<span class="font-code-md text-code-sm text-on-surface font-semibold">Angular</span>
-<span class="text-[11px] text-on-surface-variant font-mono">v17</span>
-</div>
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 transition-colors">
-<span class="font-code-md text-code-sm text-on-surface font-semibold">Docker</span>
-<span class="text-[11px] text-emerald-400 font-mono">Containers</span>
-</div>
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 transition-colors">
-<span class="font-code-md text-code-sm text-on-surface font-semibold">PostgreSQL</span>
-<span class="text-[11px] text-primary font-mono">RDBMS</span>
-</div>
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 transition-colors">
-<span class="font-code-md text-code-sm text-on-surface font-semibold">Kotlin</span>
-<span class="text-[11px] text-secondary font-mono">Coroutines</span>
-</div>
+@endforeach
 </div>
 </div>
 </div>
 </section>
-<!-- SECTION APERÇU RAPIDE (Key Metrics / Quick Overview) -->
+
+<!-- ==================== APERÇU RAPIDE ==================== -->
 <section class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 border-t border-outline-variant/20">
-<!-- Section Header -->
-<div class="flex items-center justify-between mb-8 pb-4 border-b border-outline-variant/30">
-<div class="flex items-center gap-3">
-<span class="font-code-md text-code-md text-primary font-semibold">// apercu-rapide.sh</span>
-<span class="text-outline-variant">--telemetry</span>
-</div>
-<div class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-<span>Données vérifiées</span>
-</div>
-</div>
-<!-- 4 Columns Key Metrics Bento Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Metric Card 1: Major Projects -->
+
+<!-- Metric: Projets -->
 <div class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/70 rounded-[10px] p-6 flex flex-col justify-between transition-all duration-200">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-primary-container/20 border border-primary/30 flex items-center justify-center text-primary">
 <span class="material-symbols-outlined">deployed_code</span>
 </div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Livrables</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Projets</span>
 </div>
 <div>
-<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">3+</div>
-<div class="font-body-md text-body-md text-on-surface-variant mt-1">projets majeurs livrés</div>
-</div>
-<div class="mt-4 pt-3 border-t border-outline-variant/30 font-code-sm text-code-sm text-primary flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[16px]">verified_user</span>
-<span>Production-ready &amp; audits validés</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">{{ $projects->count() }}+</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">projets livrés en production</div>
 </div>
 </div>
-<!-- Metric Card 2: Blockchain Certification -->
+
+<!-- Metric: Compétences -->
 <div class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-secondary/70 rounded-[10px] p-6 flex flex-col justify-between transition-all duration-200">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-secondary-container/20 border border-secondary/30 flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined">workspace_premium</span>
+<span class="material-symbols-outlined">code</span>
 </div>
-<span class="font-code-sm text-code-sm text-secondary uppercase tracking-wider">Certifié</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Compétences</span>
 </div>
 <div>
-<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">1</div>
-<div class="font-body-md text-body-md text-on-surface-variant mt-1">certification Blockchain (Linux Foundation)</div>
-</div>
-<div class="mt-4 pt-3 border-t border-outline-variant/30 font-code-sm text-code-sm text-secondary flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[16px]">token</span>
-<span>Hyperledger / Linux Foundation</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">{{ $skills->count() }}</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">technologies maîtrisées</div>
 </div>
 </div>
-<!-- Metric Card 3: Enterprise Tech Stack -->
+
+<!-- Metric: Expériences -->
 <div class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/70 rounded-[10px] p-6 flex flex-col justify-between transition-all duration-200">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant/50 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">memory</span>
+<span class="material-symbols-outlined">work</span>
 </div>
-<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Core Engine</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Expérience</span>
 </div>
 <div>
-<div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Stack</div>
-<div class="font-body-md text-body-md text-on-surface-variant mt-1">Java, Kotlin, Spring Boot, Angular</div>
-</div>
-<div class="mt-4 pt-3 border-t border-outline-variant/30 font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[16px]">hub</span>
-<span>Microservices &amp; Event-Driven</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">{{ $experiences->count() }}</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">expériences professionnelles</div>
 </div>
 </div>
-<!-- Metric Card 4: Location & Work Mode -->
+
+<!-- Metric: Localisation -->
 <div class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-emerald-500/70 rounded-[10px] p-6 flex flex-col justify-between transition-all duration-200">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
@@ -424,46 +371,31 @@
 </div>
 <span class="flex items-center gap-1 font-code-sm text-code-sm text-emerald-400">
 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-<span>Ouvert</span>
+<span>Disponible</span>
 </span>
 </div>
 <div>
-<div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight" data-location="Lomé, Togo" style="">Lomé, Togo</div>
-<div class="font-body-md text-body-md text-on-surface-variant mt-1">Basé à Lomé, Togo</div>
-</div>
-<div class="mt-4 pt-3 border-t border-outline-variant/30 font-code-sm text-code-sm text-on-surface flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[16px] text-emerald-400">public</span>
-<span>Remote &amp; Hybride disponible</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Lomé, Togo</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Remote &amp; hybride</div>
 </div>
 </div>
+
 </div>
 </section>
+
 </main>
-<!-- FOOTER (Shared Component Anchor) -->
+
+<!-- FOOTER -->
 <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30">
 <div class="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
-<div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-<span class="font-code-md text-code-md font-bold text-on-surface dark:text-on-surface">
-          &gt;_ Nestor KPADJA
-        </span>
-<span class="hidden sm:inline text-outline-variant">|</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-          © 2025 Nestor KPADJA. Architectures Distribuées &amp; Protocoles Décentralisés. Lomé, Togo.
+          © {{ date('Y') }} Nestor KPADJA · Lomé, Togo
         </p>
-</div>
-<!-- Links matching JSON exactly -->
 <div class="flex items-center flex-wrap justify-center gap-6 font-code-sm text-code-sm">
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#documentation">Documentation</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#pgp">PGP Key</a>
-<a class="text-primary dark:text-primary font-medium flex items-center gap-1.5" href="#status">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-<span>Status</span>
-</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="{{ route('contact') }}">Contact</a>
 </div>
 </div>
 </footer>
-@include('partials.navigation')
-@include('partials.public-home-data')
 </body></html>

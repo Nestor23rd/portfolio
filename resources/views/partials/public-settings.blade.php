@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(link);
         });
     });
+    const aboutSocialGroup = document.querySelector('main a[title="GitHub"]')?.parentElement;
+    if (aboutSocialGroup) {
+        socialLinks.forEach(profile => {
+            if ([...aboutSocialGroup.querySelectorAll('a')].some(link => link.textContent.trim().toLowerCase() === profile.label.toLowerCase())) return;
+            const link = document.createElement('a');
+            link.href = profile.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.title = profile.label; link.textContent = profile.label;
+            link.className = 'px-3 py-2 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 font-code-sm text-code-sm';
+            aboutSocialGroup.appendChild(link);
+        });
+    }
     document.querySelectorAll('a[href^="mailto:"]').forEach(link => { if (settings.email) link.href = `mailto:${settings.email}`; });
     document.querySelectorAll('footer p, [data-site-footer]').forEach(paragraph => { if (settings.footer_text) paragraph.textContent = `© ${new Date().getFullYear()} ${settings.footer_text}`; });
     document.querySelectorAll('[data-site-location]').forEach(element => { if (settings.location) element.textContent = settings.location; });
