@@ -21,8 +21,9 @@ Route::get('/', function () {
     $projects = Project::query()->where('is_published', true)->orderBy('sort_order')->latest('published_at')->get();
     $skills = Skill::query()->where('is_visible', true)->orderBy('category')->orderBy('sort_order')->get();
     $experiences = Experience::query()->orderBy('sort_order')->orderByDesc('start_date')->get();
+    $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
 
-    return view('pages.home', compact('projects', 'skills', 'experiences'));
+    return view('pages.home', compact('projects', 'skills', 'experiences', 'certifications'));
 })->name('home');
 Route::get('/a-propos', function () {
     $projectsCount = Project::query()->where('is_published', true)->count();

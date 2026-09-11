@@ -306,7 +306,7 @@
                     </p>
                     
                     <p>
-                        Mon parcours est guidé par une fascination pour la conception de systèmes capables de traiter des flux critiques en toute fiabilité. De la modélisation relationnelle rigoureuse sous <strong class="text-on-surface font-semibold">PostgreSQL</strong> et <strong class="text-on-surface font-semibold">MySQL</strong>, à l'architecture d'APIs REST haute vélocité sous <strong class="text-on-surface font-semibold">Laravel</strong>, <strong class="text-on-surface font-semibold">Spring Boot</strong> et <strong class="text-on-surface font-semibold">Node.js</strong>, j'accorde une importance primordiale à la robustesse, à la lisibilité et à l'évolutivité du code.
+                        Mon parcours est guidé par une fascination pour la conception de systèmes capables de traiter des flux critiques en toute fiabilité. De la modélisation relationnelle rigoureuse sous <strong class="text-on-surface font-semibold">PostgreSQL</strong> et <strong class="text-on-surface font-semibold">MySQL</strong>, à la conception d'APIs REST performantes et bien structurées sous <strong class="text-on-surface font-semibold">Laravel</strong>, <strong class="text-on-surface font-semibold">Spring Boot</strong> et <strong class="text-on-surface font-semibold">Node.js</strong>, j'accorde une importance primordiale à la robustesse, à la lisibilité et à l'évolutivité du code.
                     </p>
 
                     <p>
