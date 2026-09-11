@@ -3,7 +3,7 @@
 <html class="dark" lang="fr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Mes Projets — Nestor KPADJA | Ingénieur Backend &amp; Blockchain</title>
+<title>Mes Projets — Nestor KPADJA | Développeur Backend &amp; Blockchain</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>

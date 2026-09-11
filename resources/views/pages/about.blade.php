@@ -3,7 +3,7 @@
 <html class="dark" lang="fr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>À propos — Nestor KPADJA | Ingénierie Backend &amp; Architectures Distribuées</title>
+<title>À propos — Nestor KPADJA | Développeur Backend &amp; Blockchain</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -169,13 +169,13 @@
             <div class="space-y-3">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-surface-container-low border border-outline-variant/50 text-primary font-code-sm text-code-sm">
                     <span class="text-secondary font-semibold">&gt;_</span>
-                    <span>profil_ingenieur.md</span>
+                    <span>profil_developpeur.md</span>
                 </div>
                 <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold tracking-tight">
                     À propos de <span class="bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">Nestor KPADJA</span>
                 </h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl font-normal leading-relaxed">
-                    Développeur Backend &amp; Architecte Systèmes Distribués. Je transforme des exigences complexes en architectures logicielles pérennes, performantes et scalables.
+                    Développeur Backend &amp; Blockchain, titulaire d'une Licence en Génie Logiciel. Je conçois des applications fiables, des APIs bien structurées et des solutions adaptées aux besoins concrets.
                 </p>
             </div>
             <!-- Quick Status Badge -->
@@ -214,7 +214,7 @@
                         Kokoussè Nestor KPADJA
                     </h2>
                     <div class="font-code-sm text-code-sm text-primary mt-1 font-semibold">
-                        Backend &amp; Distributed Systems Engineer
+                        Développeur Backend &amp; Blockchain
                     </div>
                 </div>
 
@@ -297,24 +297,24 @@
                         <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500/70"></span>
                         <span class="ml-2 text-on-surface font-mono">qui_suis_je.md</span>
                     </div>
-                    <span class="text-primary font-mono text-[11px] bg-surface-container px-2 py-0.5 rounded">INGENIEUR_LOGICIEL</span>
+                    <span class="text-primary font-mono text-[11px] bg-surface-container px-2 py-0.5 rounded">DEVELOPPEUR_BACKEND</span>
                 </div>
 
                 <div class="space-y-4 font-body-md text-on-surface-variant leading-relaxed">
                     <p class="text-on-surface font-body-lg text-body-lg font-medium leading-relaxed">
-                        Ingénieur logiciel passionné par le développement backend, les architectures distribuées et l'écosystème blockchain.
+                        Développeur passionné par le backend et l'écosystème blockchain, titulaire d'une Licence en Génie Logiciel.
                     </p>
                     
                     <p>
-                        Mon parcours est guidé par une fascination pour la conception de systèmes capables de traiter des flux critiques en toute fiabilité. De la modélisation relationnelle rigoureuse sous <strong class="text-on-surface font-semibold">PostgreSQL</strong> et <strong class="text-on-surface font-semibold">MySQL</strong>, à la conception d'APIs REST performantes et bien structurées sous <strong class="text-on-surface font-semibold">Laravel</strong>, <strong class="text-on-surface font-semibold">Spring Boot</strong> et <strong class="text-on-surface font-semibold">Node.js</strong>, j'accorde une importance primordiale à la robustesse, à la lisibilité et à l'évolutivité du code.
+                        Mon parcours est guidé par l'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous <strong class="text-on-surface font-semibold">PostgreSQL</strong> et <strong class="text-on-surface font-semibold">MySQL</strong>, à la réalisation d'APIs REST sous <strong class="text-on-surface font-semibold">Laravel</strong>, <strong class="text-on-surface font-semibold">Spring Boot</strong> et <strong class="text-on-surface font-semibold">Node.js</strong>, j'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.
                     </p>
 
                     <p>
-                        Au fil de mes expériences sur des chantiers d'envergure — notamment sur un projet de monnaie numérique de banque centrale (<strong class="text-secondary font-semibold">CBDC Blockchain</strong>) et sur des plateformes de gestion d'entreprise comme <strong class="text-primary font-semibold">Titan / TitanEduc</strong> —, j'ai développé une solide culture d'ingénierie : rigueur des tests automatisés, conteneurisation avec <strong class="text-on-surface font-semibold">Docker</strong>, pipelines <strong class="text-on-surface font-semibold">CI/CD</strong> et livraison continue.
+                        Au fil de mes expériences — notamment sur un projet d'exploration autour d'une monnaie numérique de banque centrale (<strong class="text-secondary font-semibold">CBDC Blockchain</strong>) et sur des applications comme <strong class="text-primary font-semibold">Titan / TitanEduc</strong> —, j'applique de bonnes pratiques de développement : tests automatisés, conteneurisation avec <strong class="text-on-surface font-semibold">Docker</strong>, versionnement Git et déploiement continu.
                     </p>
 
                     <p>
-                        Certifié par la <strong class="text-on-surface font-semibold">Linux Foundation</strong> en technologies Blockchain et finaliste du Hackathon <strong class="text-on-surface font-semibold">CodeQuity</strong>, je combine maîtrise théorique et pragmatisme opérationnel pour donner vie à des solutions à fort impact réel.
+                        Certifié par la <strong class="text-on-surface font-semibold">Linux Foundation</strong> en technologies Blockchain et finaliste du Hackathon <strong class="text-on-surface font-semibold">CodeQuity</strong>, je privilégie toujours le pragmatisme et le travail soigné pour répondre concrètement aux besoins des utilisateurs.
                     </p>
                 </div>
 
@@ -342,12 +342,12 @@
         </div>
     </section>
 
-    <!-- ==================== 4 PILIERS D'INGÉNIERIE ==================== -->
+    <!-- ==================== PRINCIPES & BONNES PRATIQUES ==================== -->
     <section class="mb-20">
         <div class="flex items-center gap-3 mb-8">
             <span class="text-secondary font-code-md text-code-md font-bold">&gt;_</span>
             <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
-                Piliers &amp; Principes d'Ingénierie
+                Principes &amp; Bonnes Pratiques de Développement
             </h2>
             <div class="h-px bg-outline-variant/30 flex-grow ml-4"></div>
             <span class="font-code-sm text-code-sm text-outline hidden sm:inline">CORE_METHODOLOGY</span>
@@ -629,7 +629,7 @@
                         Envie d'échanger sur un projet ou une opportunité ?
                     </h2>
                     <p class="font-body-md text-body-md text-on-surface-variant">
-                        Que ce soit pour concevoir une architecture backend robuste, auditer une API ou collaborer sur un produit d'envergure, je suis ouvert aux opportunités professionnelles.
+                        Que ce soit pour concevoir une API, structurer une base de données ou collaborer sur une application web ou mobile, je suis disponible pour échanger avec vous.
                     </p>
                 </div>
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
