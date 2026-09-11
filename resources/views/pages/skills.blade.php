@@ -165,7 +165,7 @@
 <!-- ========================================================================= -->
 <!-- 1. TopNavBar (Shared Component JSON Execution) -->
 <!-- ========================================================================= -->
-<header class="docked full-width top-0 fixed z-50 bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30">
+@if(false)<header class="docked full-width top-0 fixed z-50 bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30">
 <div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
 <!-- Brand Logo -->
 <a class="font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="#">
@@ -205,7 +205,7 @@
 </a>
 </div>
 </div>
-</header>
+</header>@endif
 <!-- ========================================================================= -->
 <!-- Main Content Canvas -->
 <!-- ========================================================================= -->

@@ -149,7 +149,7 @@
 </head>
 <body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
 <!-- TOP NAV BAR (Shared Component Anchor) -->
-<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md docked full-width top-0 fixed z-50 border-b border-outline-variant/30">
+@if(false)<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md docked full-width top-0 fixed z-50 border-b border-outline-variant/30">
 <div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
 <!-- Brand Anchor -->
 <a class="font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="#">
@@ -180,7 +180,7 @@
 </a>
 </div>
 </div>
-</header>
+</header>@endif
 <!-- MAIN CANVAS -->
 <main class="flex-grow pt-16">
 <!-- HERO SECTION -->

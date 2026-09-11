@@ -1,22 +1,136 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications — Nestor KPADJA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    @include('partials.full-width')
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Certifications — Nestor KPADJA</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#adc6ff",
+            "surface-dim": "#0d1322",
+            "on-primary-fixed-variant": "#004395",
+            "surface-container": "#191f2f",
+            "outline-variant": "#424754",
+            "inverse-primary": "#005ac2",
+            "on-primary-container": "#00285d",
+            "inverse-on-surface": "#2a3040",
+            "tertiary-fixed": "#ffdcc6",
+            "secondary-fixed-dim": "#ffb95f",
+            "error": "#ffb4ab",
+            "surface-container-high": "#242a3a",
+            "on-tertiary": "#502400",
+            "tertiary-container": "#df7412",
+            "inverse-surface": "#dde2f8",
+            "on-tertiary-container": "#461f00",
+            "outline": "#8c909f",
+            "on-primary": "#002e6a",
+            "on-tertiary-fixed": "#311400",
+            "on-secondary-fixed": "#2a1700",
+            "background": "#0d1322",
+            "secondary-container": "#ee9800",
+            "surface-variant": "#2f3445",
+            "surface-container-highest": "#2f3445",
+            "on-surface-variant": "#c2c6d6",
+            "on-tertiary-fixed-variant": "#723600",
+            "on-background": "#dde2f8",
+            "surface-container-lowest": "#080e1d",
+            "surface-container-low": "#151b2b",
+            "surface": "#0d1322",
+            "on-error": "#690005",
+            "tertiary-fixed-dim": "#ffb786",
+            "on-secondary-container": "#5b3800",
+            "error-container": "#93000a",
+            "primary-fixed": "#d8e2ff",
+            "secondary-fixed": "#ffddb8",
+            "primary-container": "#4d8eff",
+            "primary-fixed-dim": "#adc6ff",
+            "on-error-container": "#ffdad6",
+            "secondary": "#ffb95f",
+            "tertiary": "#ffb786",
+            "on-primary-fixed": "#001a42",
+            "on-secondary-fixed-variant": "#653e00",
+            "surface-bright": "#33394a",
+            "on-surface": "#dde2f8",
+            "on-secondary": "#472a00",
+            "surface-tint": "#adc6ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "4rem",
+            "margin-mobile": "1.25rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin": "3rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Space Grotesk"],
+            "code-sm": ["JetBrains Mono"],
+            "label-sm": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-xl-mobile": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "code-md": ["JetBrains Mono"],
+            "headline-xl": ["Space Grotesk"],
+            "code-lg": ["JetBrains Mono"],
+            "headline-sm": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "code-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "code-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-xl": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "code-lg": ["15px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 1.25rem;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+@include('partials.full-width')
 </head>
-<body style="background:#080e1d;color:#e2e8f0" class="min-h-screen antialiased font-body-md">
-<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 docked full-width top-0 fixed z-50">
-<div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
-<a class="font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="{{ route('home') }}"><span class="text-primary group-hover:text-primary-container transition-colors">&gt;_</span><span>Nestor KPADJA</span><span class="inline-flex items-center gap-1.5 ml-2 px-2 py-0.5 rounded-full bg-surface-container-high border border-outline-variant/40"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span><span class="font-code-sm text-code-sm text-primary font-medium hidden sm:inline">Online</span></span></a>
-<nav class="hidden md:flex items-center gap-8 lg:gap-10"><a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md transition-colors" href="{{ route('home') }}">Accueil</a><a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md transition-colors" href="{{ route('about') }}">À propos</a><a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md transition-colors" href="{{ route('projects') }}">Projets</a><a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md transition-colors" href="{{ route('skills') }}">Compétences</a><a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md transition-colors" href="{{ route('certifications') }}">Certifications</a><a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md transition-colors" href="{{ route('experience') }}">Expérience</a></nav>
-<div class="flex items-center gap-3"><a class="inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-primary-container font-headline-sm text-label-md px-4 py-2 rounded-lg font-semibold transition-all duration-150 shadow-sm active:scale-95" href="{{ route('contact') }}"><span>Me contacter</span></a></div>
-</div>
-</header>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
+@include('partials.navigation')
 <main class="min-h-screen w-full px-6 pb-20 pt-28 md:px-12">
     <section class="mx-auto w-full max-w-7xl">
         <div class="mb-10 flex items-center gap-3 border-b border-slate-700/40 pb-5">

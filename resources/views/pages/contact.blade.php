@@ -140,7 +140,7 @@
 </head>
 <body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container terminal-grid">
 <!-- TOP APP BAR -->
-<header class="docked full-width top-0 fixed z-50 bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 flat no shadows">
+@if(false)<header class="docked full-width top-0 fixed z-50 bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 flat no shadows">
 <div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
 <!-- Brand Logo -->
 <a class="font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2" href="#">
@@ -171,7 +171,7 @@
 </a>
 </div>
 </div>
-</header>
+</header>@endif
 <!-- MAIN CONTACT SECTION -->
 <main class="flex-grow pt-28 pb-20 px-6 md:px-12 flex items-center justify-center">
 <div class="w-full max-w-6xl mx-auto space-y-12">

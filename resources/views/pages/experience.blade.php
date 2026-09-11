@@ -167,7 +167,7 @@
 <div class="fixed top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-primary-container/10 blur-[130px] pointer-events-none rounded-full -z-10"></div>
 <div class="fixed bottom-40 right-10 w-[500px] h-[300px] bg-secondary-container/10 blur-[140px] pointer-events-none rounded-full -z-10"></div>
 <!-- TopNavBar (Shared Component) -->
-<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md docked full-width top-0 fixed z-50 border-b border-outline-variant/30">
+@if(false)<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md docked full-width top-0 fixed z-50 border-b border-outline-variant/30">
 <div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
 <!-- Brand Logo -->
 <a class="font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="#">
@@ -194,7 +194,7 @@
 </a>
 </div>
 </div>
-</header>
+</header>@endif
 <!-- Main Canvas Container -->
 <main class="flex-grow pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12 w-full">
 <!-- Hero / Header Section -->
