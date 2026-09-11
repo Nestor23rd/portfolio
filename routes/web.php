@@ -27,10 +27,11 @@ Route::get('/', function () {
 })->name('home');
 Route::get('/a-propos', function () {
     $projectsCount = Project::query()->where('is_published', true)->count();
-    $skillsCount = Skill::query()->where('is_visible', true)->count();
+    $skills = Skill::query()->where('is_visible', true)->orderBy('category')->orderBy('sort_order')->get();
+    $skillsCount = $skills->count();
     $experiences = Experience::query()->orderBy('sort_order')->orderByDesc('start_date')->get();
     $certificationsCount = Certification::query()->where('is_visible', true)->count();
-    return view('pages.about', compact('projectsCount', 'skillsCount', 'experiences', 'certificationsCount'));
+    return view('pages.about', compact('projectsCount', 'skills', 'skillsCount', 'experiences', 'certificationsCount'));
 })->name('about');
 Route::get('/projets', function () {
     $baseQuery = Project::query()->where('is_published', true);

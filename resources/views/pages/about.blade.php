@@ -300,13 +300,32 @@
                     <span class="text-primary font-mono text-[11px] bg-surface-container px-2 py-0.5 rounded">DEVELOPPEUR_BACKEND</span>
                 </div>
 
+                @php
+                    $dbBackendFrameworks = $skills->where('category', 'Frameworks')
+                        ->reject(fn($s) => in_array(strtolower($s->name), ['angular.js', 'angular', 'react', 'vue', 'vue.js']))
+                        ->values();
+                    if ($dbBackendFrameworks->isEmpty()) {
+                        $dbBackendFrameworks = $skills->where('category', 'Frameworks')->values();
+                    }
+                    $frameworksHtml = $dbBackendFrameworks->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', ' et ');
+
+                    $dbDatabases = $skills->where('category', 'Data & Infra')
+                        ->filter(fn($s) => in_array(strtolower($s->name), ['postgresql', 'mysql', 'sqlite', 'mongodb']))
+                        ->values();
+                    if ($dbDatabases->isEmpty()) {
+                        $databasesHtml = '<strong class="text-on-surface font-semibold">PostgreSQL</strong>';
+                    } else {
+                        $databasesHtml = $dbDatabases->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', ' et ');
+                    }
+                @endphp
+
                 <div class="space-y-4 font-body-md text-on-surface-variant leading-relaxed">
                     <p class="text-on-surface font-body-lg text-body-lg font-medium leading-relaxed">
                         Développeur passionné par le backend et l'écosystème blockchain, titulaire d'une Licence en Génie Logiciel.
                     </p>
                     
                     <p>
-                        Mon parcours est guidé par l'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous <strong class="text-on-surface font-semibold">PostgreSQL</strong> et <strong class="text-on-surface font-semibold">MySQL</strong>, à la réalisation d'APIs REST sous <strong class="text-on-surface font-semibold">Laravel</strong>, <strong class="text-on-surface font-semibold">Spring Boot</strong> et <strong class="text-on-surface font-semibold">Node.js</strong>, j'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.
+                        Mon parcours est guidé par l'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous {!! $databasesHtml !!}, à la réalisation d'APIs REST sous {!! $frameworksHtml !!}, j'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.
                     </p>
 
                     <p>
@@ -587,7 +606,7 @@
                 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Au-delà de l'écran &amp; passions</h3>
             </div>
             <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed max-w-3xl">
-                L'ingénierie logicielle requiert de la concentration et de la créativité. Pour maintenir cet équilibre, je nourris plusieurs passions qui stimulent l'esprit d'équipe, l'analyse stratégique et la curiosité intellectuelle :
+                Le développement logiciel demande de la rigueur et de la créativité. Pour maintenir cet équilibre, je nourris plusieurs passions qui stimulent l'esprit d'équipe, l'analyse logique et la curiosité :
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-3">

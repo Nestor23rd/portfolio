@@ -427,16 +427,16 @@
 </div>
 <span class="font-code-sm text-xs text-secondary font-semibold uppercase tracking-wider block mb-1">PILIER 01</span>
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-3">
-    Backend &amp; Microservices
+    Backend &amp; APIs
 </h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-6">
-    Conception d'APIs RESTful performantes sous Laravel, Spring Boot et Node.js. Modélisation relationnelle rigoureuse sous PostgreSQL et MySQL, caching Redis et architecture événementielle.
+    Conception d'APIs RESTful fiables sous Laravel et Spring Boot. Modélisation relationnelle rigoureuse sous PostgreSQL, mise en cache avec Redis et séparation claire des responsabilités.
 </p>
 </div>
 <div class="pt-4 border-t border-outline-variant/20 flex flex-wrap gap-1.5 font-code-sm text-xs text-on-surface-variant">
 <span class="px-2 py-0.5 rounded bg-surface-container">Laravel</span>
+<span class="px-2 py-0.5 rounded bg-surface-container">SpringBoot</span>
 <span class="px-2 py-0.5 rounded bg-surface-container">PostgreSQL</span>
-<span class="px-2 py-0.5 rounded bg-surface-container">REST APIs</span>
 <span class="px-2 py-0.5 rounded bg-surface-container">Redis</span>
 </div>
 </div>

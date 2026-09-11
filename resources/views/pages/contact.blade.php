@@ -212,7 +212,7 @@
                     <span class="material-symbols-outlined text-emerald-400 text-xl">check_circle</span>
                     <div>
                         <strong class="block text-emerald-200 font-semibold">Message envoyé avec succès !</strong>
-                        <span>{{ session('contact_success') }} Je reviendrai vers vous dans les plus brefs délais.</span>
+                        <span>{{ session('contact_success') }} Vous recevrez une réponse par e-mail sous 24h.</span>
                     </div>
                 </div>
                 @endif
@@ -317,8 +317,8 @@
                     <!-- Form Footer with Submit Action -->
                     <div class="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-outline-variant/20">
                         <div class="flex items-center gap-2 text-on-surface-variant font-code-sm text-code-sm">
-                            <span class="material-symbols-outlined text-emerald-400 text-base">verified_user</span>
-                            <span>Réponse garantie sous 24h</span>
+                            <span class="material-symbols-outlined text-emerald-400 text-base">mail</span>
+                            <span>Réponse par e-mail sous 24h</span>
                         </div>
                         <button class="w-full sm:w-auto bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3 rounded-lg hover:bg-secondary-container transition-all duration-200 active:scale-95 shadow-md flex items-center justify-center gap-2 group cursor-pointer" type="submit">
                             <span>Envoyer le message</span>
@@ -437,18 +437,24 @@
 
                 <!-- Process Card: Comment se déroule l'échange -->
                 <div class="specular-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 space-y-4">
-                    <div class="font-code-sm text-code-sm text-on-surface flex items-center gap-2">
-                        <span class="material-symbols-outlined text-secondary text-base">route</span>
-                        <span class="font-semibold uppercase tracking-wider">Comment se passe la suite ?</span>
+                    <div class="font-code-sm text-code-sm text-on-surface flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-base">route</span>
+                            <span class="font-semibold uppercase tracking-wider">Comment se passe la suite ?</span>
+                        </div>
+                        <span class="text-xs font-code-sm text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded flex items-center gap-1">
+                            <span class="material-symbols-outlined text-xs">mail</span>
+                            <span>Suivi par e-mail</span>
+                        </span>
                     </div>
                     <ol class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
                         <li class="flex items-start gap-2.5">
                             <span class="font-code-sm text-xs font-bold text-primary px-1.5 py-0.5 rounded bg-surface-container-high shrink-0 mt-0.5">01</span>
-                            <span><strong>Analyse du besoin :</strong> Je lis votre message et examine le contexte technique sous 24h.</span>
+                            <span><strong>Analyse du besoin :</strong> Je lis votre message et examine le contexte technique sous 24h. Vous recevez un e-mail en retour pour confirmer la bonne réception de votre demande.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <span class="font-code-sm text-xs font-bold text-primary px-1.5 py-0.5 rounded bg-surface-container-high shrink-0 mt-0.5">02</span>
-                            <span><strong>Premier contact :</strong> Proposition d'un créneau d'échange (visio ou téléphone) pour clarifier les enjeux.</span>
+                            <span><strong>Premier contact :</strong> Proposition d'un créneau d'échange (visio ou téléphone) envoyée directement par e-mail pour clarifier les enjeux.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <span class="font-code-sm text-xs font-bold text-primary px-1.5 py-0.5 rounded bg-surface-container-high shrink-0 mt-0.5">03</span>
