@@ -206,6 +206,12 @@
 </div>
 </div>
 <!-- Interactive Terminal Prompt Form -->
+@if(session('contact_success'))
+<div class="mx-6 mt-6 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 font-code-sm text-code-sm text-emerald-300 md:mx-8">{{ session('contact_success') }}</div>
+@endif
+@if($errors->any())
+<div class="mx-6 mt-6 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300 md:mx-8"><ul class="list-inside list-disc">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>
+@endif
 <form action="{{ route('contact.store') }}" method="POST" class="p-6 md:p-8 space-y-6" id="contactForm">
 @csrf
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -217,7 +223,7 @@
 <span class="text-error font-mono">*</span>
 </label>
 <div class="relative">
-<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-150" id="fullname" name="name" placeholder="ex. Marc Dupont" required="" type="text"/>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-150" id="fullname" name="name" value="{{ old('name') }}" placeholder="ex. Marc Dupont" required="" type="text"/>
 </div>
 </div>
 <!-- Email Field -->
@@ -228,7 +234,7 @@
 <span class="text-error font-mono">*</span>
 </label>
 <div class="relative">
-<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-150" id="email" name="email" placeholder="ex. marc.dupont@entreprise.com" required="" type="email"/>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-150" id="email" name="email" value="{{ old('email') }}" placeholder="ex. marc.dupont@entreprise.com" required="" type="email"/>
 </div>
 </div>
 </div>
@@ -272,7 +278,7 @@
 <span>Payload / Spécifications</span>
 <span class="text-error font-mono">*</span>
 </label>
-<textarea class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-3.5 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-150 resize-none" id="message" name="message" placeholder="Décrivez brièvement vos besoins, contexte d'infrastructure ou opportunité technique..." required="" rows="5"></textarea>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-3.5 font-body-md text-body-md text-on-surface placeholder:text-outline-variant/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-150 resize-none" id="message" name="message" placeholder="Décrivez brièvement vos besoins, contexte d'infrastructure ou opportunité technique..." required="" rows="5">{{ old('message') }}</textarea>
 </div>
 <!-- Terminal Meta and Submit Button -->
 <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-outline-variant/20">
@@ -333,8 +339,9 @@
 </div>
 <div>
 <span class="block font-code-sm text-code-sm text-on-surface-variant">Téléphone &amp; WhatsApp</span>
-<span class="font-body-md text-body-md text-on-surface font-medium">
-                  +228 90 XX XX XX
+<span class="mt-1 block font-body-md text-body-md text-on-surface font-medium">
+                  <a class="block hover:text-primary" href="tel:+22896908492">Tél. : +228 96 90 84 92</a>
+                  <a class="block hover:text-primary" href="https://wa.me/22891311705" target="_blank" rel="noopener">WhatsApp : +228 91 31 17 05</a>
                 </span>
 </div>
 </div>

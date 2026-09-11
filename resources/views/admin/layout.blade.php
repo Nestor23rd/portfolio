@@ -21,7 +21,13 @@
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.certifications.index') }}">Certifications</a>
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.settings.edit') }}">Paramètres du site</a>
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.experiences.index') }}">Expériences</a>
-            <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.messages.index') }}">Messages</a>
+            @php($unreadMessages = \App\Models\ContactMessage::whereNull('read_at')->count())
+            <a class="flex items-center justify-between rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.messages.index') }}">
+                <span>Messages</span>
+                @if($unreadMessages > 0)
+                    <span class="inline-flex min-w-6 items-center justify-center rounded-full bg-amber-400 px-2 py-0.5 text-xs font-bold text-[#0b1120]" aria-label="{{ $unreadMessages }} message(s) non lu(s)">{{ $unreadMessages > 99 ? '99+' : $unreadMessages }}</span>
+                @endif
+            </a>
         </nav>
     </aside>
 
