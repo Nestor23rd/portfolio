@@ -11,6 +11,7 @@
         .portfolio-topbar .portfolio-contact { margin-left: auto; }
     }
 </style>
+@php($publicSettings = \App\Models\SiteSetting::pluck('value', 'key'))
 <header class="portfolio-topbar bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 docked full-width top-0 fixed z-50">
     <div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
         <a class="portfolio-brand font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="{{ route('home') }}"><span class="text-primary group-hover:text-primary-container transition-colors">&gt;_</span><span>Nestor KPADJA</span></a>
@@ -25,3 +26,4 @@
         <div class="flex items-center gap-4"><a class="portfolio-contact inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-secondary-container font-label-md text-label-md font-bold px-4 py-2 rounded-lg transition-all shadow-sm active:scale-95 duration-150" href="{{ route('contact') }}">Me contacter</a></div>
     </div>
 </header>
+@include('partials.public-settings')

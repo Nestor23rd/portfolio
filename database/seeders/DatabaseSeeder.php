@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Experience;
 use App\Models\Certification;
+use App\Models\SiteSetting;
+use App\Models\SocialLink;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\User;
@@ -82,5 +84,15 @@ class DatabaseSeeder extends Seeder
         foreach ($certifications as $certification) {
             Certification::updateOrCreate(['title' => $certification['title']], $certification);
         }
+
+        $settings = [
+            'email' => 'kpadjanestor78@gmail.com', 'github_url' => 'https://github.com', 'linkedin_url' => 'https://linkedin.com',
+            'telegram_url' => '', 'documentation_url' => '', 'pgp_url' => '', 'location' => 'Lomé, Togo',
+            'footer_text' => 'Nestor KPADJA. Architectures Distribuées & Protocoles Décentralisés. Lomé, Togo.',
+        ];
+        foreach ($settings as $key => $value) {
+            SiteSetting::updateOrCreate(['key' => $key], ['value' => $value]);
+        }
+
     }
 }

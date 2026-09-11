@@ -172,6 +172,6 @@
         </div>
     </section>
 </main>
-<footer class="border-t border-slate-700/40 bg-[#080e1d] px-6 py-8 text-center font-mono text-xs text-slate-500">© {{ date('Y') }} Nestor KPADJA</footer>
+<footer class="border-t border-slate-700/40 bg-[#080e1d] px-6 py-8 text-center font-mono text-xs text-slate-500"><p data-site-footer>© {{ date('Y') }} Nestor KPADJA</p><nav class="mt-4 flex flex-wrap justify-center gap-5"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">Documentation</a><a href="#">PGP Key</a></nav></footer>
 </body>
 </html>

@@ -7,11 +7,14 @@ use App\Http\Controllers\Admin\CertificationController as AdminCertificationCont
 use App\Http\Controllers\Admin\ExperienceController as AdminExperienceController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\SkillController as AdminSkillController;
+use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\SocialLinkController;
 use App\Models\ContactMessage;
 use App\Models\Certification;
 use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\SiteSetting;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -55,6 +58,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('projects', AdminProjectController::class)->except(['show']);
         Route::resource('skills', AdminSkillController::class)->except(['show']);
         Route::resource('certifications', AdminCertificationController::class)->except(['show']);
+        Route::get('settings', [SiteSettingController::class, 'edit'])->name('settings.edit');
+        Route::put('settings', [SiteSettingController::class, 'update'])->name('settings.update');
+        Route::post('social-links', [SocialLinkController::class, 'store'])->name('social-links.store');
+        Route::put('social-links/{socialLink}', [SocialLinkController::class, 'update'])->name('social-links.update');
+        Route::delete('social-links/{socialLink}', [SocialLinkController::class, 'destroy'])->name('social-links.destroy');
         Route::resource('experiences', AdminExperienceController::class)->except(['show']);
         Route::get('messages', [AdminMessageController::class, 'index'])->name('messages.index');
         Route::patch('messages/{message}/read', [AdminMessageController::class, 'read'])->name('messages.read');
