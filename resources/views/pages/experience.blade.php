@@ -3,13 +3,12 @@
 <html class="dark" lang="fr"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Portfolio Kokoussè Nestor KPADJA - Expérience</title>
+<title>Expérience &amp; Parcours — Nestor KPADJA</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <!-- Tailwind CSS with custom config -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -159,374 +158,288 @@
     .cursor-blink {
       animation: cursor-blink 1s infinite;
     }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 1.25rem;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
   </style>
 @include('partials.full-width')
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col selection:bg-primary selection:text-on-primary antialiased relative terminal-grid">
+
+@include('partials.navigation')
+
 <!-- Ambient Light Orbs -->
 <div class="fixed top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-primary-container/10 blur-[130px] pointer-events-none rounded-full -z-10"></div>
 <div class="fixed bottom-40 right-10 w-[500px] h-[300px] bg-secondary-container/10 blur-[140px] pointer-events-none rounded-full -z-10"></div>
-<!-- TopNavBar (Shared Component) -->
-@if(false)<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md docked full-width top-0 fixed z-50 border-b border-outline-variant/30">
-<div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
-<!-- Brand Logo -->
-<a class="font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="#">
-<span class="text-primary font-code-md">&gt;_</span>
-<span>Nestor KPADJA</span>
-</a>
-<!-- Desktop Nav Links -->
-<nav class="hidden md:flex items-center gap-8 lg:gap-10">
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#">Accueil</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#">À propos</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#">Projets</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#">Compétences</a>
-<a class="text-primary dark:text-primary font-code-md text-code-md border-b-2 border-primary pb-1" href="#">Expérience</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-code-md text-code-md hover:text-on-surface dark:hover:text-on-surface transition-colors" href="#">Contact</a>
-</nav>
-<!-- Trailing Action -->
-<div class="flex items-center gap-4">
-<button class="hidden sm:flex items-center justify-center p-2 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-150" title="Terminal console">
-<span class="material-symbols-outlined text-primary text-xl">terminal</span>
-</button>
-<a class="inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-secondary-container font-label-md text-label-md font-bold px-4 py-2 rounded-lg transition-all shadow-sm active:scale-95 duration-150" href="#contact">
-<span>Me contacter</span>
-<span class="material-symbols-outlined text-base">arrow_forward</span>
-</a>
-</div>
-</div>
-</header>@endif
+
 <!-- Main Canvas Container -->
 <main class="flex-grow pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12 w-full">
-<!-- Hero / Header Section -->
-<section class="mb-16 md:mb-20">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant/30 pb-10">
-<div class="space-y-4 max-w-3xl">
-<!-- Terminal Sub-badge -->
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface-container-high border border-outline-variant/50 text-primary font-code-sm text-code-sm">
-<span class="text-secondary">&gt;_</span>
-<span>Mon évolution</span>
-<span class="inline-block w-1.5 h-3.5 bg-primary cursor-blink ml-0.5"></span>
-</div>
-<!-- Page Title -->
-<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
-            Parcours &amp; <span class="bg-gradient-to-r from-primary via-primary-fixed to-secondary bg-clip-text text-transparent">Expérience</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-            Chronologie de mes réalisations techniques, responsabilités en ingénierie logicielle et cursus académique.
-          </p>
-</div>
-<!-- Terminal Status Metadata -->
-<div class="hidden lg:flex flex-col items-end gap-2 font-code-sm text-code-sm text-outline p-4 bg-surface-container-lowest/90 rounded-lg border border-outline-variant/40">
-<div class="flex items-center gap-2 text-on-surface">
-<span class="w-2 h-2 rounded-full bg-emerald-400 status-pulse"></span>
-<span class="font-bold tracking-wider">SYS_LOG :: CAREER_TIMELINE</span>
-</div>
-<div class="flex items-center gap-4 text-on-surface-variant">
-<span>BRANCH: <span class="text-primary">main/production</span></span>
-<span>LATEST_COMMIT: <span class="text-secondary">2026.02</span></span>
-</div>
-</div>
-</div>
-</section>
-<!-- Timeline Wrapper -->
-<section class="relative">
-<!-- Center Vertical Gradient Line -->
-<div class="absolute left-4 md:left-1/2 top-4 bottom-10 w-0.5 -translate-x-1/2 bg-gradient-to-b from-primary via-primary-container to-secondary pointer-events-none opacity-80"></div>
-<div class="space-y-12 md:space-y-16">
-<!-- STEP 1: Stage & Recherche Blockchain (Left on desktop) -->
-<div class="relative flex flex-col md:flex-row items-start md:items-center w-full">
-<!-- Central Node -->
-<div class="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
-<div class="w-9 h-9 rounded-full bg-surface-container-lowest border-2 border-primary flex items-center justify-center shadow-[0_0_16px_rgba(77,142,255,0.4)]">
-<span class="material-symbols-outlined text-primary text-base">deployed_code</span>
-</div>
-</div>
-<!-- Card Content (Left Column on Desktop) -->
-<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 w-full">
-<div class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/40 p-6 md:p-7 rounded-xl transition-all duration-200">
-<!-- Meta Header -->
-<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-container-high border border-outline-variant/60 font-code-sm text-code-sm text-primary">
-<span class="w-1.5 h-1.5 rounded-full bg-primary status-pulse"></span>
-<span>mai 2025 → fév. 2026</span>
-</div>
-<span class="font-code-sm text-code-sm text-primary font-semibold tracking-wider bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
-                  TERMINÉ / LIVRÉ
+
+    <!-- Hero / Header Section -->
+    <section class="mb-16 md:mb-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant/30 pb-10">
+            <div class="space-y-4 max-w-3xl">
+                <!-- Terminal Sub-badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface-container-high border border-outline-variant/50 text-primary font-code-sm text-code-sm">
+                    <span class="text-secondary">&gt;_</span>
+                    <span>Mon parcours</span>
+                    <span class="inline-block w-1.5 h-3.5 bg-primary cursor-blink ml-0.5"></span>
+                </div>
+                <!-- Page Title -->
+                <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+                    Parcours &amp; <span class="bg-gradient-to-r from-primary via-primary-fixed to-secondary bg-clip-text text-transparent">Expérience</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Chronologie des réalisations techniques, responsabilités en ingénierie logicielle et cursus académique administrés depuis l'espace de gestion.
+                </p>
+            </div>
+
+            <!-- Terminal Status Metadata -->
+            <div class="flex flex-col items-start md:items-end gap-2 font-code-sm text-code-sm text-outline p-4 bg-surface-container-lowest/90 rounded-lg border border-outline-variant/40 shrink-0">
+                <div class="flex items-center gap-2 text-on-surface">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 status-pulse"></span>
+                    <span class="font-bold tracking-wider">HISTORIQUE VÉRIFIÉ</span>
+                </div>
+                <div class="flex items-center gap-3 text-on-surface-variant">
+                    <span>{{ $experiences->count() }} jalon(s) enregistré(s)</span>
+                    @if($experiences->where('is_current', true)->count() > 0)
+                    <span class="text-outline-variant">|</span>
+                    <span class="text-emerald-400 font-semibold">{{ $experiences->where('is_current', true)->count() }} en cours</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="relative">
+        <!-- Center Vertical Gradient Line -->
+        <div class="absolute left-4 md:left-1/2 top-4 bottom-10 w-0.5 -translate-x-1/2 bg-gradient-to-b from-primary via-primary-container to-secondary pointer-events-none opacity-80"></div>
+
+        <div class="space-y-12 md:space-y-16">
+            @forelse($experiences as $index => $exp)
+            @php
+                $isAcademic = ($exp->company === 'Formation') || \Illuminate\Support\Str::contains(mb_strtolower($exp->role), ['licence', 'baccalauréat', 'bac', 'formation', 'diplôme', 'master', 'université', 'école', 'cursus']);
+                $iconName = $isAcademic ? 'school' : ($exp->is_current ? 'deployed_code' : 'apartment');
+                $isOdd = ($loop->iteration % 2 !== 0);
+            @endphp
+
+            <div class="relative flex flex-col md:flex-row items-start md:items-center w-full">
+                <!-- Central Node Icon -->
+                <div class="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
+                    <div class="w-9 h-9 rounded-full bg-surface-container-lowest border-2 {{ $exp->is_current ? 'border-emerald-400 shadow-[0_0_16px_rgba(52,211,153,0.4)]' : ($isAcademic ? 'border-outline shadow-md' : 'border-primary shadow-[0_0_16px_rgba(77,142,255,0.3)]') }} flex items-center justify-center">
+                        <span class="material-symbols-outlined {{ $exp->is_current ? 'text-emerald-400' : ($isAcademic ? 'text-on-surface-variant' : 'text-primary') }} text-base">
+                            {{ $iconName }}
+                        </span>
+                    </div>
+                </div>
+
+                @if($isOdd)
+                    <!-- Card on Left Column on Desktop -->
+                    <div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 w-full">
+                        <div class="specular-card bg-surface-container-low border {{ $exp->is_current ? 'border-emerald-500/40 hover:border-emerald-400' : 'border-outline-variant/50 hover:border-primary/40' }} p-6 md:p-7 rounded-xl transition-all duration-200 relative overflow-hidden">
+                            @if($exp->is_current)
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-2xl pointer-events-none"></div>
+                            @endif
+
+                            <!-- Meta Header -->
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-container-high border border-outline-variant/60 font-code-sm text-code-sm {{ $exp->is_current ? 'text-emerald-400 border-emerald-500/30' : 'text-primary' }}">
+                                    <span class="w-1.5 h-1.5 rounded-full {{ $exp->is_current ? 'bg-emerald-400 status-pulse' : 'bg-primary' }}"></span>
+                                    <span>
+                                        {{ $exp->start_date ? $exp->start_date->translatedFormat('M Y') : '' }}
+                                        →
+                                        {{ $exp->is_current ? 'Présent' : ($exp->end_date ? $exp->end_date->translatedFormat('M Y') : 'Présent') }}
+                                    </span>
+                                </div>
+
+                                @if($exp->is_current)
+                                <span class="font-code-sm text-code-sm text-emerald-400 font-semibold tracking-wider bg-emerald-950/40 border border-emerald-800/50 px-2 py-0.5 rounded flex items-center gap-1">
+                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                    EN COURS
+                                </span>
+                                @elseif($isAcademic)
+                                <span class="font-code-sm text-code-sm text-on-surface-variant font-semibold tracking-wider bg-surface-container px-2 py-0.5 rounded border border-outline-variant/30">
+                                    CURSUS
+                                </span>
+                                @else
+                                <span class="font-code-sm text-code-sm text-primary font-semibold tracking-wider bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
+                                    TERMINÉ
+                                </span>
+                                @endif
+                            </div>
+
+                            <!-- Titles -->
+                            <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-1">
+                                {{ $exp->role }}
+                            </h2>
+                            @if($exp->company || $exp->location)
+                            <div class="font-code-md text-code-md {{ $exp->is_current ? 'text-secondary' : 'text-on-surface-variant' }} mb-4 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">{{ $isAcademic ? 'school' : 'business_center' }}</span>
+                                <span>{{ $exp->company ?: 'Indépendant' }}{{ $exp->location ? ' • ' . $exp->location : '' }}</span>
+                            </div>
+                            @endif
+
+                            <!-- Body Description -->
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
+                                {{ $exp->description }}
+                            </p>
+
+                            <!-- Tech Badges -->
+                            @if(!empty($exp->technologies) && is_array($exp->technologies) && count($exp->technologies) > 0)
+                            <div class="flex flex-wrap gap-2 pt-3 border-t border-outline-variant/30">
+                                @foreach($exp->technologies as $tech)
+                                <span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">
+                                    {{ $tech }}
+                                </span>
+                                @endforeach
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                @else
+                    <!-- Card on Right Column on Desktop -->
+                    <div class="hidden md:block md:w-1/2"></div>
+                    <div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 w-full">
+                        <div class="specular-card bg-surface-container-low border {{ $exp->is_current ? 'border-emerald-500/40 hover:border-emerald-400' : 'border-outline-variant/50 hover:border-primary/40' }} p-6 md:p-7 rounded-xl transition-all duration-200 relative overflow-hidden">
+                            @if($exp->is_current)
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-2xl pointer-events-none"></div>
+                            @endif
+
+                            <!-- Meta Header -->
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-container-high border border-outline-variant/60 font-code-sm text-code-sm {{ $exp->is_current ? 'text-emerald-400 border-emerald-500/30' : 'text-primary' }}">
+                                    <span class="w-1.5 h-1.5 rounded-full {{ $exp->is_current ? 'bg-emerald-400 status-pulse' : 'bg-primary' }}"></span>
+                                    <span>
+                                        {{ $exp->start_date ? $exp->start_date->translatedFormat('M Y') : '' }}
+                                        →
+                                        {{ $exp->is_current ? 'Présent' : ($exp->end_date ? $exp->end_date->translatedFormat('M Y') : 'Présent') }}
+                                    </span>
+                                </div>
+
+                                @if($exp->is_current)
+                                <span class="font-code-sm text-code-sm text-emerald-400 font-semibold tracking-wider bg-emerald-950/40 border border-emerald-800/50 px-2 py-0.5 rounded flex items-center gap-1">
+                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                    EN COURS
+                                </span>
+                                @elseif($isAcademic)
+                                <span class="font-code-sm text-code-sm text-on-surface-variant font-semibold tracking-wider bg-surface-container px-2 py-0.5 rounded border border-outline-variant/30">
+                                    CURSUS
+                                </span>
+                                @else
+                                <span class="font-code-sm text-code-sm text-primary font-semibold tracking-wider bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
+                                    TERMINÉ
+                                </span>
+                                @endif
+                            </div>
+
+                            <!-- Titles -->
+                            <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-1">
+                                {{ $exp->role }}
+                            </h2>
+                            @if($exp->company || $exp->location)
+                            <div class="font-code-md text-code-md {{ $exp->is_current ? 'text-secondary' : 'text-on-surface-variant' }} mb-4 flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">{{ $isAcademic ? 'school' : 'business_center' }}</span>
+                                <span>{{ $exp->company ?: 'Indépendant' }}{{ $exp->location ? ' • ' . $exp->location : '' }}</span>
+                            </div>
+                            @endif
+
+                            <!-- Body Description -->
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-5 leading-relaxed">
+                                {{ $exp->description }}
+                            </p>
+
+                            <!-- Tech Badges -->
+                            @if(!empty($exp->technologies) && is_array($exp->technologies) && count($exp->technologies) > 0)
+                            <div class="flex flex-wrap gap-2 pt-3 border-t border-outline-variant/30">
+                                @foreach($exp->technologies as $tech)
+                                <span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">
+                                    {{ $tech }}
+                                </span>
+                                @endforeach
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            @empty
+            <div class="specular-card bg-surface-container-low border border-dashed border-outline-variant/60 rounded-xl p-12 text-center max-w-xl mx-auto">
+                <span class="material-symbols-outlined text-4xl text-outline mb-3">work_outline</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Aucune expérience répertoriée</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Les expériences publiées depuis le tableau de bord d'administration apparaîtront ici.</p>
+            </div>
+            @endforelse
+        </div>
+    </section>
+
+    <!-- Bottom Collaboration Callout -->
+    <section class="mt-24">
+        <div class="specular-card bg-surface-container-low border border-outline-variant/60 rounded-xl p-8 md:p-12 relative overflow-hidden">
+            <div class="flex items-center justify-between border-b border-outline-variant/30 pb-4 mb-8">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-error/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-secondary/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-primary/80 inline-block"></span>
+                    <span class="font-code-sm text-code-sm text-primary ml-3 font-semibold">&gt;_ COLLABORATION_DISPONIBLE</span>
+                </div>
+                <span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    DISPONIBLE POUR MISSIONS
                 </span>
-</div>
-<!-- Titles -->
-<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
-                Développeur Backend — Projet CBDC (Blockchain)
-              </h2>
-<div class="font-code-md text-code-md text-secondary mb-4 flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm">hub</span>
-<span>Projet de stage en ligne / Décentralisation financière</span>
-</div>
-<!-- Body Description -->
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                Conception et implémentation d'une architecture microservices résiliente pour la simulation d'une monnaie numérique de banque centrale (CBDC). Développement et audit de smart contracts, protocoles de consensus et sécurisation des flux transactionnels.
-              </p>
-<!-- Tech Badges -->
-<div class="flex flex-wrap gap-2 pt-3 border-t border-outline-variant/30">
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Spring Boot</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Smart Contracts</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Microservices</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Docker</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Consensus BFT</span>
-</div>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-</div>
-<!-- STEP 2: Titan / TitanEduc (Right on desktop) -->
-<div class="relative flex flex-col md:flex-row items-start md:items-center w-full">
-<!-- Central Node -->
-<div class="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
-<div class="w-9 h-9 rounded-full bg-surface-container-lowest border-2 border-secondary flex items-center justify-center shadow-[0_0_16px_rgba(245,158,11,0.4)]">
-<span class="material-symbols-outlined text-secondary text-base">apartment</span>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-<!-- Card Content (Right Column on Desktop) -->
-<div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 w-full">
-<div class="specular-card bg-surface-container-low border border-secondary/30 hover:border-secondary/60 p-6 md:p-7 rounded-xl transition-all duration-200 relative overflow-hidden">
-<!-- Subtle accent glow banner -->
-<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-2xl pointer-events-none"></div>
-<!-- Meta Header -->
-<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-secondary/10 border border-secondary/30 font-code-sm text-code-sm text-secondary">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 status-pulse"></span>
-<span>Depuis juil. 2025</span>
-</div>
-<span class="font-code-sm text-code-sm text-emerald-400 font-semibold tracking-wider bg-emerald-950/40 border border-emerald-800/50 px-2 py-0.5 rounded flex items-center gap-1">
-<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  EN COURS
-                </span>
-</div>
-<!-- Titles -->
-<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
-                Développeur — Titan / TitanEduc
-              </h2>
-<div class="font-code-md text-code-md text-on-surface-variant mb-4 flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm text-secondary">domain</span>
-<span>NitchCorp • Djidjolé, Lomé</span>
-</div>
-<!-- Body Description -->
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                Développement actif du module immobilier et de l'écosystème TitanEduc. Intégration de pipelines de stockage objet avec Minio S3, implémentation fine des contrôles d'accès RBAC (rôles et permissions) et renforcement de la sécurité backend.
-              </p>
-<!-- Tech Badges -->
-<div class="flex flex-wrap gap-2 pt-3 border-t border-outline-variant/30">
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Spring Boot</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Laravel</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">Minio S3</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">RBAC Security</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">PostgreSQL</span>
-</div>
-</div>
-</div>
-</div>
-<!-- STEP 3: Projet Personnel (Left on desktop) -->
-<div class="relative flex flex-col md:flex-row items-start md:items-center w-full">
-<!-- Central Node -->
-<div class="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
-<div class="w-9 h-9 rounded-full bg-surface-container-lowest border-2 border-primary flex items-center justify-center shadow-[0_0_12px_rgba(173,198,255,0.3)]">
-<span class="material-symbols-outlined text-primary text-base">code_blocks</span>
-</div>
-</div>
-<!-- Card Content (Left Column on Desktop) -->
-<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 w-full">
-<div class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/40 p-6 md:p-7 rounded-xl transition-all duration-200">
-<!-- Meta Header -->
-<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-container-high border border-outline-variant/60 font-code-sm text-code-sm text-on-surface-variant">
-<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
-<span>fév. 2025 → août 2025</span>
-</div>
-<span class="font-code-sm text-code-sm text-outline font-semibold tracking-wider">
-                  AUTONOME &amp; DÉPLOYÉ
-                </span>
-</div>
-<!-- Titles -->
-<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
-                Développeur Full Stack — Projet personnel (gestion scolaire)
-              </h2>
-<div class="font-code-md text-code-md text-primary mb-4 flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm">terminal</span>
-<span>Projet personnel autonome</span>
-</div>
-<!-- Body Description -->
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                Création de bout en bout d'un système complet d'inscription, relevés de notes et bulletins automatisés. Intégration d'un module d'intelligence artificielle pour la recherche prédictive d'élèves et sécurisation de l'accès par double authentification (2FA TOTP).
-              </p>
-<!-- Tech Badges -->
-<div class="flex flex-wrap gap-2 pt-3 border-t border-outline-variant/30">
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">PostgreSQL</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">IA &amp; Embedding</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">2FA / TOTP</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">CRUD Engine</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/60 border border-outline-variant/40 px-2.5 py-1 rounded-md">REST API</span>
-</div>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-</div>
-<!-- STEP 4: Cursus Universitaire (Right on desktop) -->
-<div class="relative flex flex-col md:flex-row items-start md:items-center w-full">
-<!-- Central Node -->
-<div class="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
-<div class="w-9 h-9 rounded-full bg-surface-container-lowest border-2 border-outline flex items-center justify-center shadow-md">
-<span class="material-symbols-outlined text-on-surface-variant text-base">school</span>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-<!-- Card Content (Right Column on Desktop) -->
-<div class="ml-12 md:ml-0 md:w-1/2 md:pl-12 w-full">
-<div class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/40 p-6 md:p-7 rounded-xl transition-all duration-200">
-<!-- Meta Header -->
-<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-container-high border border-outline-variant/60 font-code-sm text-code-sm text-on-surface-variant">
-<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-<span>oct. 2023 → déc. 2026</span>
-</div>
-<span class="font-code-sm text-code-sm text-primary font-semibold tracking-wider">
-                  EN COURS • UL
-                </span>
-</div>
-<!-- Titles -->
-<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
-                Licence Génie Logiciel
-              </h2>
-<div class="font-code-md text-code-md text-on-surface-variant mb-4 flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm text-primary">account_balance</span>
-<span>EPL (École Polytechnique de Lomé), Université de Lomé</span>
-</div>
-<!-- Body Description -->
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                Formation d'excellence en ingénierie logicielle, algorithmique avancée, modélisation objet (UML/Design Patterns), architecture des systèmes distribués, bases de données relationnelles et méthodologies Agiles.
-              </p>
-<!-- Focus Tags -->
-<div class="flex flex-wrap gap-2 pt-3 border-t border-outline-variant/30">
-<span class="font-code-sm text-code-sm text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-md">Génie Logiciel</span>
-<span class="font-code-sm text-code-sm text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-md">Systèmes Distribués</span>
-<span class="font-code-sm text-code-sm text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-md">Algorithmique</span>
-<span class="font-code-sm text-code-sm text-primary bg-primary/5 border border-primary/20 px-2.5 py-1 rounded-md">Base de données</span>
-</div>
-</div>
-</div>
-</div>
-<!-- STEP 5: Fondations Académiques (Left on desktop) -->
-<div class="relative flex flex-col md:flex-row items-start md:items-center w-full">
-<!-- Central Node -->
-<div class="absolute left-4 md:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
-<div class="w-9 h-9 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center shadow-md">
-<span class="material-symbols-outlined text-outline text-base">history_edu</span>
-</div>
-</div>
-<!-- Card Content (Left Column on Desktop) -->
-<div class="ml-12 md:ml-0 md:w-1/2 md:pr-12 w-full">
-<div class="specular-card bg-surface-container-low border border-outline-variant/40 hover:border-outline-variant p-6 md:p-7 rounded-xl transition-all duration-200">
-<!-- Meta Header -->
-<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-container-high border border-outline-variant/60 font-code-sm text-code-sm text-outline">
-<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
-<span>sept. 2021 → juin 2022</span>
-</div>
-<span class="font-code-sm text-code-sm text-outline tracking-wider">
-                  DIPLÔMÉ
-                </span>
-</div>
-<!-- Titles -->
-<h2 class="font-headline-sm text-headline-sm text-on-surface mb-1">
-                Baccalauréat Scientifique (Bac 2)
-              </h2>
-<div class="font-code-md text-code-md text-on-surface-variant mb-4 flex items-center gap-1.5">
-<span class="material-symbols-outlined text-sm">location_city</span>
-<span>Lycée de Notsé</span>
-</div>
-<!-- Body Description -->
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                Obtention du diplôme d'études secondaires avec spécialisation scientifique et mathématique. Solides bases logiques et analytiques préalables à l'orientation vers le génie informatique.
-              </p>
-<!-- Focus Tags -->
-<div class="flex flex-wrap gap-2 pt-3 border-t border-outline-variant/30">
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/40 border border-outline-variant/30 px-2.5 py-1 rounded-md">Mathématiques</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/40 border border-outline-variant/30 px-2.5 py-1 rounded-md">Sciences Physiques</span>
-<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high/40 border border-outline-variant/30 px-2.5 py-1 rounded-md">Raisonnement Logique</span>
-</div>
-</div>
-</div>
-<div class="hidden md:block md:w-1/2"></div>
-</div>
-</div>
-</section>
-<!-- Bottom Callout / Collaboration CTA -->
-<section class="mt-24" id="contact">
-<div class="specular-card bg-surface-container-low border border-outline-variant/60 rounded-xl p-8 md:p-12 relative overflow-hidden">
-<!-- Terminal Header Bar inside Card -->
-<div class="flex items-center justify-between border-b border-outline-variant/30 pb-4 mb-8">
-<div class="flex items-center gap-2">
-<span class="w-3 h-3 rounded-full bg-error-container/80 inline-block"></span>
-<span class="w-3 h-3 rounded-full bg-secondary-container/80 inline-block"></span>
-<span class="w-3 h-3 rounded-full bg-primary/40 inline-block"></span>
-<span class="font-code-sm text-code-sm text-primary ml-3 font-semibold">// PROCHAINE_ETAPE.sh</span>
-</div>
-<span class="font-code-sm text-code-sm text-outline hidden sm:inline-block">STATUS: READY_FOR_DISPATCH</span>
-</div>
-<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-<div class="max-w-2xl space-y-3">
-<h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">
-              Envie d'écrire le prochain chapitre technique ensemble ?
-            </h3>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Disponible pour des opportunités stimulantes en architecture backend, intégration blockchain ou direction de chantiers applicatifs.
-            </p>
-</div>
-<!-- Buttons Cluster -->
-<div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border border-outline-variant hover:border-primary text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-semibold px-5 py-3 rounded-lg transition-all active:scale-95 duration-150" href="#">
-<span class="material-symbols-outlined text-lg">download</span>
-<span>Télécharger mon CV complet</span>
-</a>
-<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-secondary-container font-label-md text-label-md font-bold px-6 py-3 rounded-lg transition-all active:scale-95 shadow-[0_0_20px_rgba(238,152,0,0.25)] duration-150" href="mailto:contact@nestorkpadja.dev">
-<span class="material-symbols-outlined text-lg">mail</span>
-<span>Discuter d'une opportunité</span>
-</a>
-</div>
-</div>
-</div>
-</section>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+                <div class="max-w-2xl space-y-3">
+                    <h3 class="font-headline-md text-headline-md text-on-surface tracking-tight font-bold">
+                        Envie d'échanger sur un projet ou une opportunité ?
+                    </h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Disponible pour des opportunités en architecture backend, intégration blockchain ou direction de chantiers applicatifs.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+                    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3 rounded-lg hover:bg-secondary-container transition-all active:scale-95 shadow-md duration-150" href="{{ route('contact') }}">
+                        <span class="material-symbols-outlined text-lg">mail</span>
+                        <span>Prendre contact</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </main>
-<!-- Footer (Shared Component) -->
-<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest docked full-width bottom border-t border-outline-variant/30 mt-auto">
-<div class="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
-<!-- Brand / Copyright -->
-<div class="space-y-1 text-center md:text-left">
-<div class="font-code-md text-code-md font-bold text-on-surface dark:text-on-surface flex items-center justify-center md:justify-start gap-2">
-<span class="text-primary font-code-md">&gt;_</span>
-<span>Nestor KPADJA</span>
-</div>
-<p class="font-body-sm text-body-sm text-outline">
-          © 2025 Nestor KPADJA. Architectures Distribuées &amp; Protocoles Décentralisés. Lomé, Togo.
-        </p>
-</div>
-<!-- Links -->
-<div class="flex flex-wrap items-center justify-center gap-6 font-code-sm text-code-sm">
-@if(!empty($siteSettings['github_url']))
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
-@endif
-@if(!empty($siteSettings['linkedin_url']))
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-@endif
-@if(isset($socialLinks))
-@foreach($socialLinks as $sLink)
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
-@endforeach
-@endif
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ route('contact') }}">Contact</a>
-</div>
-</div>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
+        <div class="space-y-1 text-center md:text-left">
+            <p class="font-body-sm text-body-sm text-on-surface-variant">
+                © {{ date('Y') }} {{ $siteSettings['footer_text'] ?? 'Nestor KPADJA · Lomé, Togo' }}
+            </p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 font-code-sm text-code-sm">
+            @if(!empty($siteSettings['github_url']))
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+            @endif
+            @if(!empty($siteSettings['linkedin_url']))
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            @endif
+            @if(isset($socialLinks))
+            @foreach($socialLinks as $sLink)
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank">{{ $sLink->label }}</a>
+            @endforeach
+            @endif
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-150" href="{{ route('contact') }}">Contact</a>
+        </div>
+    </div>
 </footer>
-@include('partials.navigation')
-@include('partials.public-experiences')
+
 </body></html>
