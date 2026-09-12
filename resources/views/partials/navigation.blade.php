@@ -192,7 +192,7 @@
         if (themeToggle)    themeToggle.addEventListener('click', toggleTheme);
         if (themeToggleMob) themeToggleMob.addEventListener('click', function() { toggleTheme(); closeMenu(); });
 
-        // Scroll-driven Staggered Reveal System
+        // Scroll-driven Staggered Reveal System (trigger on scroll arrival)
         function initScrollReveal() {
             var items = document.querySelectorAll('.reveal-card:not(.is-revealed), .reveal-timeline:not(.is-revealed)');
             if (!items.length) return;
@@ -203,15 +203,19 @@
             }
 
             var observer = new IntersectionObserver(function(entries, obs) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
+                var visibleEntries = entries.filter(function(entry) {
+                    return entry.isIntersecting;
+                });
+
+                visibleEntries.forEach(function(entry, idx) {
+                    obs.unobserve(entry.target);
+                    setTimeout(function() {
                         entry.target.classList.add('is-revealed');
-                        obs.unobserve(entry.target);
-                    }
+                    }, idx * 120);
                 });
             }, {
-                threshold: 0.08,
-                rootMargin: '0px 0px -20px 0px'
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
 
             items.forEach(function(el) {
@@ -221,19 +225,12 @@
 
         window.initScrollReveal = initScrollReveal;
 
-        // Run immediately when DOM is ready
+        // Run when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initScrollReveal);
         } else {
             initScrollReveal();
         }
-
-        // Safety fallback to ensure all elements are visible after 1.2s
-        setTimeout(function() {
-            document.querySelectorAll('.reveal-card:not(.is-revealed), .reveal-timeline:not(.is-revealed)').forEach(function(el) {
-                el.classList.add('is-revealed');
-            });
-        }, 1200);
     })();
 </script>
 @include('partials.public-settings')

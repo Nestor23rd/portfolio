@@ -272,12 +272,11 @@ html:not(.dark) .pointer-events-none.rounded-full.-z-10 {
 .reveal-card {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
                 border-color 0.2s ease,
                 background-color 0.2s ease,
                 box-shadow 0.2s ease;
-    transition-delay: calc(var(--stagger, 0) * 110ms);
     will-change: opacity, transform;
 }
 
@@ -289,9 +288,8 @@ html:not(.dark) .pointer-events-none.rounded-full.-z-10 {
 .reveal-timeline {
     opacity: 0;
     transform: translateY(32px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-    transition-delay: calc(var(--stagger, 0) * 140ms);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -301,11 +299,10 @@ html:not(.dark) .pointer-events-none.rounded-full.-z-10 {
 }
 
 .reveal-timeline .timeline-node {
-    transform: scale(0.5);
+    transform: scale(0.4);
     opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-                opacity 0.6s ease;
-    transition-delay: calc(var(--stagger, 0) * 140ms + 100ms);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s,
+                opacity 0.4s ease 0.08s;
 }
 
 .reveal-timeline.is-revealed .timeline-node {

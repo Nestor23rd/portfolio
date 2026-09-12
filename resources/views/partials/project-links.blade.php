@@ -48,10 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof window.initScrollReveal === 'function') {
         window.initScrollReveal();
-    } else {
-        requestAnimationFrame(() => {
-            grid.querySelectorAll('.reveal-card').forEach(c => c.classList.add('is-revealed'));
-        });
     }
 });
 </script>
