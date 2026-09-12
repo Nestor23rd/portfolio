@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
+    private function mediaDisk(): string { return config('filesystems.project_media_disk', 'public'); }
     public function index() { return view('admin.projects.index', ['projects' => Project::orderBy('sort_order')->latest()->paginate(15)]); }
     public function create() { return view('admin.projects.form', ['project' => new Project]); }
     public function store(Request $request) { $project = Project::create($this->validated($request)); return redirect()->route('admin.projects.index')->with('success', "Projet {$project->title} créé."); }
     public function edit(Project $project) { return view('admin.projects.form', compact('project')); }
     public function update(Request $request, Project $project) { $project->update($this->validated($request, $project)); return redirect()->route('admin.projects.index')->with('success', "Projet {$project->title} mis à jour."); }
-    public function destroy(Project $project) { if ($project->image_path) Storage::disk('public')->delete($project->image_path); $project->delete(); return back()->with('success', 'Projet supprimé.'); }
+    public function destroy(Project $project) { if ($project->image_path) Storage::disk($this->mediaDisk())->delete($project->image_path); $project->delete(); return back()->with('success', 'Projet supprimé.'); }
     private function validated(Request $request, ?Project $project = null): array
     {
         $slugRule = 'unique:projects,slug'.($project ? ','.$project->id : '');
@@ -25,8 +26,8 @@ class ProjectController extends Controller
         $data['is_featured'] = $request->boolean('is_featured'); $data['is_published'] = $request->boolean('is_published');
         unset($data['image']);
         if ($request->hasFile('image')) {
-            if ($project?->image_path) Storage::disk('public')->delete($project->image_path);
-            $data['image_path'] = $request->file('image')->store('projects', 'public');
+            if ($project?->image_path) Storage::disk($this->mediaDisk())->delete($project->image_path);
+            $data['image_path'] = $request->file('image')->store('projects', $this->mediaDisk());
         }
         return $data;
     }
