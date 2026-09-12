@@ -83,13 +83,22 @@
 <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-outline-variant/30">
 <!-- Filter Chips -->
 <div id="project-filters" class="flex flex-wrap items-center gap-2">
-<!-- "Tous" (ACTIF) -->
-<a href="{{ route('projects') }}" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg {{ !$selectedCategory ? 'bg-primary-container text-on-primary' : 'bg-surface-container-low text-on-surface-variant' }} font-code-md text-code-sm font-semibold shadow-sm transition-all">
-<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+@php($isAllActive = empty($selectedCategory))
+<!-- "Tous" Filter -->
+<a href="{{ route('projects') }}" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg {{ $isAllActive ? 'bg-primary text-on-primary font-semibold shadow-sm' : 'bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:border-primary/50 hover:bg-surface-container' }} font-code-md text-code-sm transition-all">
+@if($isAllActive)
+<span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
+@endif
 <span>{{ __('site.all_projects') }}</span>
 </a>
 @foreach($categories as $category)
-<a href="{{ route('projects', ['category' => $category]) }}" class="px-3.5 py-1.5 rounded-lg {{ $selectedCategory === $category ? 'bg-primary-container text-on-primary' : 'bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:border-primary/50' }} font-code-md text-code-sm transition-all">{{ __($category) }}</a>
+@php($isCatActive = ($selectedCategory === $category))
+<a href="{{ route('projects', ['category' => $category]) }}" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg {{ $isCatActive ? 'bg-primary text-on-primary font-semibold shadow-sm' : 'bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:border-primary/50 hover:bg-surface-container' }} font-code-md text-code-sm transition-all">
+@if($isCatActive)
+<span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
+@endif
+<span>{{ __($category) }}</span>
+</a>
 @endforeach
 </div>
 <!-- Count Badge -->
@@ -542,7 +551,7 @@
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">{{ __('site.projects_cta_desc') }}</p>
 </div>
 </div>
-<a class="inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-primary-container font-headline-sm text-label-md px-6 py-2.5 rounded-lg font-semibold transition-all duration-150 shadow-md active:scale-95 whitespace-nowrap" href="{{ route('contact') }}">
+<a class="inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-secondary-container font-headline-sm text-label-md px-6 py-2.5 rounded-lg font-semibold transition-all duration-150 shadow-md active:scale-95 whitespace-nowrap" href="{{ route('contact') }}">
 <span>{{ __('site.start_conversation') }}</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </a>
