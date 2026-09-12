@@ -144,6 +144,14 @@ return [
     'no_experience' => 'Parcours en cours de mise à jour.',
     'exp_cta_title' => 'Envie de collaborer avec un profil rigoureux ?',
     'exp_cta_desc' => 'Disponible pour des opportunités en développement backend, intégration blockchain ou conception d\'APIs robustes.',
+    'present' => 'Présent',
+    'in_progress' => 'EN COURS',
+    'academic_curriculum' => 'CURSUS',
+    'completed' => 'TERMINÉ',
+    'verified_timeline' => 'HISTORIQUE VÉRIFIÉ',
+    'milestones_recorded' => 'jalon(s) enregistré(s)',
+    'available_collaboration' => 'COLLABORATION DISPONIBLE',
+    'available_missions' => 'DISPONIBLE POUR MISSIONS',
 
     // Contact Page
     'contact_tag' => '>_ CANAL DE COMMUNICATION',

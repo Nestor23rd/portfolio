@@ -144,6 +144,14 @@ return [
     'no_experience' => 'Experience records being updated.',
     'exp_cta_title' => 'Looking to collaborate with a rigorous developer?',
     'exp_cta_desc' => 'Available for opportunities in backend engineering, blockchain integration, or robust API design.',
+    'present' => 'Present',
+    'in_progress' => 'CURRENT',
+    'academic_curriculum' => 'EDUCATION',
+    'completed' => 'COMPLETED',
+    'verified_timeline' => 'VERIFIED TIMELINE',
+    'milestones_recorded' => 'milestone(s) recorded',
+    'available_collaboration' => 'AVAILABLE FOR COLLABORATION',
+    'available_missions' => 'AVAILABLE FOR MISSIONS',
 
     // Contact Page
     'contact_tag' => '>_ COMMUNICATION CHANNEL',
