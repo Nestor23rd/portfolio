@@ -27,7 +27,8 @@ RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoload
 
 COPY --from=frontend /app/public/build ./public/build
 
-RUN chmod +x docker/start.sh \
+RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions \
+    && chmod +x docker/start.sh \
     && chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 80
