@@ -16,6 +16,9 @@ RUN apt-get update \
     && a2enmod rewrite \
     && sed -ri -e "s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/sites-available/000-default.conf \
     && sed -ri -e "s!/var/www/!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf \
+    && sed -ri "/<Directory \\/var\\/www\\/html\\/public>/,/<\\/Directory>/ s/AllowOverride None/AllowOverride All/" /etc/apache2/apache2.conf \
+    && printf '%s\\n' 'ServerName localhost' > /etc/apache2/conf-available/server-name.conf \
+    && a2enconf server-name \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
