@@ -21,7 +21,7 @@
 <!-- ==================== 1. HERO SECTION ==================== -->
 <section class="relative min-h-[calc(100vh-4rem)] flex flex-col justify-between max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
 <!-- Subtle Grid Background -->
-<div class="absolute inset-0 bg-[radial-gradient(#191f2f_1px,transparent_1px)] [background-size:28px_28px] opacity-40 pointer-events-none -z-10"></div>
+<div class="absolute inset-0 hero-dot-pattern [background-size:28px_28px] opacity-40 pointer-events-none -z-10"></div>
 
 <!-- Hero Content (2 Columns Desktop) -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center flex-grow py-8">
@@ -35,18 +35,18 @@
 </div>
 
 <!-- Main Title -->
-<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-tight">
+<h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight leading-tight">
     Kokoussè Nestor <br/>
     <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-fixed to-secondary">KPADJA</span>
 </h1>
 
 <!-- Subtitle -->
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+<p class="font-body-lg text-body-md md:text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
     {{ __('site.hero_subtitle') }}
 </p>
 
 <!-- CTAs -->
-<div class="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+<div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2 w-full">
 <a class="inline-flex items-center justify-center gap-2.5 bg-primary-container text-on-surface font-body-md text-label-md font-semibold px-6 py-3 rounded-lg shadow-[0_0_20px_rgba(77,142,255,0.35)] hover:bg-primary hover:text-on-primary transition-all duration-150 active:scale-95 group" href="{{ route('projects') }}">
 <span>{{ __('site.see_projects') }}</span>
 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">east</span>
@@ -69,7 +69,7 @@
 </div>
 
 <!-- Right Column: Terminal Card (5 cols) -->
-<div class="lg:col-span-5">
+<div class="lg:col-span-5 mt-6 lg:mt-0">
 <div class="specular-card bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-2xl">
 <!-- Terminal Header -->
 <div class="flex items-center justify-between px-4 py-3 bg-surface-container border-b border-outline-variant/40">

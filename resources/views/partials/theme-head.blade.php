@@ -215,6 +215,11 @@ html:not(.dark) .pointer-events-none.rounded-full.-z-10 {
         linear-gradient(to bottom, rgb(var(--color-outline-variant) / 0.12) 1px, transparent 1px);
 }
 
+/* ──── Hero Dot Pattern ──── */
+.hero-dot-pattern {
+    background-image: radial-gradient(rgb(var(--color-outline-variant)) 1px, transparent 1px);
+}
+
 /* ──── Specular Card (inset border shimmer variant) ──── */
 .specular-card {
     position: relative;

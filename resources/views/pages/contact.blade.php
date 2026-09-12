@@ -44,7 +44,7 @@
         </div>
 
         <!-- 2-Column Bento Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
 
             <!-- LEFT COLUMN: Contact Form (7 cols) -->
             <div class="lg:col-span-7 specular-card bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl relative">

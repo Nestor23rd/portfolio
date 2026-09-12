@@ -12,29 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 @include('partials.theme-head')
 <style>
-    .terminal-grid {
-      background-size: 32px 32px;
-      background-image: 
-        linear-gradient(to right, rgba(66, 71, 84, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(66, 71, 84, 0.08) 1px, transparent 1px);
-    }
-    .specular-card {
-      position: relative;
-    }
-    .specular-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 15%;
-      right: 15%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(173, 198, 255, 0.35), transparent);
-      opacity: 0;
-      transition: opacity 0.25s ease-in-out;
-    }
-    .specular-card:hover::before {
-      opacity: 1;
-    }
+    /* Experience-specific animations */
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(0.85); }
@@ -48,13 +26,6 @@
     }
     .cursor-blink {
       animation: cursor-blink 1s infinite;
-    }
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-      font-size: 1.25rem;
-      line-height: 1;
-      display: inline-block;
-      vertical-align: middle;
     }
   </style>
 @include('partials.full-width')
@@ -81,7 +52,7 @@
                     <span class="inline-block w-1.5 h-3.5 bg-primary cursor-blink ml-0.5"></span>
                 </div>
                 <!-- Page Title -->
-                <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+                <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight">
                     {{ __('site.journey_experience') }}
                 </h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant">

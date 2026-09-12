@@ -10,42 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Material Symbols -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 @include('partials.theme-head')
-<style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 1;
-    }
-    /* Blueprint engineer grid overlay */
-    .grid-bg {
-      background-size: 32px 32px;
-      background-image: 
-        linear-gradient(to right, rgba(66, 71, 84, 0.12) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(66, 71, 84, 0.12) 1px, transparent 1px);
-    }
-    .specular-card {
-      position: relative;
-    }
-    .specular-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(173, 198, 255, 0.4) 50%, transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      border-top-left-radius: inherit;
-      border-top-right-radius: inherit;
-    }
-    .specular-card:hover::before {
-      opacity: 1;
-    }
-  </style>
 @include('partials.full-width')
 </head>
 <body class="bg-surface-container-lowest text-on-surface antialiased font-body-md min-h-screen relative flex flex-col selection:bg-primary-container selection:text-on-primary-container grid-bg">

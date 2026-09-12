@@ -8,50 +8,15 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 @include('partials.theme-head')
 <style>
-    /* Engineering Blueprint Grid Texture */
-    .bg-grid-engineer {
-      background-size: 32px 32px;
-      background-image: 
-        linear-gradient(to right, rgba(66, 71, 84, 0.12) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(66, 71, 84, 0.12) 1px, transparent 1px);
-    }
-    
-    /* Terminal caret blinking */
+    /* Skills-specific animations */
     @keyframes console-blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
     .console-cursor {
       animation: console-blink 1.06s infinite step-start;
-    }
-
-    /* Subtle Cathode Ray Card Inset Glow */
-    .card-specular-top {
-      position: relative;
-    }
-    .card-specular-top::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(173, 198, 255, 0.45) 50%, transparent);
-      opacity: 0;
-      transition: opacity 0.25s ease-in-out;
-    }
-    .card-specular-top:hover::before {
-      opacity: 1;
-    }
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-      font-size: 1.25rem;
-      line-height: 1;
-      display: inline-block;
-      vertical-align: middle;
     }
   </style>
 @include('partials.full-width')
@@ -72,7 +37,7 @@
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-low border border-outline-variant/40">
 <span class="text-primary font-code-sm text-code-sm tracking-wide">{{ __('site.technical_skills') }}</span>
 </div>
-<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+<h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight">
             {{ __('site.technical_skills') }}
 </h1>
 <p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl">

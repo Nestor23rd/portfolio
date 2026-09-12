@@ -8,17 +8,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 @include('partials.theme-head')
-<style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-      font-size: 1.25rem;
-      line-height: 1;
-      display: inline-block;
-      vertical-align: middle;
-    }
-  </style>
 @include('partials.full-width')
 </head>
 <body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
@@ -29,7 +19,7 @@
             <span class="font-mono text-sm font-bold text-secondary">&gt;_</span>
             <div>
                 <p class="font-mono text-xs uppercase tracking-widest text-secondary">{{ __('site.certifications_tag') }}</p>
-                <h1 class="mt-2 font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">{{ __('site.certifications_distinctions') }}</h1>
+                <h1 class="mt-2 font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold tracking-tight">{{ __('site.certifications_distinctions') }}</h1>
             </div>
         </div>
         <p class="mb-10 max-w-3xl text-body-lg text-body-lg leading-7 text-on-surface-variant">{{ __('site.certifications_intro') }}</p>
