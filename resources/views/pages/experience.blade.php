@@ -90,9 +90,9 @@
                 $isOdd = ($loop->iteration % 2 !== 0);
             @endphp
 
-            <div class="relative flex flex-col md:flex-row items-start md:items-center w-full">
+            <div class="reveal-timeline relative flex flex-col md:flex-row items-start md:items-center w-full" style="--stagger: {{ $loop->index }};">
                 <!-- Node Icon (Mobile: aligned with top badge at left-4 / Desktop: centered at md:left-1/2) -->
-                <div class="absolute left-4 sm:left-5 md:left-1/2 -translate-x-1/2 top-5 sm:top-6 md:top-1/2 md:-translate-y-1/2 flex items-center justify-center z-10">
+                <div class="timeline-node absolute left-4 sm:left-5 md:left-1/2 -translate-x-1/2 top-5 sm:top-6 md:top-1/2 md:-translate-y-1/2 flex items-center justify-center z-10">
                     <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-surface-container-lowest border-2 {{ $exp->is_current ? 'border-emerald-400 shadow-[0_0_16px_rgba(52,211,153,0.4)]' : ($isAcademic ? 'border-outline shadow-md' : 'border-primary shadow-[0_0_16px_rgba(77,142,255,0.3)]') }} flex items-center justify-center">
                         <span class="material-symbols-outlined {{ $exp->is_current ? 'text-emerald-400' : ($isAcademic ? 'text-on-surface-variant' : 'text-primary') }} text-sm sm:text-base">
                             {{ $iconName }}

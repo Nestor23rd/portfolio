@@ -25,7 +25,7 @@
         <p class="mb-10 max-w-3xl text-body-lg text-body-lg leading-7 text-on-surface-variant">{{ __('site.certifications_intro') }}</p>
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
             @forelse($certifications as $certification)
-                <article class="specular-card flex flex-col justify-between rounded-xl border border-outline-variant/40 bg-surface-container-low p-6 transition-all duration-200 hover:border-primary/50 md:p-8">
+                <article class="reveal-card specular-card flex flex-col justify-between rounded-xl border border-outline-variant/40 bg-surface-container-low p-6 transition-all duration-200 hover:border-primary/50 md:p-8" style="--stagger: {{ $loop->index }};">
                     <div>
                         <div class="mb-5 flex items-start justify-between gap-4">
                             <div class="min-w-0">

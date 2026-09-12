@@ -191,6 +191,49 @@
         }
         if (themeToggle)    themeToggle.addEventListener('click', toggleTheme);
         if (themeToggleMob) themeToggleMob.addEventListener('click', function() { toggleTheme(); closeMenu(); });
+
+        // Scroll-driven Staggered Reveal System
+        function initScrollReveal() {
+            var items = document.querySelectorAll('.reveal-card:not(.is-revealed), .reveal-timeline:not(.is-revealed)');
+            if (!items.length) return;
+
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(function(el) { el.classList.add('is-revealed'); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function(entries, obs) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.08,
+                rootMargin: '0px 0px -20px 0px'
+            });
+
+            items.forEach(function(el) {
+                observer.observe(el);
+            });
+        }
+
+        window.initScrollReveal = initScrollReveal;
+
+        // Run immediately when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initScrollReveal);
+        } else {
+            initScrollReveal();
+        }
+
+        // Safety fallback to ensure all elements are visible after 1.2s
+        setTimeout(function() {
+            document.querySelectorAll('.reveal-card:not(.is-revealed), .reveal-timeline:not(.is-revealed)').forEach(function(el) {
+                el.classList.add('is-revealed');
+            });
+        }, 1200);
     })();
 </script>
 @include('partials.public-settings')

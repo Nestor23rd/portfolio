@@ -114,7 +114,7 @@
 <!-- ========================================================= -->
 <!-- CARD 1: TitanEduc (EdTech)                                -->
 <!-- ========================================================= -->
-<article class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group">
+<article class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group" style="--stagger: 0;">
 <!-- Visual Terminal Header / Mockup Representation -->
 <div class="bg-surface-container-lowest border-b border-outline-variant/30 p-3 flex flex-col">
 <div class="flex items-center justify-between mb-2">
@@ -193,7 +193,7 @@
 <!-- ========================================================= -->
 <!-- CARD 2: CBDC — Blockchain Banque Centrale                 -->
 <!-- ========================================================= -->
-<article class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group">
+<article class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group" style="--stagger: 1;">
 <!-- Visual Terminal Header / Mockup Representation -->
 <div class="bg-surface-container-lowest border-b border-outline-variant/30 p-3 flex flex-col">
 <div class="flex items-center justify-between mb-2">
@@ -279,7 +279,7 @@
 <!-- ========================================================= -->
 <!-- CARD 3: Titan (Module Immobilier)                         -->
 <!-- ========================================================= -->
-<article class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group">
+<article class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group" style="--stagger: 2;">
 <!-- Visual Terminal Header / Mockup Representation -->
 <div class="bg-surface-container-lowest border-b border-outline-variant/30 p-3 flex flex-col">
 <div class="flex items-center justify-between mb-2">
@@ -360,7 +360,7 @@
 <!-- ========================================================= -->
 <!-- CARD 4: Gestion Scolaire & 2FA                            -->
 <!-- ========================================================= -->
-<article class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group">
+<article class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group" style="--stagger: 3;">
 <!-- Visual Terminal Header / Mockup Representation -->
 <div class="bg-surface-container-lowest border-b border-outline-variant/30 p-3 flex flex-col">
 <div class="flex items-center justify-between mb-2">
@@ -442,7 +442,7 @@
 <!-- ========================================================= -->
 <!-- CARD 5: Hisaa — Plateforme de Tontine NFC                  -->
 <!-- ========================================================= -->
-<article class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group">
+<article class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group" style="--stagger: 4;">
 <!-- Visual Terminal Header / Mockup Representation -->
 <div class="bg-surface-container-lowest border-b border-outline-variant/30 p-3 flex flex-col">
 <div class="flex items-center justify-between mb-2">
@@ -519,7 +519,7 @@
 <!-- ========================================================= -->
 <!-- CARD 6: Carte Spéciale "Bientôt disponible"                -->
 <!-- ========================================================= -->
-<div class="border-2 border-dashed border-outline-variant/60 hover:border-primary/60 bg-surface-container-low/40 rounded-xl flex flex-col items-center justify-center text-center p-8 transition-all duration-200 group">
+<div class="reveal-card border-2 border-dashed border-outline-variant/60 hover:border-primary/60 bg-surface-container-low/40 rounded-xl flex flex-col items-center justify-center text-center p-8 transition-all duration-200 group" style="--stagger: 5;">
 <!-- Stylized Terminal Plus Glyph -->
 <div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant/60 group-hover:scale-110 group-hover:border-primary/80 group-hover:bg-primary-container/10 transition-all duration-200 mb-4">
 <span class="material-symbols-outlined text-primary text-2xl">add</span>

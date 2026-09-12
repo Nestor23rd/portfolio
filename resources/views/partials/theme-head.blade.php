@@ -267,6 +267,61 @@ html:not(.dark) .pointer-events-none.rounded-full.-z-10 {
 .specular-card.specular-line:hover::before {
     opacity: 1;
 }
+
+/* ──── Staggered Entrance Reveal Animations ──── */
+.reveal-card {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+    transition-delay: calc(var(--stagger, 0) * 110ms);
+    will-change: opacity, transform;
+}
+
+.reveal-card.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-timeline {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--stagger, 0) * 140ms);
+    will-change: opacity, transform;
+}
+
+.reveal-timeline.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-timeline .timeline-node {
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.6s ease;
+    transition-delay: calc(var(--stagger, 0) * 140ms + 100ms);
+}
+
+.reveal-timeline.is-revealed .timeline-node {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-card,
+    .reveal-timeline,
+    .reveal-timeline .timeline-node {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
 </style>
 
 <!-- Tailwind CDN Script & Dynamic Configuration -->

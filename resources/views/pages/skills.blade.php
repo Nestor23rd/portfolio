@@ -72,7 +72,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-{{ min($groupedSkills->count(), 4) }} gap-6">
 
 @foreach($groupedSkills as $category => $categorySkills)
-<div class="card-specular-top bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 hover:border-primary/40 group">
+<div class="reveal-card card-specular-top bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 hover:border-primary/40 group" style="--stagger: {{ $loop->index }};">
 <div>
 <!-- Column Header -->
 <div class="flex items-center justify-between pb-4 mb-5 border-b border-outline-variant/30">
@@ -134,7 +134,7 @@
 <!-- Certification Cards -->
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 @foreach($certifications as $certification)
-<div class="card-specular-top bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-primary/50 transition-all duration-200">
+<div class="reveal-card card-specular-top bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-primary/50 transition-all duration-200" style="--stagger: {{ $loop->index }};">
 <div>
 <!-- Header -->
 <div class="flex items-start justify-between gap-4 mb-4">
