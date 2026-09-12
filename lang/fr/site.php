@@ -5,6 +5,7 @@ return [
     'language' => 'Langue',
     'french' => 'Français',
     'english' => 'Anglais',
+    'toggle_theme' => 'Changer le thème (sombre / clair)',
     'home' => 'Accueil',
     'about' => 'À propos',
     'projects' => 'Projets',

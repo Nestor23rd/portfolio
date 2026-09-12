@@ -1,6 +1,8 @@
 <style>
     body > header:not(.portfolio-topbar) { display: none !important; }
-    .portfolio-topbar { width: 100% !important; height: 4rem !important; left: 0 !important; right: 0 !important; background-color: rgba(8,14,29,.94) !important; border-color: rgba(148,163,184,.25) !important; }
+    .portfolio-topbar { width: 100% !important; height: 4rem !important; left: 0 !important; right: 0 !important; transition: background-color 0.2s, border-color 0.2s; }
+    html.dark .portfolio-topbar { background-color: rgba(8,14,29,.94) !important; border-color: rgba(148,163,184,.25) !important; }
+    html:not(.dark) .portfolio-topbar { background-color: rgba(255,255,255,.94) !important; border-color: rgba(203,213,225,.7) !important; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05); }
     .portfolio-topbar > div { width: 100% !important; max-width: none !important; height: 4rem !important; display: flex !important; align-items: center !important; justify-content: space-between !important; }
     .portfolio-topbar nav { display: flex !important; align-items: center !important; gap: 2rem !important; }
     .portfolio-topbar nav a { white-space: nowrap; flex: 0 1 auto; }
@@ -29,8 +31,30 @@
                 <span class="text-outline-variant">/</span>
                 <a class="px-1.5 py-0.5 text-xs font-semibold {{ app()->getLocale() === 'en' ? 'text-primary' : 'text-on-surface-variant' }}" href="{{ route('language.switch', 'en') }}">EN</a>
             </div>
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" type="button" class="w-9 h-9 rounded-lg border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-all flex items-center justify-center cursor-pointer bg-surface-container-low/50" aria-label="{{ __('site.toggle_theme') }}" title="{{ __('site.toggle_theme') }}">
+                <span class="material-symbols-outlined text-[18px] hidden dark:inline-block text-secondary">light_mode</span>
+                <span class="material-symbols-outlined text-[18px] inline-block dark:hidden text-primary">dark_mode</span>
+            </button>
             <a class="portfolio-contact inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-secondary-container font-label-md text-label-md font-bold px-4 py-2 rounded-lg transition-all shadow-sm active:scale-95 duration-150" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
         </div>
     </div>
 </header>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                var isDark = document.documentElement.classList.contains('dark');
+                if (isDark) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
+    });
+</script>
 @include('partials.public-settings')

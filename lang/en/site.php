@@ -5,6 +5,7 @@ return [
     'language' => 'Language',
     'french' => 'French',
     'english' => 'English',
+    'toggle_theme' => 'Toggle theme (dark / light)',
     'home' => 'Home',
     'about' => 'About',
     'projects' => 'Projects',
