@@ -8,7 +8,6 @@ use App\Models\SiteSetting;
 use App\Models\SocialLink;
 use App\Models\Project;
 use App\Models\Skill;
-use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,10 +21,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::updateOrCreate(
-            ['email' => env('ADMIN_EMAIL', 'admin@example.com')],
-            ['name' => 'Nestor KPADJA', 'password' => env('ADMIN_PASSWORD', 'change-this-password'), 'is_admin' => true]
-        );
+        $this->call(AdminUserSeeder::class);
 
         $projects = [
             ['title' => 'TitanEduc', 'category' => 'plateforme éducative', 'excerpt' => 'Plateforme de gestion et de suivi scolaire conçue pour centraliser les parcours, les utilisateurs et les opérations métier.', 'technologies' => ['Laravel', 'PostgreSQL', 'REST API'], 'is_featured' => true, 'sort_order' => 1],
