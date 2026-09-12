@@ -29,7 +29,7 @@
                     <span>profil_developpeur.md</span>
                 </div>
                 <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold tracking-tight">
-                    {{ __('site.about_heading_pre') }} <span class="bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">Nestor KPADJA</span>
+                    {{ __('site.about_heading_pre') }} <span class="text-primary">Nestor KPADJA</span>
                 </h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl font-normal leading-relaxed">
                     {{ __('site.about_tagline') }}

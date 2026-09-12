@@ -37,7 +37,7 @@
 <!-- Main Title -->
 <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight leading-tight">
     Kokoussè Nestor <br/>
-    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-fixed to-secondary">KPADJA</span>
+    <span class="text-primary">KPADJA</span>
 </h1>
 
 <!-- Subtitle -->

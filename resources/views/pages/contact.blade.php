@@ -36,7 +36,7 @@
                 <span class="font-code-sm text-code-sm text-primary font-medium tracking-wide">&gt;_ {{ __('site.communication_channel') }}</span>
             </div>
             <h1 class="font-headline-lg md:font-headline-xl text-headline-lg md:text-headline-xl text-on-surface font-bold tracking-tight">
-                {{ __('site.contact_title') }} <span class="bg-gradient-to-r from-primary via-primary-container to-secondary bg-clip-text text-transparent">{{ __('site.project') }}</span>
+                {{ __('site.contact_title') }} <span class="text-primary">{{ __('site.project') }}</span>
             </h1>
             <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                 {{ __('site.contact_intro') }}
