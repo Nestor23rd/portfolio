@@ -47,7 +47,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
 
             <!-- LEFT COLUMN: Contact Form (7 cols) -->
-            <div class="lg:col-span-7 specular-card bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl relative">
+            <div class="lg:col-span-7 reveal-card specular-card bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl relative">
                 
                 <!-- Terminal Shell Header -->
                 <div class="bg-surface-container-lowest px-5 py-3.5 border-b border-outline-variant/30 flex items-center justify-between">
@@ -210,7 +210,7 @@
                 </div>
 
                 <!-- Direct Coordinates Box -->
-                <div class="specular-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 space-y-5">
+                <div class="reveal-card specular-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 space-y-5">
                     <div class="font-code-sm text-code-sm text-primary flex items-center gap-2 pb-2 border-b border-outline-variant/20">
                         <span class="material-symbols-outlined text-sm">hub</span>
                         <span class="font-semibold uppercase tracking-wider">{{ __('site.direct_coordinates') }}</span>
@@ -293,7 +293,7 @@
                 </div>
 
                 <!-- Process Card: Comment se déroule l'échange -->
-                <div class="specular-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 space-y-4">
+                <div class="reveal-card specular-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 space-y-4">
                     <div class="font-code-sm text-code-sm text-on-surface flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-secondary text-base">route</span>

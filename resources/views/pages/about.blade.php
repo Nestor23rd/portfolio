@@ -56,7 +56,7 @@
         
         <!-- COLONNE GAUCHE (5 cols) : Identity Card -->
         <div class="lg:col-span-5 flex flex-col gap-6">
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 overflow-hidden">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 overflow-hidden">
                 <!-- Image Wrapper with dual glow gradient border -->
                 <div class="relative mx-auto w-full max-w-[260px] aspect-square rounded-xl p-1 bg-gradient-to-tr from-primary via-outline-variant to-secondary">
                     <div class="w-full h-full rounded-[10px] overflow-hidden bg-surface-container-lowest relative group">
@@ -146,7 +146,7 @@
         <div class="lg:col-span-7 flex flex-col gap-6">
             
             <!-- Biography Card with Terminal Header -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8">
                 <div class="flex items-center justify-between border-b border-outline-variant/30 pb-4 mb-6 font-code-sm text-code-sm text-on-surface-variant">
                     <div class="flex items-center gap-2">
                         <span class="inline-block w-2.5 h-2.5 rounded-full bg-error/70"></span>
@@ -244,7 +244,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Pilier 1: Rigueur Architecturale -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 rounded-xl p-6 transition-all duration-200 group">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 rounded-xl p-6 transition-all duration-200 group">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary border border-outline-variant/30 shrink-0 group-hover:border-primary/50 transition-colors">
                         <span class="material-symbols-outlined text-2xl">architecture</span>
@@ -262,7 +262,7 @@
             </div>
 
             <!-- Pilier 2: Intégrité des Données & Résilience -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 hover:border-secondary/50 rounded-xl p-6 transition-all duration-200 group">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 hover:border-secondary/50 rounded-xl p-6 transition-all duration-200 group">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary border border-outline-variant/30 shrink-0 group-hover:border-secondary/50 transition-colors">
                         <span class="material-symbols-outlined text-2xl">database</span>
@@ -280,7 +280,7 @@
             </div>
 
             <!-- Pilier 3: Culture Produit & Pragmatisme -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 rounded-xl p-6 transition-all duration-200 group">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 hover:border-primary/50 rounded-xl p-6 transition-all duration-200 group">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary border border-outline-variant/30 shrink-0 group-hover:border-primary/50 transition-colors">
                         <span class="material-symbols-outlined text-2xl">bolt</span>
@@ -298,7 +298,7 @@
             </div>
 
             <!-- Pilier 4: Esprit d'Équipe & Collaboration Agile -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 hover:border-emerald-400/50 rounded-xl p-6 transition-all duration-200 group">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 hover:border-emerald-400/50 rounded-xl p-6 transition-all duration-200 group">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-emerald-400 border border-outline-variant/30 shrink-0 group-hover:border-emerald-400/50 transition-colors">
                         <span class="material-symbols-outlined text-2xl">groups</span>
@@ -334,7 +334,7 @@
 
         <div class="space-y-4">
             @forelse($experiences as $exp)
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 hover:border-primary/40 rounded-xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 hover:border-primary/40 rounded-xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div class="flex items-start gap-4">
                     <div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center text-primary shrink-0 mt-0.5">
                         <span class="material-symbols-outlined text-xl">
@@ -389,7 +389,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Box 1 -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
                 <div class="flex items-center gap-3 mb-4 text-primary">
                     <span class="material-symbols-outlined text-2xl">terminal</span>
                     <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.tools_title') }}</h3>
@@ -415,7 +415,7 @@
             </div>
 
             <!-- Box 2 -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
                 <div class="flex items-center gap-3 mb-4 text-secondary">
                     <span class="material-symbols-outlined text-2xl">api</span>
                     <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.quality_title') }}</h3>
@@ -441,7 +441,7 @@
             </div>
 
             <!-- Box 3 -->
-            <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
+            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
                 <div class="flex items-center gap-3 mb-4 text-emerald-400">
                     <span class="material-symbols-outlined text-2xl">handshake</span>
                     <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.collaboration_title') }}</h3>
@@ -470,7 +470,7 @@
 
     <!-- ==================== CENTRES D'INTÉRÊT ==================== -->
     <section class="mb-20">
-        <div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8">
+        <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8">
             <div class="flex items-center gap-2 font-code-sm text-code-sm text-primary mb-4">
                 <span>&gt;_</span>
                 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.passions_title') }}</h3>
@@ -506,7 +506,7 @@
 
     <!-- ==================== CALL TO ACTION ==================== -->
     <section class="mt-8">
-        <div class="relative overflow-hidden rounded-2xl bg-surface-container-low border border-outline-variant/40 p-8 md:p-12">
+        <div class="reveal-card relative overflow-hidden rounded-2xl bg-surface-container-low border border-outline-variant/40 p-8 md:p-12">
             <div class="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
             <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                 <div class="max-w-2xl space-y-3">

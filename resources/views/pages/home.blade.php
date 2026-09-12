@@ -70,7 +70,7 @@
 
 <!-- Right Column: Terminal Card (5 cols) -->
 <div class="lg:col-span-5 mt-6 lg:mt-0">
-<div class="specular-card bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-2xl">
+<div class="reveal-card specular-card bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-2xl">
 <!-- Terminal Header -->
 <div class="flex items-center justify-between px-4 py-3 bg-surface-container border-b border-outline-variant/40">
 <div class="flex items-center gap-2">
@@ -191,7 +191,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
 <!-- Metric: Projets -->
-<a href="{{ route('projects') }}" class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
+<a href="{{ route('projects') }}" class="reveal-card specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-primary-container/20 border border-primary/30 flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
 <span class="material-symbols-outlined">deployed_code</span>
@@ -209,7 +209,7 @@
 </a>
 
 <!-- Metric: Compétences -->
-<a href="{{ route('skills') }}" class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-secondary/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
+<a href="{{ route('skills') }}" class="reveal-card specular-card bg-surface-container-low border border-outline-variant/50 hover:border-secondary/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-secondary-container/20 border border-secondary/30 flex items-center justify-center text-secondary group-hover:scale-105 transition-transform">
 <span class="material-symbols-outlined">code</span>
@@ -227,7 +227,7 @@
 </a>
 
 <!-- Metric: Expériences -->
-<a href="{{ route('experience') }}" class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
+<a href="{{ route('experience') }}" class="reveal-card specular-card bg-surface-container-low border border-outline-variant/50 hover:border-primary/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant/50 flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
 <span class="material-symbols-outlined">work</span>
@@ -245,7 +245,7 @@
 </a>
 
 <!-- Metric: Certifications & Localisation -->
-<a href="{{ route('certifications') }}" class="specular-card bg-surface-container-low border border-outline-variant/50 hover:border-emerald-500/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
+<a href="{{ route('certifications') }}" class="reveal-card specular-card bg-surface-container-low border border-outline-variant/50 hover:border-emerald-500/70 rounded-xl p-6 flex flex-col justify-between transition-all duration-200 group block">
 <div class="flex items-center justify-between mb-4">
 <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
 <span class="material-symbols-outlined">verified</span>
@@ -285,7 +285,7 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
 <!-- Pilier 1: Backend & APIs -->
-<div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-primary/50 transition-all duration-200">
+<div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-primary/50 transition-all duration-200">
 <div>
 <div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant/40 flex items-center justify-center text-primary mb-6">
 <span class="material-symbols-outlined text-2xl">database</span>
@@ -307,7 +307,7 @@
 </div>
 
 <!-- Pilier 2: Blockchain & Web3 -->
-<div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-secondary/50 transition-all duration-200">
+<div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-secondary/50 transition-all duration-200">
 <div>
 <div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant/40 flex items-center justify-center text-secondary mb-6">
 <span class="material-symbols-outlined text-2xl">token</span>
@@ -329,7 +329,7 @@
 </div>
 
 <!-- Pilier 3: DevOps & Qualité -->
-<div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-200">
+<div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-200">
 <div>
 <div class="w-12 h-12 rounded-xl bg-surface-container border border-outline-variant/40 flex items-center justify-center text-emerald-400 mb-6">
 <span class="material-symbols-outlined text-2xl">verified_user</span>
@@ -374,7 +374,7 @@
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 @foreach($projects->take(3) as $proj)
-<div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 flex flex-col justify-between hover:border-primary/50 transition-all duration-200 group">
+<div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 flex flex-col justify-between hover:border-primary/50 transition-all duration-200 group">
 <div>
 <!-- Header -->
 <div class="flex items-center justify-between gap-2 mb-4">
@@ -457,7 +457,7 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 @foreach($certifications as $cert)
-<div class="specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-primary/50 transition-all duration-200">
+<div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8 flex flex-col justify-between hover:border-primary/50 transition-all duration-200">
 <div>
 <div class="flex items-start justify-between gap-4 mb-4">
 <div class="flex items-center gap-3.5">
@@ -496,7 +496,7 @@
 
 <!-- ==================== 6. CALL TO ACTION ==================== -->
 <section class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 border-t border-outline-variant/20">
-<div class="relative overflow-hidden rounded-2xl bg-surface-container-low border border-outline-variant/40 p-8 md:p-12">
+<div class="reveal-card relative overflow-hidden rounded-2xl bg-surface-container-low border border-outline-variant/40 p-8 md:p-12">
 <div class="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
 <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
 <div class="max-w-2xl space-y-3">
