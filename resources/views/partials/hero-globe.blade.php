@@ -1,5 +1,6 @@
 @php($isGlobalGlobe = $global ?? false)
 @php($isCompactGlobe = $compact ?? false)
+@php($globeLocation = isset($siteSettings['location']) && $siteSettings['location'] ? $siteSettings['location'] : 'Lomé, Togo')
 <div class="hero-globe-card {{ $isGlobalGlobe ? 'hero-globe-global fixed inset-0' : 'hero-globe-background absolute inset-0' }} {{ $isCompactGlobe ? 'hero-globe-compact' : '' }} z-0 overflow-hidden pointer-events-none">
     <div class="hero-globe-stars absolute inset-0"></div>
     <div class="absolute left-5 top-5 z-10 flex items-center gap-2 rounded-lg border border-outline-variant/40 bg-surface-container-lowest/80 px-3 py-2 font-mono text-[10px] uppercase tracking-[.14em] text-on-surface-variant backdrop-blur">
@@ -9,7 +10,7 @@
 
     <div class="hero-globe-orbit hero-globe-orbit-a"></div>
     <div class="hero-globe-orbit hero-globe-orbit-b"></div>
-    <svg class="hero-globe-svg absolute left-1/2 top-1/2 pointer-events-auto" viewBox="0 0 500 500" role="img" aria-label="{{ __('site.globe_label') }} — {{ __('site.globe_current_location') }}" tabindex="0">
+    <svg class="hero-globe-svg absolute left-1/2 top-1/2 pointer-events-auto" viewBox="0 0 500 500" role="img" aria-label="{{ __('site.globe_label') }} — {{ $globeLocation }}" tabindex="0">
         <defs>
             <radialGradient id="heroEarth" cx="34%" cy="25%"><stop offset="0" stop-color="#78aaff"/><stop offset=".48" stop-color="#2455a2"/><stop offset="1" stop-color="#071326"/></radialGradient>
             <filter id="heroGlow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -29,14 +30,14 @@
             <circle cx="126" cy="298" r="18" fill="none" stroke="#ffb95f" stroke-opacity=".6"><animate attributeName="r" values="8;25;8" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="2.5s" repeatCount="indefinite"/></circle>
             <circle cx="126" cy="298" r="28" fill="none" stroke="#ffb95f" stroke-opacity=".28" stroke-dasharray="2 7"><animateTransform attributeName="transform" type="rotate" from="0 126 298" to="360 126 298" dur="8s" repeatCount="indefinite"/></circle>
             <path d="M126 306v18h14" fill="none" stroke="#ffb95f" stroke-width="1.5" stroke-opacity=".8"/>
-            <rect x="140" y="316" width="104" height="24" rx="6" fill="#080e1d" fill-opacity=".9" stroke="#ffb95f" stroke-opacity=".55"/>
-            <text x="151" y="332" fill="#ffcf8d" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600" letter-spacing="1">LOMÉ · TOGO</text>
+            <rect x="140" y="316" width="132" height="24" rx="6" fill="#080e1d" fill-opacity=".9" stroke="#ffb95f" stroke-opacity=".55"/>
+            <text x="151" y="332" fill="#ffcf8d" font-family="JetBrains Mono,monospace" font-size="9" font-weight="600" letter-spacing=".7">{{ strtoupper($globeLocation) }}</text>
         </g>
         <circle cx="302" cy="270" r="6" fill="#adc6ff"/><circle cx="372" cy="207" r="6" fill="#6ee7b7"/>
     </svg>
 
     <div class="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between gap-4 border-t border-outline-variant/30 bg-gradient-to-t from-[#080e1d] via-[#080e1d]/85 to-transparent px-1 pt-8">
-        <div><p class="font-mono text-[10px] uppercase tracking-[.16em] text-secondary">{{ __('site.globe_origin') }}</p><p class="mt-1 font-display text-xl font-bold text-on-surface">Lomé, Togo</p></div>
+        <div><p class="font-mono text-[10px] uppercase tracking-[.16em] text-secondary">{{ __('site.globe_origin') }}</p><p class="mt-1 font-display text-xl font-bold text-on-surface">{{ $globeLocation }}</p></div>
         <div class="text-right"><p class="font-mono text-[10px] text-emerald-400">06°08′N · 01°13′E</p><p class="mt-1 text-xs text-on-surface-variant">{{ isset($experiences) ? $experiences->count() : 0 }} {{ __('site.path_milestones') }}</p></div>
     </div>
 </div>
