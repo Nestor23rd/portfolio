@@ -38,8 +38,9 @@
     .hero-globe-background { min-height:100%; opacity:.62; }
     .hero-globe-global { opacity:.34; }
     .hero-globe-global > .absolute.z-10 { display:none; }
-    html:not(.dark) .hero-globe-global { opacity:.2; }
-    html:not(.dark) .hero-globe-global::after { background:linear-gradient(90deg,rgba(248,250,253,.86) 0%,rgba(248,250,253,.48) 28%,rgba(248,250,253,.08) 62%,transparent 100%),linear-gradient(180deg,rgba(248,250,253,.12) 0%,transparent 35%,rgba(248,250,253,.36) 100%); }
+    html:not(.dark) .hero-globe-global { opacity:.48; }
+    html:not(.dark) .hero-globe-global .hero-globe-svg { filter:saturate(1.12) contrast(1.08); }
+    html:not(.dark) .hero-globe-global::after { background:linear-gradient(90deg,rgba(248,250,253,.58) 0%,rgba(248,250,253,.28) 25%,rgba(248,250,253,.04) 58%,transparent 100%),linear-gradient(180deg,rgba(248,250,253,.04) 0%,transparent 35%,rgba(248,250,253,.18) 100%); }
     .hero-globe-background::after, .hero-globe-global::after { content:""; position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(90deg,rgba(7,13,29,.92) 0%,rgba(7,13,29,.72) 22%,rgba(7,13,29,.18) 52%,rgba(7,13,29,.08) 100%),linear-gradient(180deg,rgba(7,13,29,.25) 0%,transparent 28%,rgba(7,13,29,.5) 100%); }
     .hero-globe-stars { opacity:.55; background-image:radial-gradient(circle,rgba(173,198,255,.8) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(255,185,95,.6) 0 1px,transparent 1.5px); background-position:0 0,30px 24px; background-size:55px 55px,79px 79px; }
     .hero-globe-orbit { position:absolute; z-index:1; left:3%; top:25%; width:94%; height:50%; border:1px solid rgba(173,198,255,.16); border-radius:50%; transform:rotate(-24deg); }
