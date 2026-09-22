@@ -481,21 +481,21 @@
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-3">
-                    <span class="text-2xl shrink-0">⚽</span>
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary"></span>
                     <div>
                         <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">{{ __('site.passion_football') }}</strong>
                         <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('site.passion_football_desc') }}</p>
                     </div>
                 </div>
                 <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-3">
-                    <span class="text-2xl shrink-0">🎮</span>
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary"></span>
                     <div>
                         <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">{{ __('site.passion_gaming') }}</strong>
                         <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('site.passion_gaming_desc') }}</p>
                     </div>
                 </div>
                 <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/30 flex items-start gap-3">
-                    <span class="text-2xl shrink-0">⚡</span>
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-emerald-400"></span>
                     <div>
                         <strong class="font-headline-sm text-[16px] text-on-surface block mb-1">{{ __('site.passion_watch') }}</strong>
                         <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('site.passion_watch_desc') }}</p>
