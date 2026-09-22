@@ -9,7 +9,6 @@
 <body class="min-h-screen bg-surface text-on-surface antialiased">
 @include('partials.navigation')
 @include('partials.hero-globe', ['global' => true])
-@include('partials.java-coffee')
 <main class="mx-auto w-full max-w-6xl px-6 pb-20 pt-32 md:px-12">
     <div class="flex items-center justify-between gap-4">
         <a href="{{ route('certifications') }}" class="font-mono text-sm text-primary hover:underline">← Retour aux certifications</a>

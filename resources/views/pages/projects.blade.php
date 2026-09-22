@@ -624,5 +624,4 @@
 @include('partials.project-links')
 @include('partials.navigation')
 @include('partials.hero-globe', ['global' => true, 'compact' => true])
-@include('partials.java-coffee')
 </body></html>

@@ -6,6 +6,7 @@ use App\Models\ContactMessage;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 
 class ContactMessageAcknowledged extends Mailable
 {
@@ -13,7 +14,11 @@ class ContactMessageAcknowledged extends Mailable
 
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Votre message a bien été reçu — Nestor KPADJA');
+        return new Envelope(
+            from: new Address(config('mail.from.address'), config('mail.from.name')),
+            replyTo: [new Address(config('mail.from.address'), config('mail.from.name'))],
+            subject: 'Confirmation de réception de votre message — Nestor KPADJA',
+        );
     }
 
     public function content(): Content

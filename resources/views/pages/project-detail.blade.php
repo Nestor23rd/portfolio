@@ -9,7 +9,6 @@
 <body class="min-h-screen bg-surface text-on-surface antialiased">
     @include('partials.navigation')
     @include('partials.hero-globe', ['global' => true, 'compact' => true])
-    @include('partials.java-coffee')
     <main class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-28 md:px-12">
         <a href="{{ route('projects') }}" class="inline-flex items-center gap-2 font-mono text-sm text-primary hover:underline">← {{ __('site.back_projects') }}</a>
         <header class="mt-8 max-w-4xl border-b border-outline-variant/30 pb-10">

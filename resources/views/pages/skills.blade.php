@@ -25,7 +25,6 @@
 
 @include('partials.navigation')
 @include('partials.hero-globe', ['global' => true])
-@include('partials.java-coffee')
 
 <!-- ========================================================================= -->
 <!-- Main Content Canvas -->

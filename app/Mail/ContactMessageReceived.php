@@ -21,7 +21,7 @@ class ContactMessageReceived extends Mailable
         return new Envelope(
             from: new Address(config('mail.from.address'), config('mail.from.name')),
             replyTo: [new Address($this->contactMessage->email, $this->contactMessage->name)],
-            subject: 'Nouveau message depuis votre portfolio',
+            subject: 'Nouveau contact portfolio — '.$this->contactMessage->name,
         );
     }
 
