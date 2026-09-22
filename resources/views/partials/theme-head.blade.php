@@ -18,15 +18,15 @@
 <style id="theme-tokens">
 :root {
     /* Base & Surface (Light Mode) */
-    --color-background: 248 250 253;
-    --color-surface: 248 250 253;
-    --color-surface-dim: 235 239 246;
-    --color-surface-bright: 255 255 255;
+    --color-background: 241 245 249;
+    --color-surface: 241 245 249;
+    --color-surface-dim: 226 232 240;
+    --color-surface-bright: 248 250 252;
     --color-surface-variant: 226 232 240;
-    --color-surface-container-lowest: 255 255 255;
-    --color-surface-container-low: 241 245 249;
-    --color-surface-container: 232 238 246;
-    --color-surface-container-high: 222 228 238;
+    --color-surface-container-lowest: 248 250 252;
+    --color-surface-container-low: 236 242 247;
+    --color-surface-container: 229 236 244;
+    --color-surface-container-high: 218 227 238;
     --color-surface-container-highest: 203 213 225;
 
     /* Typography & Borders (Light Mode) */
@@ -152,7 +152,7 @@
 
 /* Light Mode Overrides for Specific Components */
 html:not(.dark) .portfolio-topbar {
-    background-color: rgba(255, 255, 255, 0.94) !important;
+    background-color: rgba(241, 245, 249, 0.96) !important;
     border-color: rgba(203, 213, 225, 0.7) !important;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
@@ -170,8 +170,8 @@ html:not(.dark) .terminal-grid,
 html:not(.dark) .grid-bg,
 html:not(.dark) .bg-grid-engineer {
     background-image: 
-        linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+        linear-gradient(to right, rgba(100, 116, 139, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(100, 116, 139, 0.08) 1px, transparent 1px);
 }
 
 /* Light mode contrast enhancements for status badges */
