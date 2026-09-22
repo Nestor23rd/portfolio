@@ -17,6 +17,7 @@ class ContactMessageController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:40'],
             'project_type' => ['nullable', 'string', 'max:80'],
             'message' => ['required', 'string', 'min:20', 'max:5000'],
         ], [
@@ -25,6 +26,7 @@ class ContactMessageController extends Controller
             'email.required' => 'Veuillez renseigner votre adresse e-mail.',
             'email.email' => 'Veuillez renseigner une adresse e-mail valide.',
             'email.max' => 'Votre adresse e-mail ne peut pas dépasser :max caractères.',
+            'phone.max' => 'Votre numéro ne peut pas dépasser :max caractères.',
             'project_type.max' => 'Le type de projet ne peut pas dépasser :max caractères.',
             'message.required' => 'Veuillez saisir votre message.',
             'message.min' => 'Votre message doit contenir au moins :min caractères.',

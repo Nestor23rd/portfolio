@@ -1,1 +1,31 @@
-@extends('admin.layout') @section('title','Messages — Administration') @section('section','Messages') @section('content')<div><h1 class="font-display text-3xl font-bold">Messages reçus</h1><p class="mt-2 text-sm text-slate-400">Les demandes envoyées depuis le formulaire de contact.</p></div><div class="mt-8 space-y-4">@forelse($messages as $message)<article class="rounded-xl border {{ $message->read_at ? 'border-[#1f2c47]' : 'border-amber-400/50' }} bg-[#131c31] p-5"><div class="flex flex-col justify-between gap-3 sm:flex-row"><div><div class="flex flex-wrap items-center gap-3"><h2 class="font-display text-lg font-semibold">{{ $message->name }}</h2><a class="text-sm text-blue-400 hover:underline" href="mailto:{{ $message->email }}">{{ $message->email }}</a><span class="text-xs text-slate-500">{{ $message->created_at->format('d/m/Y H:i') }}</span></div><p class="mt-1 text-xs uppercase tracking-wider text-amber-400">{{ $message->project_type ?: 'Demande générale' }}</p></div><div class="flex gap-3 text-sm">@if(!$message->read_at)<form method="POST" action="{{ route('admin.messages.read',$message) }}">@csrf @method('PATCH')<button class="text-emerald-400 hover:underline">Marquer lu</button></form>@else<span class="text-slate-500">Lu</span>@endif<form method="POST" action="{{ route('admin.messages.destroy',$message) }}">@csrf @method('DELETE')<button class="text-red-400 hover:underline" onclick="return confirm('Supprimer ce message ?')">Supprimer</button></form></div></div><p class="mt-5 whitespace-pre-line text-sm leading-6 text-slate-300">{{ $message->message }}</p></article>@empty<div class="rounded-xl border border-[#1f2c47] bg-[#131c31] p-8 text-center text-slate-500">Aucun message reçu.</div>@endforelse</div><div class="mt-5">{{ $messages->links() }}</div>@endsection
+@extends('admin.layout')
+@section('title','Messages — Administration')
+@section('section','Messages')
+@section('content')
+<div><h1 class="font-display text-3xl font-bold">Messages reçus</h1><p class="mt-2 text-sm text-slate-400">Les demandes envoyées depuis le formulaire de contact.</p></div>
+<div class="mt-8 space-y-4">
+@forelse($messages as $message)
+<article class="rounded-xl border {{ $message->read_at ? 'border-[#1f2c47]' : 'border-amber-400/50' }} bg-[#131c31] p-5">
+    <div class="flex flex-col justify-between gap-3 sm:flex-row">
+        <div>
+            <div class="flex flex-wrap items-center gap-3">
+                <h2 class="font-display text-lg font-semibold">{{ $message->name }}</h2>
+                <a class="text-sm text-blue-400 hover:underline" href="mailto:{{ $message->email }}">{{ $message->email }}</a>
+                @if($message->phone)<a class="text-sm text-emerald-400 hover:underline" href="tel:{{ preg_replace('/\D+/', '', $message->phone) }}">{{ $message->phone }}</a>@endif
+                <span class="text-xs text-slate-500">{{ $message->created_at->format('d/m/Y H:i') }}</span>
+            </div>
+            <p class="mt-1 text-xs uppercase tracking-wider text-amber-400">{{ $message->project_type ?: 'Demande générale' }}</p>
+        </div>
+        <div class="flex gap-3 text-sm">
+            @if(!$message->read_at)<form method="POST" action="{{ route('admin.messages.read',$message) }}">@csrf @method('PATCH')<button class="text-emerald-400 hover:underline">Marquer lu</button></form>@else<span class="text-slate-500">Lu</span>@endif
+            <form method="POST" action="{{ route('admin.messages.destroy',$message) }}">@csrf @method('DELETE')<button class="text-red-400 hover:underline" onclick="return confirm('Supprimer ce message ?')">Supprimer</button></form>
+        </div>
+    </div>
+    <p class="mt-5 whitespace-pre-line text-sm leading-6 text-slate-300">{{ $message->message }}</p>
+</article>
+@empty
+<div class="rounded-xl border border-[#1f2c47] bg-[#131c31] p-8 text-center text-slate-500">Aucun message reçu.</div>
+@endforelse
+</div>
+<div class="mt-5">{{ $messages->links() }}</div>
+@endsection

@@ -126,6 +126,19 @@
                         </div>
                     </div>
 
+                    <!-- Phone Field -->
+                    <div class="space-y-2">
+                        <label class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5" for="phone">
+                            <span class="text-primary font-bold">&gt;</span>
+                            <span>{{ __('site.phone') }}</span>
+                            <span class="text-xs text-outline">({{ app()->getLocale() === 'en' ? 'optional' : 'facultatif' }})</span>
+                        </label>
+                        <input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-3.5 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all @error('phone') border-red-500 @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="{{ __('site.phone_placeholder') }}" type="tel" autocomplete="tel"/>
+                        @error('phone')
+                        <p class="text-xs text-red-400 mt-1 font-code-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!-- Project Type Selector -->
                     <div class="space-y-2">
                         <label class="block font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5">
@@ -182,9 +195,10 @@
                             <span class="material-symbols-outlined text-emerald-400 text-base">mail</span>
                             <span>{{ __('site.reply_24h') }}</span>
                         </div>
-                        <button class="w-full sm:w-auto bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3 rounded-lg hover:bg-secondary-container transition-all duration-200 active:scale-95 shadow-md flex items-center justify-center gap-2 group cursor-pointer" type="submit">
-                            <span>{{ __('site.send_message') }}</span>
-                            <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">send</span>
+                        <button id="contactSubmit" class="w-full sm:w-auto bg-secondary text-on-secondary font-label-md text-label-md font-bold px-6 py-3 rounded-lg hover:bg-secondary-container transition-all duration-200 active:scale-95 shadow-md flex items-center justify-center gap-2 group cursor-pointer disabled:cursor-wait disabled:opacity-70" type="submit">
+                            <span id="contactSubmitLabel">{{ __('site.send_message') }}</span>
+                            <span id="contactSubmitSpinner" class="hidden h-4 w-4 animate-spin rounded-full border-2 border-on-secondary/30 border-t-on-secondary" aria-hidden="true"></span>
+                            <span id="contactSubmitIcon" class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">send</span>
                         </button>
                     </div>
                 </form>
@@ -358,6 +372,18 @@
 
 <!-- Copy Email Script -->
 <script>
+    document.getElementById('contactForm')?.addEventListener('submit', function () {
+        const button = document.getElementById('contactSubmit');
+        const label = document.getElementById('contactSubmitLabel');
+        const spinner = document.getElementById('contactSubmitSpinner');
+        const icon = document.getElementById('contactSubmitIcon');
+        if (!button) return;
+        button.disabled = true;
+        label.textContent = '{{ app()->getLocale() === 'en' ? 'Sending…' : 'Envoi en cours…' }}';
+        spinner?.classList.remove('hidden');
+        icon?.classList.add('hidden');
+    });
+
     function copyEmail(email) {
         if (!navigator.clipboard) return;
         navigator.clipboard.writeText(email).then(() => {

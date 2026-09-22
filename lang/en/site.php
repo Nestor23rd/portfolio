@@ -202,6 +202,8 @@ return [
     'full_name_placeholder' => 'e.g. Koffi Mensah',
     'email' => 'Email address',
     'email_placeholder' => 'e.g. koffi.mensah@company.com',
+    'phone' => 'Phone or WhatsApp',
+    'phone_placeholder' => 'e.g. +228 90 00 00 00',
     'project_type' => 'Project or opportunity type',
     'project_recruitment' => 'Recruitment',
     'project_other' => 'Other project',
