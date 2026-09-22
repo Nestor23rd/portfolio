@@ -23,6 +23,9 @@ class ContactMessageAcknowledged extends Mailable
 
     public function content(): Content
     {
-        return new Content(view: 'emails.contact-acknowledgement');
+        return new Content(
+            view: 'emails.contact-acknowledgement',
+            text: 'emails.contact-acknowledgement-text',
+        );
     }
 }
