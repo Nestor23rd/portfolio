@@ -46,13 +46,19 @@
     <div class="w-full px-6 md:px-12 flex items-center justify-between h-16">
         <a class="portfolio-brand font-code-md text-code-lg font-bold text-on-surface dark:text-on-surface tracking-tight flex items-center gap-2 group" href="{{ route('home') }}"><span class="text-primary group-hover:text-primary-container transition-colors">>_</span><span>Nestor KPADJA</span></a>
 
-        <nav class="hidden md:flex items-center gap-8 lg:gap-10">
-            <a class="text-on-surface-variant font-code-md text-code-md hover:text-on-surface transition-colors" href="{{ route('home') }}">{{ __('site.home') }}</a>
-            <a class="text-on-surface-variant font-code-md text-code-md hover:text-on-surface transition-colors" href="{{ route('about') }}">{{ __('site.about') }}</a>
-            <a class="text-on-surface-variant font-code-md text-code-md hover:text-on-surface transition-colors" href="{{ route('projects') }}">{{ __('site.projects') }}</a>
-            <a class="text-on-surface-variant font-code-md text-code-md hover:text-on-surface transition-colors" href="{{ route('skills') }}">{{ __('site.skills') }}</a>
-            <a class="text-on-surface-variant font-code-md text-code-md hover:text-on-surface transition-colors" href="{{ route('certifications') }}">{{ __('site.certifications') }}</a>
-            <a class="text-on-surface-variant font-code-md text-code-md hover:text-on-surface transition-colors" href="{{ route('experience') }}">{{ __('site.experience') }}</a>
+        @php($navigationLinks = [
+            ['route' => 'home', 'label' => __('site.home')],
+            ['route' => 'about', 'label' => __('site.about')],
+            ['route' => 'projects', 'label' => __('site.projects')],
+            ['route' => 'skills', 'label' => __('site.skills')],
+            ['route' => 'certifications', 'label' => __('site.certifications')],
+            ['route' => 'experience', 'label' => __('site.experience')],
+        ])
+        <nav class="hidden md:flex items-center gap-2 lg:gap-3">
+            @foreach($navigationLinks as $link)
+                @php($isActive = request()->routeIs($link['route'].'*'))
+                <a href="{{ route($link['route']) }}" class="inline-flex h-10 items-center rounded-lg border px-3 font-code-md text-code-md transition-colors {{ $isActive ? 'border-primary/30 bg-primary/10 font-semibold text-primary' : 'border-transparent text-on-surface-variant hover:border-outline-variant/40 hover:bg-surface-container-low hover:text-on-surface' }}">{{ $link['label'] }}</a>
+            @endforeach
         </nav>
 
         <div class="flex items-center gap-3">
@@ -100,13 +106,7 @@
         </div>
         {{-- Nav Links --}}
         <nav class="flex flex-col px-4 py-5 gap-1 flex-grow">
-            @foreach([
-                ['route' => 'home',          'label' => __('site.home'),           'icon' => 'home'],
-                ['route' => 'about',         'label' => __('site.about'),          'icon' => 'person'],
-                ['route' => 'projects',      'label' => __('site.projects'),       'icon' => 'deployed_code'],
-                ['route' => 'skills',        'label' => __('site.skills'),         'icon' => 'code'],
-                ['route' => 'certifications','label' => __('site.certifications'), 'icon' => 'verified'],
-                ['route' => 'experience',    'label' => __('site.experience'),     'icon' => 'work'],
+            @foreach(array_map(fn ($link, $icon) => $link + ['icon' => $icon], $navigationLinks, ['home', 'person', 'deployed_code', 'code', 'verified', 'work']) as $link)
                 ['route' => 'contact',       'label' => __('site.contact'),        'icon' => 'mail'],
             ] as $link)
             <a href="{{ route($link['route']) }}"
