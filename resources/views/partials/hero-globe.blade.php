@@ -9,7 +9,7 @@
 
     <div class="hero-globe-orbit hero-globe-orbit-a"></div>
     <div class="hero-globe-orbit hero-globe-orbit-b"></div>
-    <svg class="hero-globe-svg absolute left-1/2 top-1/2 pointer-events-auto" viewBox="0 0 500 500" role="img" aria-label="{{ __('site.globe_label') }}">
+    <svg class="hero-globe-svg absolute left-1/2 top-1/2 pointer-events-auto" viewBox="0 0 500 500" role="img" aria-label="{{ __('site.globe_label') }}" tabindex="0">
         <defs>
             <radialGradient id="heroEarth" cx="34%" cy="25%"><stop offset="0" stop-color="#78aaff"/><stop offset=".48" stop-color="#2455a2"/><stop offset="1" stop-color="#071326"/></radialGradient>
             <filter id="heroGlow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -50,7 +50,8 @@
     .hero-globe-stars { opacity:.55; background-image:radial-gradient(circle,rgba(173,198,255,.8) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(255,185,95,.6) 0 1px,transparent 1.5px); background-position:0 0,30px 24px; background-size:55px 55px,79px 79px; }
     .hero-globe-orbit { position:absolute; z-index:1; left:3%; top:25%; width:94%; height:50%; border:1px solid rgba(173,198,255,.16); border-radius:50%; transform:rotate(-24deg); }
     .hero-globe-orbit-b { transform:rotate(40deg) scaleY(.7); border-color:rgba(255,185,95,.16); }
-    .hero-globe-svg { width:min(96vw, 920px); height:min(96vw, 920px); max-width:none; opacity:.9; transform:translate(-50%,-50%) translate3d(var(--globe-x, 0px),var(--globe-y, 0px),0) rotate(var(--globe-r, 0deg)); transition:transform .18s ease-out; will-change:transform; }
+    .hero-globe-svg { width:min(96vw, 920px); height:min(96vw, 920px); max-width:none; opacity:.9; cursor:grab; touch-action:none; transform:translate(-50%,-50%) translate3d(var(--globe-x, 0px),var(--globe-y, 0px),0) rotate(var(--globe-r, 0deg)) scale(var(--globe-scale, 1)); transition:transform .18s ease-out; will-change:transform; }
+    .hero-globe-svg:active { cursor:grabbing; }
     .hero-globe-route { animation:hero-route-dash 10s linear infinite; }
     @keyframes hero-route-dash { to { stroke-dashoffset:-52; } }
     @media (prefers-reduced-motion:reduce) { .hero-globe-svg,.hero-globe-route { transition:none;animation:none; } }
@@ -58,20 +59,61 @@
 <script>
     (() => {
         const stage = document.querySelector('.hero-globe-background, .hero-globe-global');
-        if (!stage || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (!stage) return;
         const globe = stage.querySelector('.hero-globe-svg');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let rotation = 0;
+        let scale = 1;
+        let dragging = false;
+        let lastX = 0;
+        const render = () => {
+            globe.style.setProperty('--globe-r', `${rotation}deg`);
+            globe.style.setProperty('--globe-scale', scale.toFixed(2));
+        };
         stage.addEventListener('pointermove', (event) => {
+            if (dragging) return;
             const rect = stage.getBoundingClientRect();
             const x = (event.clientX - rect.left) / rect.width - .5;
             const y = (event.clientY - rect.top) / rect.height - .5;
             globe.style.setProperty('--globe-x', `${x * 18}px`);
             globe.style.setProperty('--globe-y', `${y * 14}px`);
-            globe.style.setProperty('--globe-r', `${x * 2}deg`);
+            globe.style.setProperty('--globe-r', `${rotation + x * 2}deg`);
         });
         stage.addEventListener('pointerleave', () => {
+            if (dragging) return;
             globe.style.setProperty('--globe-x', '0px');
             globe.style.setProperty('--globe-y', '0px');
-            globe.style.setProperty('--globe-r', '0deg');
+            render();
         });
+        globe.addEventListener('pointerdown', (event) => {
+            dragging = true;
+            lastX = event.clientX;
+            globe.setPointerCapture?.(event.pointerId);
+        });
+        globe.addEventListener('pointermove', (event) => {
+            if (!dragging) return;
+            rotation += (event.clientX - lastX) * .45;
+            lastX = event.clientX;
+            render();
+        });
+        const stopDragging = (event) => {
+            dragging = false;
+            globe.releasePointerCapture?.(event.pointerId);
+        };
+        globe.addEventListener('pointerup', stopDragging);
+        globe.addEventListener('pointercancel', stopDragging);
+        globe.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            scale = Math.min(1.16, Math.max(.86, scale - event.deltaY * .0008));
+            render();
+        }, { passive: false });
+        globe.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') rotation -= 8;
+            if (event.key === 'ArrowRight') rotation += 8;
+            if (event.key === '+' || event.key === '=') scale = Math.min(1.16, scale + .04);
+            if (event.key === '-') scale = Math.max(.86, scale - .04);
+            render();
+        });
+        if (reducedMotion) globe.style.transition = 'none';
     })();
 </script>
