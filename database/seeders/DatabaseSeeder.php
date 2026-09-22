@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $settings = [
-            'email' => 'kpadjanestor78@gmail.com', 'github_url' => 'https://github.com', 'linkedin_url' => 'https://linkedin.com',
+            'email' => 'kpadjanestor78@gmail.com', 'phone_number' => '+228 96 90 84 92', 'whatsapp_number' => '+228 91 31 17 05', 'github_url' => 'https://github.com', 'linkedin_url' => 'https://linkedin.com',
             'telegram_url' => '', 'documentation_url' => '', 'pgp_url' => '', 'location' => 'Lomé, Togo',
             'footer_text' => 'Nestor KPADJA. Architectures Distribuées & Protocoles Décentralisés. Lomé, Togo.',
         ];

@@ -19,6 +19,8 @@ class SiteSettingController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email', 'max:255'],
+            'phone_number' => ['nullable', 'string', 'max:40'],
+            'whatsapp_number' => ['nullable', 'string', 'max:40'],
             'github_url' => ['nullable', 'url', 'max:255'],
             'linkedin_url' => ['nullable', 'url', 'max:255'],
             'telegram_url' => ['nullable', 'url', 'max:255'],

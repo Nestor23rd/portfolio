@@ -21,6 +21,10 @@
 @php
     $siteSettings = \App\Models\SiteSetting::pluck('value', 'key');
     $emailAddress = $siteSettings['email'] ?? 'kpadjanestor78@gmail.com';
+    $phoneNumber = $siteSettings['phone_number'] ?? '+228 96 90 84 92';
+    $whatsappNumber = $siteSettings['whatsapp_number'] ?? '+228 91 31 17 05';
+    $phoneDigits = preg_replace('/\D+/', '', $phoneNumber);
+    $whatsappDigits = preg_replace('/\D+/', '', $whatsappNumber);
     $locationText = $siteSettings['location'] ?? 'Lomé, Togo';
     $githubUrl = $siteSettings['github_url'] ?? 'https://github.com';
     $linkedinUrl = $siteSettings['linkedin_url'] ?? 'https://linkedin.com';
@@ -243,11 +247,11 @@
                         <div class="space-y-1">
                             <span class="block font-code-sm text-code-sm text-on-surface-variant">{{ __('site.phone_whatsapp') }}</span>
                             <div class="font-body-md text-body-md text-on-surface font-medium space-y-0.5">
-                                <a class="block hover:text-primary transition-colors" href="tel:+22896908492">
-                                    {{ __('site.call') }} : +228 96 90 84 92
+                                <a class="block hover:text-primary transition-colors" href="tel:+{{ $phoneDigits }}">
+                                    {{ __('site.call') }} : {{ $phoneNumber }}
                                 </a>
-                                <a class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm" href="https://wa.me/22891311705" target="_blank" rel="noopener noreferrer">
-                                    <span>WhatsApp : +228 91 31 17 05</span>
+                                <a class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm" href="https://wa.me/{{ $whatsappDigits }}" target="_blank" rel="noopener noreferrer">
+                                    <span>WhatsApp : {{ $whatsappNumber }}</span>
                                     <span class="material-symbols-outlined text-xs">north_east</span>
                                 </a>
                             </div>
