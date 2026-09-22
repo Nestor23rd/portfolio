@@ -11,7 +11,12 @@
 @include('partials.hero-globe', ['global' => true])
 @include('partials.java-coffee')
 <main class="mx-auto w-full max-w-6xl px-6 pb-20 pt-32 md:px-12">
-    <a href="{{ route('certifications') }}" class="font-mono text-sm text-primary hover:underline">← Retour aux certifications</a>
+    <div class="flex items-center justify-between gap-4">
+        <a href="{{ route('certifications') }}" class="font-mono text-sm text-primary hover:underline">← Retour aux certifications</a>
+        <a href="{{ route('certifications') }}" aria-label="Fermer le certificat" class="inline-flex items-center gap-2 rounded-lg border border-outline-variant/50 px-4 py-2 font-mono text-sm text-on-surface transition hover:border-primary hover:text-primary">
+            Fermer <span aria-hidden="true" class="text-lg leading-none">×</span>
+        </a>
+    </div>
     <header class="mt-8 border-b border-outline-variant/30 pb-8">
         <p class="font-mono text-xs uppercase tracking-widest text-secondary">{{ $certification->issuer ?: 'Certification' }}</p>
         <h1 class="mt-3 font-headline-xl text-headline-xl-mobile font-bold md:text-headline-xl">{{ $certification->title }}</h1>

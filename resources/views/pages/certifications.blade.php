@@ -42,7 +42,7 @@
                             <div><span class="text-outline">{{ __('site.issue_date') }}</span> {{ $certification->issued_at?->format('d/m/Y') ?: (app()->getLocale() === 'en' ? 'Not provided' : 'Non renseignée') }}</div>
                         </div>
                         @if($certification->document_url)
-                            <a href="{{ route('certifications.show', $certification) }}" class="mt-5 block overflow-hidden rounded-lg border border-outline-variant/30 bg-surface-container-lowest transition hover:border-primary/60">
+                            <a href="{{ $certification->document_type === 'application/pdf' ? $certification->document_url : route('certifications.show', $certification) }}" @if($certification->document_type === 'application/pdf') target="_blank" rel="noopener noreferrer" @endif class="mt-5 block overflow-hidden rounded-lg border border-outline-variant/30 bg-surface-container-lowest transition hover:border-primary/60">
                                 @if($certification->document_type === 'application/pdf')
                                     <div class="flex items-center gap-3 p-4 font-mono text-sm text-primary"><span class="rounded bg-primary/15 px-2 py-1 text-xs">PDF</span> Lire le certificat en détail <span aria-hidden="true">↗</span></div>
                                 @else
@@ -50,11 +50,15 @@
                                     <div class="p-3 font-mono text-sm text-primary">Voir le certificat en détail <span aria-hidden="true">↗</span></div>
                                 @endif
                             </a>
+                        @else
+                            <div class="mt-5 rounded-lg border border-dashed border-outline-variant/40 bg-surface-container-lowest p-4 font-mono text-xs text-on-surface-variant">
+                                Document du certificat non téléversé dans l’administration.
+                            </div>
                         @endif
                     </div>
                     <div class="mt-6 border-t border-outline-variant/30 pt-5">
                         @if($certification->document_url)
-                            <a href="{{ route('certifications.show', $certification) }}" class="mr-5 inline-flex items-center gap-2 font-mono text-sm font-semibold text-primary transition hover:text-primary-container hover:underline">Consulter le certificat ↗</a>
+                            <a href="{{ $certification->document_type === 'application/pdf' ? $certification->document_url : route('certifications.show', $certification) }}" @if($certification->document_type === 'application/pdf') target="_blank" rel="noopener noreferrer" @endif class="mr-5 inline-flex items-center gap-2 font-mono text-sm font-semibold text-primary transition hover:text-primary-container hover:underline">{{ $certification->document_type === 'application/pdf' ? 'Ouvrir uniquement le PDF' : 'Consulter le certificat' }} ↗</a>
                         @endif
                         @if($certification->credential_url)
                             <a href="{{ $certification->credential_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-sm font-semibold text-primary transition hover:text-primary-container hover:underline">{{ __('site.verify_certification') }} <span aria-hidden="true">↗</span></a>
