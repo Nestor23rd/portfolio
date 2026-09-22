@@ -8,6 +8,7 @@
     .portfolio-topbar nav a { white-space: nowrap; flex: 0 1 auto; }
     .portfolio-topbar .portfolio-brand { white-space: nowrap; flex-shrink: 0; }
     .portfolio-topbar .portfolio-contact { white-space: nowrap; flex-shrink: 0; min-width: 8.5rem; justify-content: center; }
+    .portfolio-topbar .portfolio-cv { white-space: nowrap; flex-shrink: 0; }
 
     /* Mobile menu overlay */
     #mobile-menu {
@@ -31,14 +32,19 @@
     #hamburger-icon.open span:nth-child(2) { opacity: 0; }
     #hamburger-icon.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
         .portfolio-topbar nav { display: none !important; }
         .portfolio-topbar .portfolio-contact { display: none !important; }
+        .portfolio-topbar .portfolio-cv { display: none !important; }
         #hamburger-btn { display: flex !important; }
     }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
         #hamburger-btn { display: none !important; }
         #mobile-menu { display: none !important; }
+    }
+    @media (max-width: 480px) {
+        .portfolio-topbar > div { padding-left: 1rem !important; padding-right: 1rem !important; }
+        .portfolio-topbar .portfolio-brand { max-width: calc(100vw - 8rem); overflow: hidden; text-overflow: ellipsis; }
     }
 </style>
 @php($publicSettings = \App\Models\SiteSetting::pluck('value', 'key'))
@@ -74,7 +80,7 @@
                 <span class="material-symbols-outlined text-[18px] inline-block dark:hidden text-primary">dark_mode</span>
             </button>
             {{-- Contact button (desktop only) --}}
-            @if(!empty($publicSettings['cv_path']))<a class="hidden md:inline-flex items-center gap-1.5 rounded-lg border border-primary/40 px-3 py-2 text-xs font-semibold text-primary transition hover:bg-primary/10" href="{{ asset('storage/'.$publicSettings['cv_path']) }}" download><span class="material-symbols-outlined text-[16px]">download</span>{{ __('site.download_cv') }}</a>@endif
+            @if(!empty($publicSettings['cv_path']))<a class="portfolio-cv hidden md:inline-flex items-center gap-1.5 rounded-lg border border-primary/40 px-3 py-2 text-xs font-semibold text-primary transition hover:bg-primary/10" href="{{ asset('storage/'.$publicSettings['cv_path']) }}" download><span class="material-symbols-outlined text-[16px]">download</span>{{ __('site.download_cv') }}</a>@endif
             <a class="portfolio-contact hidden md:inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-secondary-container font-label-md text-label-md font-bold px-4 py-2 rounded-lg transition-all shadow-sm active:scale-95 duration-150" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
             {{-- Hamburger (mobile only) --}}
             <button id="hamburger-btn" type="button" class="w-9 h-9 rounded-lg border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-all items-center justify-center cursor-pointer bg-surface-container-low/50" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -106,9 +112,11 @@
         </div>
         {{-- Nav Links --}}
         <nav class="flex flex-col px-4 py-5 gap-1 flex-grow">
-            @foreach(array_map(fn ($link, $icon) => $link + ['icon' => $icon], $navigationLinks, ['home', 'person', 'deployed_code', 'code', 'verified', 'work']) as $link)
-                ['route' => 'contact',       'label' => __('site.contact'),        'icon' => 'mail'],
-            ] as $link)
+            @php($mobileNavigationLinks = array_merge(
+                array_map(fn ($link, $icon) => $link + ['icon' => $icon], $navigationLinks, ['home', 'person', 'deployed_code', 'code', 'verified', 'work']),
+                [['route' => 'contact', 'label' => __('site.contact'), 'icon' => 'mail']]
+            ))
+            @foreach($mobileNavigationLinks as $link)
             <a href="{{ route($link['route']) }}"
                class="flex items-center gap-3 px-4 py-3 rounded-xl font-code-md text-code-md transition-all
                       {{ request()->routeIs($link['route'])
