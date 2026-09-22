@@ -19,6 +19,8 @@ return [
     'journey_anchor' => 'Point d’ancrage · Disponible à distance',
     'globe_label' => 'Globe représentant le parcours professionnel de Nestor KPADJA',
     'globe_current_location' => 'Position actuelle : Lomé, Togo',
+    'hide_java' => 'Masquer l’image Java',
+    'show_java' => 'Afficher l’image Java',
     'globe_status' => 'SIGNAL ACTIF',
     'globe_origin' => 'Point de départ',
     'path_label' => 'PARCOURS GUIDÉ',

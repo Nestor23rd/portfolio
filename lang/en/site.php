@@ -19,6 +19,8 @@ return [
     'journey_anchor' => 'Anchor point · Available remotely',
     'globe_label' => 'Globe representing Nestor KPADJA’s professional journey',
     'globe_current_location' => 'Current location: Lomé, Togo',
+    'hide_java' => 'Hide Java image',
+    'show_java' => 'Show Java image',
     'globe_status' => 'ACTIVE SIGNAL',
     'globe_origin' => 'Starting point',
     'path_label' => 'GUIDED PATH',
