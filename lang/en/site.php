@@ -18,6 +18,7 @@ return [
     'journey_intro' => 'From Lomé, I build systems that connect product, data and engineering. Every step adds a concrete capability to the journey.',
     'journey_anchor' => 'Anchor point · Available remotely',
     'globe_label' => 'Globe representing Nestor KPADJA’s professional journey',
+    'globe_current_location' => 'Current location: Lomé, Togo',
     'globe_status' => 'ACTIVE SIGNAL',
     'globe_origin' => 'Starting point',
     'path_label' => 'GUIDED PATH',

@@ -18,6 +18,7 @@ return [
     'journey_intro' => 'Depuis Lomé, je construis des systèmes qui relient produit, données et ingénierie. Chaque étape ajoute une compétence concrète au parcours.',
     'journey_anchor' => 'Point d’ancrage · Disponible à distance',
     'globe_label' => 'Globe représentant le parcours professionnel de Nestor KPADJA',
+    'globe_current_location' => 'Position actuelle : Lomé, Togo',
     'globe_status' => 'SIGNAL ACTIF',
     'globe_origin' => 'Point de départ',
     'path_label' => 'PARCOURS GUIDÉ',

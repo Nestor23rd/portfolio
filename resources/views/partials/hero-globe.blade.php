@@ -9,7 +9,7 @@
 
     <div class="hero-globe-orbit hero-globe-orbit-a"></div>
     <div class="hero-globe-orbit hero-globe-orbit-b"></div>
-    <svg class="hero-globe-svg absolute left-1/2 top-1/2 pointer-events-auto" viewBox="0 0 500 500" role="img" aria-label="{{ __('site.globe_label') }}" tabindex="0">
+    <svg class="hero-globe-svg absolute left-1/2 top-1/2 pointer-events-auto" viewBox="0 0 500 500" role="img" aria-label="{{ __('site.globe_label') }} — {{ __('site.globe_current_location') }}" tabindex="0">
         <defs>
             <radialGradient id="heroEarth" cx="34%" cy="25%"><stop offset="0" stop-color="#78aaff"/><stop offset=".48" stop-color="#2455a2"/><stop offset="1" stop-color="#071326"/></radialGradient>
             <filter id="heroGlow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -24,7 +24,14 @@
             <path d="M126 162l28-25 34-6 18 17 28 8 6 25-20 19-28-2-18 19-31-9-12-23z"/><path d="M207 225l28-10 31 10 9 27-16 19-7 37-21 44-19-15 4-34-16-29z"/><path d="M284 154l31-16 42 13 17 25 36 18 23 35-28 15-34-10-18 20-29-3-18-30-26-18 8-25z"/><path d="M337 270l35-9 29 22-11 27-25 5-15 35-23-12 4-31z"/>
         </g>
         <path class="hero-globe-route" d="M126 298 Q205 170 302 270 T372 207" fill="none" stroke="#ffb95f" stroke-dasharray="5 8" stroke-linecap="round" stroke-width="2.5"/>
-        <circle cx="126" cy="298" r="8" fill="#ffb95f"/><circle cx="126" cy="298" r="18" fill="none" stroke="#ffb95f" stroke-opacity=".6"><animate attributeName="r" values="8;24;8" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="2.5s" repeatCount="indefinite"/></circle>
+        <g class="hero-globe-location">
+            <circle cx="126" cy="298" r="8" fill="#ffb95f"/>
+            <circle cx="126" cy="298" r="18" fill="none" stroke="#ffb95f" stroke-opacity=".6"><animate attributeName="r" values="8;25;8" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="2.5s" repeatCount="indefinite"/></circle>
+            <circle cx="126" cy="298" r="28" fill="none" stroke="#ffb95f" stroke-opacity=".28" stroke-dasharray="2 7"><animateTransform attributeName="transform" type="rotate" from="0 126 298" to="360 126 298" dur="8s" repeatCount="indefinite"/></circle>
+            <path d="M126 306v18h14" fill="none" stroke="#ffb95f" stroke-width="1.5" stroke-opacity=".8"/>
+            <rect x="140" y="316" width="104" height="24" rx="6" fill="#080e1d" fill-opacity=".9" stroke="#ffb95f" stroke-opacity=".55"/>
+            <text x="151" y="332" fill="#ffcf8d" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600" letter-spacing="1">LOMÉ · TOGO</text>
+        </g>
         <circle cx="302" cy="270" r="6" fill="#adc6ff"/><circle cx="372" cy="207" r="6" fill="#6ee7b7"/>
     </svg>
 
@@ -53,6 +60,7 @@
     .hero-globe-svg { width:min(96vw, 920px); height:min(96vw, 920px); max-width:none; opacity:.9; cursor:grab; touch-action:none; transform:translate(-50%,-50%) translate3d(var(--globe-x, 0px),var(--globe-y, 0px),0) rotate(var(--globe-r, 0deg)) scale(var(--globe-scale, 1)); transition:transform .18s ease-out; will-change:transform; }
     .hero-globe-svg:active { cursor:grabbing; }
     .hero-globe-route { animation:hero-route-dash 10s linear infinite; }
+    .hero-globe-location { filter:drop-shadow(0 0 8px rgba(255,185,95,.6)); }
     @keyframes hero-route-dash { to { stroke-dashoffset:-52; } }
     @media (prefers-reduced-motion:reduce) { .hero-globe-svg,.hero-globe-route { transition:none;animation:none; } }
 </style>
