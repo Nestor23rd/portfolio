@@ -46,6 +46,7 @@
     .hero-globe-card { isolation:isolate; perspective:1200px; }
     .hero-globe-background { min-height:100%; opacity:.62; }
     .hero-globe-global { opacity:.34; }
+    .hero-globe-global .hero-globe-svg { pointer-events:none; cursor:default; }
     .hero-globe-compact { opacity:.2; }
     .hero-globe-compact .hero-globe-svg { width:min(68vw, 680px); height:min(68vw, 680px); }
     .hero-globe-compact .hero-globe-orbit { left:16%; width:68%; }
@@ -79,21 +80,23 @@
             globe.style.setProperty('--globe-r', `${rotation}deg`);
             globe.style.setProperty('--globe-scale', scale.toFixed(2));
         };
-        stage.addEventListener('pointermove', (event) => {
+        const updateFromPointer = (event) => {
             if (dragging) return;
             const rect = stage.getBoundingClientRect();
+            const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+            if (!inside) {
+                globe.style.setProperty('--globe-x', '0px');
+                globe.style.setProperty('--globe-y', '0px');
+                render();
+                return;
+            }
             const x = (event.clientX - rect.left) / rect.width - .5;
             const y = (event.clientY - rect.top) / rect.height - .5;
             globe.style.setProperty('--globe-x', `${x * 18}px`);
             globe.style.setProperty('--globe-y', `${y * 14}px`);
             globe.style.setProperty('--globe-r', `${rotation + x * 2}deg`);
-        });
-        stage.addEventListener('pointerleave', () => {
-            if (dragging) return;
-            globe.style.setProperty('--globe-x', '0px');
-            globe.style.setProperty('--globe-y', '0px');
-            render();
-        });
+        };
+        document.addEventListener('pointermove', updateFromPointer, { passive: true });
         globe.addEventListener('pointerdown', (event) => {
             dragging = true;
             lastX = event.clientX;
