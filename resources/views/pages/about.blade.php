@@ -17,6 +17,7 @@
 
 @include('partials.navigation')
 @include('partials.hero-globe', ['global' => true])
+@include('partials.java-coffee')
 
 <!-- Main Content Canvas -->
 <main class="flex-grow pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12 w-full">

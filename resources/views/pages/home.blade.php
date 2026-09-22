@@ -23,12 +23,7 @@
 <!-- Subtle Grid Background -->
 <div class="absolute inset-0 hero-dot-pattern [background-size:28px_28px] opacity-40 pointer-events-none -z-10"></div>
 @include('partials.hero-globe', ['global' => true])
-<img class="hero-java-image pointer-events-none absolute right-[clamp(1rem,8vw,8rem)] top-[46%] z-10 hidden h-36 w-36 -translate-y-1/2 object-contain xl:block" src="{{ asset('java-coffee.png') }}" alt="Tasse de café Java animée" width="144" height="144" loading="eager" decoding="async">
-<style>
-    .hero-java-image { animation:java-cup-float 4.8s ease-in-out infinite; transform-origin:50% 88%; }
-    @keyframes java-cup-float { 0%,100% { transform:translateY(-50%) translateY(-16px) rotate(-2deg); } 50% { transform:translateY(-50%) translateY(18px) rotate(2deg); } }
-    @media (prefers-reduced-motion:reduce) { .hero-java-image { animation:none; } }
-</style>
+@include('partials.java-coffee')
 
 <!-- Hero Content -->
 <div class="relative z-10 grid grid-cols-1 gap-10 items-center flex-grow py-8 w-full max-w-7xl mx-auto">
