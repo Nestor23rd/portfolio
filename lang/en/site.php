@@ -89,7 +89,7 @@ return [
     'availability_label' => 'Availability',
     'immediate_val' => 'Immediate',
     'bio_p1' => 'Developer passionate about backend engineering and the blockchain ecosystem, holding a Bachelor\'s degree in Software Engineering.',
-    'bio_p2' => 'My journey is driven by the desire to design reliable, clean, and well-structured applications. From relational data modeling with :databases, to building REST APIs with :frameworks, I focus on code clarity, security, and maintainability.',
+    'bio_p2' => 'My journey is driven by the desire to design reliable, clean, and well-structured applications. From relational data modeling with :databases to designing backend architectures with :frameworks, I focus on code clarity, security, and maintainability.',
     'bio_p3' => 'Through my experiences — notably on an exploratory Central Bank Digital Currency (:cbdc) project and on applications like :titan —, I apply software best practices: automated testing, containerization with :docker, Git versioning, and continuous delivery.',
     'bio_p4' => 'Certified by the :linux in Blockchain technologies and finalist in the :hackathon Hackathon, I always prioritize pragmatism and craftsmanship to deliver tangible user value.',
     'stat_projects' => 'Delivered projects',

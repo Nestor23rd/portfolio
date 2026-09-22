@@ -59,7 +59,7 @@
         <div class="lg:col-span-5 flex flex-col gap-6">
             <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 overflow-hidden">
                 <!-- Image Wrapper with dual glow gradient border -->
-                <div class="relative mx-auto w-full max-w-[260px] aspect-square rounded-xl p-1 bg-gradient-to-tr from-primary via-outline-variant to-secondary">
+                <div class="relative mx-auto w-full max-w-[280px] aspect-[4/5] rounded-xl p-1 bg-gradient-to-tr from-primary via-outline-variant to-secondary">
                     <div class="w-full h-full rounded-[10px] overflow-hidden bg-surface-container-lowest relative group">
                         <img alt="Kokoussè Nestor KPADJA" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out" src="{{ asset('profil.jpeg') }}"/>
                         <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/70 via-transparent to-transparent"></div>
@@ -184,7 +184,7 @@
                             A backend and blockchain enthusiast with a Bachelor's degree in Software Engineering.
                         </p>
                         <p>
-                            My journey is driven by the desire to build reliable, clean and well-structured applications. From relational modeling with {!! $databasesHtml !!} to building REST APIs with {!! $frameworksHtml !!}, I place strong emphasis on code clarity, security and maintainability.
+                            My journey is driven by the desire to build reliable, clean and well-structured applications. From relational modeling with {!! $databasesHtml !!} to designing backend architectures with {!! $frameworksHtml !!}, I place strong emphasis on code clarity, security and maintainability.
                         </p>
                         <p>
                             Throughout my experience — including an exploratory project around a central bank digital currency (<strong class="text-secondary font-semibold">CBDC Blockchain</strong>) and applications such as <strong class="text-primary font-semibold">Titan / TitanEduc</strong> — I apply sound development practices: automated testing, Docker containerization, Git version control and continuous delivery.
@@ -197,7 +197,7 @@
                             Développeur passionné par le backend et l'écosystème blockchain, titulaire d'une Licence en Génie Logiciel.
                         </p>
                         <p>
-                            Mon parcours est guidé par l'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous {!! $databasesHtml !!}, à la réalisation d'APIs REST sous {!! $frameworksHtml !!}, j'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.
+                            Mon parcours est guidé par l'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous {!! $databasesHtml !!} à la conception d'architectures backend avec {!! $frameworksHtml !!}, j'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.
                         </p>
                         <p>
                             Au fil de mes expériences — notamment sur un projet d'exploration autour d'une monnaie numérique de banque centrale (<strong class="text-secondary font-semibold">CBDC Blockchain</strong>) et sur des applications comme <strong class="text-primary font-semibold">Titan / TitanEduc</strong> —, j'applique de bonnes pratiques de développement : tests automatisés, conteneurisation avec <strong class="text-on-surface font-semibold">Docker</strong>, versionnement Git et déploiement continu.

@@ -89,7 +89,7 @@ return [
     'availability_label' => 'Disponibilité',
     'immediate_val' => 'Immédiate',
     'bio_p1' => 'Développeur passionné par le backend et l\'écosystème blockchain, titulaire d\'une Licence en Génie Logiciel.',
-    'bio_p2' => 'Mon parcours est guidé par l\'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous :databases, à la réalisation d\'APIs REST sous :frameworks, j\'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.',
+    'bio_p2' => 'Mon parcours est guidé par l\'envie de concevoir des applications fiables, propres et bien structurées. De la modélisation relationnelle sous :databases à la conception d\'architectures backend avec :frameworks, j\'accorde une importance essentielle à la clarté du code, à la sécurité et à la maintenabilité.',
     'bio_p3' => 'Au fil de mes expériences — notamment sur un projet d\'exploration autour d\'une monnaie numérique de banque centrale (:cbdc) et sur des applications comme :titan —, j\'applique de bonnes pratiques de développement : tests automatisés, conteneurisation avec :docker, versionnement Git et déploiement continu.',
     'bio_p4' => 'Certifié par la :linux en technologies Blockchain et finaliste du Hackathon :hackathon, je privilégie toujours le pragmatisme et le travail soigné pour répondre concrètement aux besoins des utilisateurs.',
     'stat_projects' => 'Projets livrés',
