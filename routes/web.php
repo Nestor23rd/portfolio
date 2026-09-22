@@ -14,6 +14,7 @@ use App\Models\Certification;
 use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\Service;
 use App\Models\SiteSetting;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,9 @@ Route::get('/', function () {
     $skills = Skill::query()->where('is_visible', true)->orderBy('category')->orderBy('sort_order')->get();
     $experiences = Experience::query()->orderBy('sort_order')->orderByDesc('start_date')->get();
     $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
+    $services = Service::query()->where('is_visible', true)->orderBy('sort_order')->get();
 
-    return view('pages.home', compact('projects', 'skills', 'experiences', 'certifications'));
+    return view('pages.home', compact('projects', 'skills', 'experiences', 'certifications', 'services'));
 })->name('home');
 Route::get('/a-propos', function () {
     $projectsCount = Project::query()->where('is_published', true)->count();
@@ -40,6 +42,10 @@ Route::get('/projets', function () {
     $projects = $baseQuery->when($selectedCategory, fn ($query) => $query->where('category', $selectedCategory))->orderBy('sort_order')->latest('published_at')->paginate(6)->withQueryString();
     return view('pages.projects', compact('projects', 'categories', 'selectedCategory'));
 })->name('projects');
+Route::get('/projets/{project:slug}', function (Project $project) {
+    abort_unless($project->is_published, 404);
+    return view('pages/project-detail', compact('project'));
+})->name('projects.show');
 Route::get('/competences', function () {
     $skills = Skill::query()->where('is_visible', true)->orderBy('category')->orderBy('sort_order')->get();
     $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
@@ -72,6 +78,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('social-links/{socialLink}', [SocialLinkController::class, 'update'])->name('social-links.update');
         Route::delete('social-links/{socialLink}', [SocialLinkController::class, 'destroy'])->name('social-links.destroy');
         Route::resource('experiences', AdminExperienceController::class)->except(['show']);
+        Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class)->except(['show']);
         Route::get('messages', [AdminMessageController::class, 'index'])->name('messages.index');
         Route::patch('messages/{message}/read', [AdminMessageController::class, 'read'])->name('messages.read');
         Route::delete('messages/{message}', [AdminMessageController::class, 'destroy'])->name('messages.destroy');

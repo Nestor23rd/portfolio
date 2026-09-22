@@ -1,0 +1,6 @@
+@if($services->isNotEmpty())
+<section class="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 md:px-12 md:py-20">
+    <div class="mb-8 flex flex-col justify-between gap-4 border-b border-outline-variant/30 pb-5 sm:flex-row sm:items-end"><div><p class="font-mono text-xs uppercase tracking-[.18em] text-primary">03 — {{ __('site.services_label') }}</p><h2 class="mt-2 font-display text-3xl font-bold text-on-surface md:text-4xl">{{ __('site.services_title') }}</h2></div><p class="max-w-md text-sm leading-6 text-on-surface-variant">{{ __('site.services_intro') }}</p></div>
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">@foreach($services as $service)<article class="group rounded-2xl border border-outline-variant/35 bg-surface-container-low/85 p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-primary/60"><span class="material-symbols-outlined text-3xl text-secondary transition group-hover:text-primary">{{ $service->icon }}</span><h3 class="mt-5 font-display text-xl font-semibold text-on-surface">{{ $service->title }}</h3><p class="mt-3 text-sm leading-6 text-on-surface-variant">{{ $service->description }}</p></article>@endforeach</div>
+</section>
+@endif

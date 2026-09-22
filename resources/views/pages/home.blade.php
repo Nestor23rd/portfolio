@@ -57,6 +57,7 @@
 <span class="material-symbols-outlined">mail</span>
 <span>{{ __('site.contact') }}</span>
 </a>
+@if(!empty($siteSettings['cv_path']))<a class="inline-flex items-center justify-center gap-2.5 rounded-lg border border-secondary/50 px-6 py-3 font-body-md text-label-md font-semibold text-secondary transition hover:bg-secondary/10" href="{{ asset('storage/'.$siteSettings['cv_path']) }}" download><span class="material-symbols-outlined">download</span>{{ __('site.download_cv') }}</a>@endif
 </div>
 
 <!-- Location & Status -->
@@ -183,6 +184,7 @@
 </section>
 
 @include('partials.guided-journey')
+@include('partials.public-services')
 
 <!-- ==================== 2. CHIFFRES CLÉS & TÉLÉMÉTRIE ==================== -->
 <section class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 border-t border-outline-variant/20">

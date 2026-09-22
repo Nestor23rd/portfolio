@@ -68,6 +68,7 @@
                 <span class="material-symbols-outlined text-[18px] inline-block dark:hidden text-primary">dark_mode</span>
             </button>
             {{-- Contact button (desktop only) --}}
+            @if(!empty($publicSettings['cv_path']))<a class="hidden md:inline-flex items-center gap-1.5 rounded-lg border border-primary/40 px-3 py-2 text-xs font-semibold text-primary transition hover:bg-primary/10" href="{{ asset('storage/'.$publicSettings['cv_path']) }}" download><span class="material-symbols-outlined text-[16px]">download</span>{{ __('site.download_cv') }}</a>@endif
             <a class="portfolio-contact hidden md:inline-flex items-center gap-2 bg-secondary-container hover:bg-tertiary-container text-on-secondary-container font-label-md text-label-md font-bold px-4 py-2 rounded-lg transition-all shadow-sm active:scale-95 duration-150" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
             {{-- Hamburger (mobile only) --}}
             <button id="hamburger-btn" type="button" class="w-9 h-9 rounded-lg border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-all items-center justify-center cursor-pointer bg-surface-container-low/50" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">

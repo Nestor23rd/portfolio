@@ -8,6 +8,7 @@ use App\Models\SiteSetting;
 use App\Models\SocialLink;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\Service;
 use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -60,6 +61,14 @@ class DatabaseSeeder extends Seeder
         foreach ($skills as $skill) {
             Skill::updateOrCreate(['name' => $skill['name'], 'category' => $skill['category']], $skill + ['description' => $skillDescriptions[$skill['name']] ?? null]);
         }
+
+        $services = [
+            ['title' => 'Architecture backend', 'description' => 'Conception de services robustes, maintenables et alignés sur les contraintes réelles du produit.', 'icon' => 'account_tree', 'sort_order' => 1],
+            ['title' => 'APIs REST', 'description' => 'Création d’APIs claires, sécurisées, documentées et prêtes à être consommées par vos applications.', 'icon' => 'api', 'sort_order' => 2],
+            ['title' => 'Blockchain', 'description' => 'Exploration de registres distribués, logique métier décentralisée et cas d’usage institutionnels.', 'icon' => 'hub', 'sort_order' => 3],
+            ['title' => 'Data & Infrastructure', 'description' => 'PostgreSQL, Redis, Docker et automatisation pour des environnements fiables et reproductibles.', 'icon' => 'database', 'sort_order' => 4],
+        ];
+        foreach ($services as $service) Service::updateOrCreate(['title' => $service['title']], $service + ['is_visible' => true]);
 
         $experiences = [
             ['role' => 'Développeur Backend — Projet CBDC (Blockchain)', 'company' => 'Projet professionnel', 'start_date' => '2025-01-01', 'is_current' => true, 'description' => 'Conception de services backend robustes, intégration de règles métier et travail sur des architectures distribuées.', 'sort_order' => 1],

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
-    protected $fillable = ['title', 'slug', 'category', 'excerpt', 'description', 'technologies', 'image_path', 'project_url', 'repository_url', 'is_featured', 'is_published', 'sort_order', 'published_at'];
+    protected $fillable = ['title', 'slug', 'category', 'excerpt', 'description', 'challenge', 'solution', 'results', 'technologies', 'image_path', 'project_url', 'repository_url', 'is_featured', 'is_published', 'sort_order', 'published_at'];
 
     protected $appends = ['image_url'];
 

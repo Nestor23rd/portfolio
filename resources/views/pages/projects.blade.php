@@ -110,6 +110,36 @@
 <!-- ===================================================================== -->
 <!-- Projects Grid (3 columns on lg)                                      -->
 <!-- ===================================================================== -->
+<div id="projects-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+@forelse($projects as $project)
+    <article class="reveal-card specular-card group flex flex-col overflow-hidden rounded-xl border border-outline-variant/40 bg-surface-container-low transition-all duration-200 hover:border-primary/50">
+        @if($project->image_url)
+            <img src="{{ $project->image_url }}" alt="{{ $project->title }}" class="h-44 w-full object-cover transition duration-500 group-hover:scale-[1.03]">
+        @else
+            <div class="flex h-44 items-center justify-center bg-surface-container-lowest font-mono text-xs uppercase tracking-[.18em] text-primary/70">{{ $project->category ?: __('site.case_study') }}</div>
+        @endif
+        <div class="flex flex-grow flex-col p-6">
+            <div class="flex items-center justify-between gap-3">
+                <span class="rounded-md border border-primary/25 bg-primary/10 px-2.5 py-1 font-mono text-xs text-primary">{{ $project->category ?: __('site.case_study') }}</span>
+                @if($project->is_featured)<span class="font-mono text-[10px] uppercase tracking-wider text-secondary">{{ __('site.featured') }}</span>@endif
+            </div>
+            <h2 class="mt-4 font-display text-xl font-semibold text-on-surface group-hover:text-primary">{{ $project->title }}</h2>
+            <a href="{{ route('projects.show', $project) }}" class="mt-4 inline-flex w-fit items-center gap-2 rounded-lg bg-primary-container px-3.5 py-2 font-semibold text-on-primary-container shadow-sm transition hover:bg-primary hover:text-on-primary">{{ __('site.view_case_study') }} <span aria-hidden="true">↗</span></a>
+            <p class="mt-2 line-clamp-3 text-sm leading-6 text-on-surface-variant">{{ $project->excerpt }}</p>
+            <div class="mt-4 flex flex-wrap gap-1.5">
+                @foreach(collect($project->technologies ?? [])->take(5) as $technology)<span class="rounded bg-surface-container px-2 py-1 font-mono text-[10px] text-on-surface-variant">{{ $technology }}</span>@endforeach
+            </div>
+            <div class="mt-auto flex items-center justify-between gap-3 border-t border-outline-variant/30 pt-5">
+                @if($project->repository_url)<a href="{{ $project->repository_url }}" target="_blank" rel="noopener noreferrer" class="font-mono text-xs text-on-surface-variant hover:text-primary">{{ __('site.source_code') }}</a>@endif
+            </div>
+        </div>
+    </article>
+@empty
+    <div class="col-span-full rounded-xl border border-dashed border-outline-variant/40 p-10 text-center text-on-surface-variant">{{ __('site.no_projects') }}</div>
+@endforelse
+</div>
+@php($fallbackProjectUrl = $projects->isNotEmpty() ? route('projects.show', $projects->first()) : route('projects'))
+@if(false)
 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 <!-- ========================================================= -->
 <!-- CARD 1: TitanEduc (EdTech)                                -->
@@ -179,8 +209,8 @@
 </div>
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
-<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>{{ __('site.see_projects') }}</span>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="{{ $fallbackProjectUrl }}">
+<span>{{ __('site.view_case_study') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -265,8 +295,8 @@
 </div>
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
-<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>{{ __('site.see_projects') }}</span>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="{{ $fallbackProjectUrl }}">
+<span>{{ __('site.view_case_study') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -346,8 +376,8 @@
 </div>
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
-<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>{{ __('site.see_projects') }}</span>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="{{ $fallbackProjectUrl }}">
+<span>{{ __('site.view_case_study') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -428,8 +458,8 @@
 </div>
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
-<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>{{ __('site.see_projects') }}</span>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="{{ $fallbackProjectUrl }}">
+<span>{{ __('site.view_case_study') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -505,8 +535,8 @@
 </div>
 <!-- Bottom Action Bar -->
 <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
-<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="#">
-<span>{{ __('site.see_projects') }}</span>
+<a class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" href="{{ $fallbackProjectUrl }}">
+<span>{{ __('site.view_case_study') }}</span>
 <span class="text-xs">↗</span>
 </a>
 <a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" href="#">
@@ -537,6 +567,7 @@
 </div>
 </div>
 </div>
+@endif
 @if($projects->hasPages())
 <div class="mt-10 flex justify-center">{{ $projects->onEachSide(1)->links() }}</div>
 @endif

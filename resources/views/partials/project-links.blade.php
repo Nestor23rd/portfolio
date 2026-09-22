@@ -4,6 +4,7 @@
         $arr['category'] = __($arr['category'] ?? 'Projet');
         $arr['title'] = __($arr['title'] ?? '');
         $arr['excerpt'] = __($arr['excerpt'] ?? $arr['description'] ?? '');
+        $arr['detail_url'] = route('projects.show', $p);
         return $arr;
     });
 @endphp
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('projects-grid');
     if (!grid) return;
 
-    const viewProjectText = @json(__('site.view_project'));
+    const viewProjectText = @json(__('site.view_case_study'));
     const sourceCodeText = @json(__('site.source_code'));
 
     grid.replaceChildren(...projects.map((project, index) => {
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = 'reveal-card bg-surface-container-low border border-outline-variant/40 rounded-xl flex flex-col overflow-hidden hover:border-primary/50 transition-all duration-200 group';
         card.style.setProperty('--stagger', index);
         const technologies = Array.isArray(project.technologies) ? project.technologies : [];
-        card.innerHTML = `<div class="p-6 flex-grow flex flex-col justify-between"><div><div class="flex items-center justify-between mb-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-primary/10 border border-primary/30 text-primary font-code-sm text-code-sm font-semibold"></span><span class="font-code-sm text-code-sm text-outline">#${String(index + 1).padStart(2, '0')}</span></div><h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors"></h3><p class="font-body-sm text-body-sm text-on-surface-variant mt-2"></p><div class="project-technologies flex flex-wrap gap-1.5 mt-4"></div></div><div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between"><a class="project-url inline-flex items-center gap-1 text-primary hover:text-primary-container font-headline-sm text-body-sm font-semibold transition-colors" target="_blank" rel="noopener noreferrer" href="#">${viewProjectText} <span class="text-xs">↗</span></a><a class="repository-url inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" target="_blank" rel="noopener noreferrer" href="#"><span class="material-symbols-outlined text-[16px]">code</span>${sourceCodeText}</a></div></div>`;
+        card.innerHTML = `<div class="p-6 flex-grow flex flex-col justify-between"><div><div class="flex items-center justify-between mb-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-primary/10 border border-primary/30 text-primary font-code-sm text-code-sm font-semibold"></span><span class="font-code-sm text-code-sm text-outline">#${String(index + 1).padStart(2, '0')}</span></div><h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors"></h3><p class="font-body-sm text-body-sm text-on-surface-variant mt-2"></p><div class="project-technologies flex flex-wrap gap-1.5 mt-4"></div></div><div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between"><a class="project-url inline-flex items-center gap-1 rounded-lg bg-primary-container px-3.5 py-2 font-semibold text-on-primary-container transition hover:bg-primary hover:text-on-primary" href="#">${viewProjectText} <span class="text-xs">↗</span></a><a class="repository-url inline-flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm transition-colors" target="_blank" rel="noopener noreferrer" href="#"><span class="material-symbols-outlined text-[16px]">code</span>${sourceCodeText}</a></div></div>`;
         if (project.image_path) {
             const cover = document.createElement('img');
             cover.src = project.image_url || `/storage/${project.image_path}`;
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const projectLink = card.querySelector('.project-url');
         const repositoryLink = card.querySelector('.repository-url');
-        if (project.project_url) projectLink.href = project.project_url; else projectLink.hidden = true;
+        projectLink.href = project.detail_url;
         if (project.repository_url) repositoryLink.href = project.repository_url; else repositoryLink.hidden = true;
         return card;
     }));
