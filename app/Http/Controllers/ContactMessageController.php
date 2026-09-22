@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
+use App\Models\SiteSetting;
+use App\Mail\ContactMessageReceived;
+use App\Mail\ContactMessageAcknowledged;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class ContactMessageController extends Controller
 {
@@ -26,8 +31,23 @@ class ContactMessageController extends Controller
             'message.max' => 'Votre message ne peut pas dépasser :max caractères.',
         ]);
 
-        ContactMessage::create($validated);
+        $message = ContactMessage::create($validated);
+        $recipient = SiteSetting::where('key', 'email')->value('value') ?: config('mail.from.address');
+        $mailSent = true;
+        try {
+            Mail::to($recipient)->send(new ContactMessageReceived($message));
+        } catch (\Throwable $exception) {
+            $mailSent = false;
+            Log::error('Impossible de mettre le message de contact en file email.', ['exception' => $exception]);
+        }
+        try {
+            Mail::to($message->email)->send(new ContactMessageAcknowledged($message));
+        } catch (\Throwable $exception) {
+            Log::warning('Impossible d’envoyer l’accusé de réception au visiteur.', ['exception' => $exception]);
+        }
 
-        return back()->with('contact_success', 'Votre message a bien été transmis.');
+        return back()->with('contact_success', $mailSent
+            ? 'Votre message a bien été transmis par email.'
+            : 'Votre message est enregistré dans le back-office, mais la notification email doit encore être configurée.');
     }
 }
