@@ -1,5 +1,6 @@
 @php($isGlobalGlobe = $global ?? false)
-<div class="hero-globe-card {{ $isGlobalGlobe ? 'hero-globe-global fixed inset-0' : 'hero-globe-background absolute inset-0' }} z-0 overflow-hidden pointer-events-none">
+@php($isCompactGlobe = $compact ?? false)
+<div class="hero-globe-card {{ $isGlobalGlobe ? 'hero-globe-global fixed inset-0' : 'hero-globe-background absolute inset-0' }} {{ $isCompactGlobe ? 'hero-globe-compact' : '' }} z-0 overflow-hidden pointer-events-none">
     <div class="hero-globe-stars absolute inset-0"></div>
     <div class="absolute left-5 top-5 z-10 flex items-center gap-2 rounded-lg border border-outline-variant/40 bg-surface-container-lowest/80 px-3 py-2 font-mono text-[10px] uppercase tracking-[.14em] text-on-surface-variant backdrop-blur">
         <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-400"></span>{{ __('site.globe_status') }}
@@ -37,8 +38,12 @@
     .hero-globe-card { isolation:isolate; perspective:1200px; }
     .hero-globe-background { min-height:100%; opacity:.62; }
     .hero-globe-global { opacity:.34; }
+    .hero-globe-compact { opacity:.2; }
+    .hero-globe-compact .hero-globe-svg { width:min(68vw, 680px); height:min(68vw, 680px); }
+    .hero-globe-compact .hero-globe-orbit { left:16%; width:68%; }
     .hero-globe-global > .absolute.z-10 { display:none; }
     html:not(.dark) .hero-globe-global { opacity:.48; }
+    html:not(.dark) .hero-globe-global.hero-globe-compact { opacity:.3; }
     html:not(.dark) .hero-globe-global .hero-globe-svg { filter:saturate(1.12) contrast(1.08); }
     html:not(.dark) .hero-globe-global::after { background:linear-gradient(90deg,rgba(248,250,253,.58) 0%,rgba(248,250,253,.28) 25%,rgba(248,250,253,.04) 58%,transparent 100%),linear-gradient(180deg,rgba(248,250,253,.04) 0%,transparent 35%,rgba(248,250,253,.18) 100%); }
     .hero-globe-background::after, .hero-globe-global::after { content:""; position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(90deg,rgba(7,13,29,.92) 0%,rgba(7,13,29,.72) 22%,rgba(7,13,29,.18) 52%,rgba(7,13,29,.08) 100%),linear-gradient(180deg,rgba(7,13,29,.25) 0%,transparent 28%,rgba(7,13,29,.5) 100%); }
