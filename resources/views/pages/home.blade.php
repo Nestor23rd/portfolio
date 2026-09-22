@@ -22,7 +22,7 @@
 <section class="relative min-h-[calc(100vh-4rem)] flex flex-col justify-between max-w-none px-6 md:px-12 py-12 md:py-16 overflow-hidden">
 <!-- Subtle Grid Background -->
 <div class="absolute inset-0 hero-dot-pattern [background-size:28px_28px] opacity-40 pointer-events-none -z-10"></div>
-@include('partials.hero-globe')
+@include('partials.hero-globe', ['global' => true])
 
 <!-- Hero Content -->
 <div class="relative z-10 grid grid-cols-1 gap-10 items-center flex-grow py-8 w-full max-w-7xl mx-auto">
