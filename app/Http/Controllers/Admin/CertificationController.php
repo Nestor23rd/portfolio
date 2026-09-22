@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Certification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CertificationController extends Controller
 {
@@ -13,15 +14,27 @@ class CertificationController extends Controller
     public function store(Request $request) { Certification::create($this->validated($request)); return redirect()->route('admin.certifications.index')->with('success', 'Certification créée.'); }
     public function edit(Certification $certification) { return view('admin.certifications.form', compact('certification')); }
     public function update(Request $request, Certification $certification) { $certification->update($this->validated($request)); return redirect()->route('admin.certifications.index')->with('success', 'Certification mise à jour.'); }
-    public function destroy(Certification $certification) { $certification->delete(); return back()->with('success', 'Certification supprimée.'); }
+    public function destroy(Certification $certification) { if ($certification->document_path) Storage::disk('public')->delete($certification->document_path); $certification->delete(); return back()->with('success', 'Certification supprimée.'); }
 
     private function validated(Request $request): array
     {
         return $request->validate([
             'title' => ['required', 'string', 'max:180'], 'issuer' => ['nullable', 'string', 'max:160'],
             'description' => ['nullable', 'string', 'max:1500'], 'credential_id' => ['nullable', 'string', 'max:160'],
-            'credential_url' => ['nullable', 'url', 'max:255'], 'status' => ['required', 'string', 'max:60'],
+            'credential_url' => ['nullable', 'url', 'max:255'], 'document' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:10240'], 'status' => ['required', 'string', 'max:60'],
             'issued_at' => ['nullable', 'date'], 'sort_order' => ['integer', 'min:0'], 'is_visible' => ['boolean'],
         ]) + ['is_visible' => $request->boolean('is_visible')];
+
+        unset($data['document']);
+        if ($request->hasFile('document')) {
+            if ($certification = request()->route('certification')) {
+                if ($certification->document_path) Storage::disk('public')->delete($certification->document_path);
+            }
+            $file = $request->file('document');
+            $data['document_path'] = $file->store('certifications', 'public');
+            $data['document_type'] = $file->getMimeType();
+        }
+
+        return $data;
     }
 }

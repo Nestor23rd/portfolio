@@ -55,6 +55,11 @@ Route::get('/certifications', function () {
     $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
     return view('pages.certifications', compact('certifications'));
 })->name('certifications');
+
+Route::get('/certifications/{certification}', function (Certification $certification) {
+    abort_unless($certification->is_visible, 404);
+    return view('pages.certification-detail', compact('certification'));
+})->name('certifications.show');
 Route::get('/experience', function () {
     $experiences = Experience::query()->orderBy('sort_order')->orderByDesc('start_date')->get();
     return view('pages.experience', compact('experiences'));
