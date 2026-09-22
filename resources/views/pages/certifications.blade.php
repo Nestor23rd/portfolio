@@ -13,6 +13,7 @@
 </head>
 <body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
 @include('partials.navigation')
+@include('partials.hero-globe', ['global' => true])
 <main class="min-h-screen w-full px-6 pb-20 pt-28 md:px-12">
     <section class="mx-auto w-full max-w-7xl">
         <div class="mb-10 flex items-center gap-3 border-b border-outline-variant/30 pb-5">

@@ -19,14 +19,15 @@
 <main class="flex-grow pt-16">
 
 <!-- ==================== 1. HERO SECTION ==================== -->
-<section class="relative min-h-[calc(100vh-4rem)] flex flex-col justify-between max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
+<section class="relative min-h-[calc(100vh-4rem)] flex flex-col justify-between max-w-none px-6 md:px-12 py-12 md:py-16 overflow-hidden">
 <!-- Subtle Grid Background -->
 <div class="absolute inset-0 hero-dot-pattern [background-size:28px_28px] opacity-40 pointer-events-none -z-10"></div>
+@include('partials.hero-globe')
 
-<!-- Hero Content (2 Columns Desktop) -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center flex-grow py-8">
-<!-- Left Column: Content & Identity (7 cols) -->
-<div class="lg:col-span-7 flex flex-col items-start gap-6">
+<!-- Hero Content -->
+<div class="relative z-10 grid grid-cols-1 gap-10 items-center flex-grow py-8 w-full max-w-7xl mx-auto">
+<!-- Identity and presentation -->
+<div class="lg:col-span-12 min-w-0 w-full flex flex-col items-start gap-6">
 <!-- Badge -->
 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/60 shadow-sm">
 <span class="text-secondary font-code-md text-code-sm font-bold">&gt;_</span>
@@ -41,12 +42,12 @@
 </h1>
 
 <!-- Subtitle -->
-<p class="font-body-lg text-body-md md:text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+<p class="font-body-lg text-body-md md:text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
     {{ __('site.hero_subtitle') }}
 </p>
 
 <!-- CTAs -->
-<div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2 w-full">
+<div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2 w-full sm:w-auto">
 <a class="inline-flex items-center justify-center gap-2.5 bg-primary-container text-on-surface font-body-md text-label-md font-semibold px-6 py-3 rounded-lg shadow-[0_0_20px_rgba(77,142,255,0.35)] hover:bg-primary hover:text-on-primary transition-all duration-150 active:scale-95 group" href="{{ route('projects') }}">
 <span>{{ __('site.see_projects') }}</span>
 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">east</span>
@@ -68,8 +69,9 @@
 </div>
 </div>
 
-<!-- Right Column: Terminal Card (5 cols) -->
-<div class="lg:col-span-5 mt-6 lg:mt-0">
+<!-- Key figures -->
+<div class="lg:col-span-12 w-full mt-4">
+@if(false)
 <div class="reveal-card specular-card bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-2xl">
 <!-- Terminal Header -->
 <div class="flex items-center justify-between px-4 py-3 bg-surface-container border-b border-outline-variant/40">
@@ -140,10 +142,11 @@
 <span>{{ __('site.experience') }} : {{ $experiences->count() }} {{ __('site.telemetry_experiences') }}</span>
 </div>
 </div>
+@endif
 </div>
 
 <!-- Bottom Metrics -->
-<div class="grid grid-cols-3 px-4 py-2.5 bg-surface-container-high/60 border-t border-outline-variant/40 text-center font-code-sm text-code-sm">
+<div class="grid grid-cols-3 w-full max-w-3xl rounded-xl border border-outline-variant/40 bg-surface-container-low/85 px-4 py-5 text-center font-code-sm text-code-sm shadow-lg backdrop-blur-sm">
 <div>
 <span class="text-on-surface-variant text-[10px] uppercase block">{{ __('site.projects') }}</span>
 <span class="font-bold text-on-surface">{{ $projects->count() }}</span>
@@ -162,7 +165,7 @@
 </div>
 
 <!-- Bottom Tech Stack Ribbon -->
-<div class="pt-8 pb-4 border-t border-outline-variant/30">
+<div class="relative z-10 w-full max-w-7xl mx-auto pt-8 pb-4 border-t border-outline-variant/30">
 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
 <div class="flex items-center gap-2 text-on-surface-variant font-code-md text-code-sm shrink-0">
 <span class="uppercase tracking-wider">{{ app()->getLocale() === 'en' ? 'Key technologies' : 'Technologies clés' }}</span>
@@ -177,6 +180,8 @@
 </div>
 </div>
 </section>
+
+@include('partials.guided-journey')
 
 <!-- ==================== 2. CHIFFRES CLÉS & TÉLÉMÉTRIE ==================== -->
 <section class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 border-t border-outline-variant/20">

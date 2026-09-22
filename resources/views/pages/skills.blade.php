@@ -24,6 +24,7 @@
 <body class="bg-background text-on-surface font-body-md text-body-md min-h-screen selection:bg-primary selection:text-on-primary-container bg-grid-engineer relative antialiased flex flex-col">
 
 @include('partials.navigation')
+@include('partials.hero-globe', ['global' => true])
 
 <!-- ========================================================================= -->
 <!-- Main Content Canvas -->

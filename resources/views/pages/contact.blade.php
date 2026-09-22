@@ -16,6 +16,7 @@
 <body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container terminal-grid">
 
 @include('partials.navigation')
+@include('partials.hero-globe', ['global' => true])
 
 @php
     $siteSettings = \App\Models\SiteSetting::pluck('value', 'key');

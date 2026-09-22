@@ -33,6 +33,7 @@
 <body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col selection:bg-primary selection:text-on-primary antialiased relative terminal-grid overflow-x-hidden">
 
 @include('partials.navigation')
+@include('partials.hero-globe', ['global' => true])
 
 <!-- Ambient Light Orbs -->
 <div class="fixed top-20 left-1/2 -translate-x-1/2 w-[320px] sm:w-[500px] md:w-[700px] h-[250px] md:h-[350px] bg-primary-container/10 blur-[100px] md:blur-[130px] pointer-events-none rounded-full -z-10"></div>

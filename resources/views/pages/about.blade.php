@@ -16,6 +16,7 @@
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary terminal-grid-pattern antialiased">
 
 @include('partials.navigation')
+@include('partials.hero-globe', ['global' => true])
 
 <!-- Main Content Canvas -->
 <main class="flex-grow pt-28 pb-20 max-w-7xl mx-auto px-6 md:px-12 w-full">

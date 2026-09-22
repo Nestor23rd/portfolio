@@ -592,4 +592,5 @@
 </footer>
 @include('partials.project-links')
 @include('partials.navigation')
+@include('partials.hero-globe', ['global' => true])
 </body></html>
