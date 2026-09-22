@@ -31,11 +31,11 @@
 @endphp
 
 <!-- MAIN CONTACT SECTION -->
-<main class="flex-grow pt-28 pb-20 px-6 md:px-12">
-    <div class="w-full max-w-6xl mx-auto space-y-12">
+<main class="flex-grow pt-32 pb-24 px-6 md:px-12">
+    <div class="w-full max-w-7xl mx-auto space-y-14">
 
         <!-- Section Header -->
-        <div class="text-center space-y-4 max-w-2xl mx-auto">
+        <div class="text-center lg:text-left space-y-4 max-w-4xl lg:mx-0">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/40">
                 <span class="material-symbols-outlined text-primary text-xs">terminal</span>
                 <span class="font-code-sm text-code-sm text-primary font-medium tracking-wide">&gt;_ {{ __('site.communication_channel') }}</span>
@@ -43,16 +43,16 @@
             <h1 class="font-headline-lg md:font-headline-xl text-headline-lg md:text-headline-xl text-on-surface font-bold tracking-tight">
                 {{ __('site.contact_title') }} <span class="text-primary">{{ __('site.project') }}</span>
             </h1>
-            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-3xl lg:mx-0 mx-auto">
                 {{ __('site.contact_intro') }}
             </p>
         </div>
 
         <!-- 2-Column Bento Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-start w-full">
 
             <!-- LEFT COLUMN: Contact Form (7 cols) -->
-            <div class="lg:col-span-7 reveal-card specular-card bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl relative">
+            <div class="lg:col-span-7 reveal-card specular-card bg-surface-container-low rounded-2xl border border-outline-variant/30 overflow-hidden shadow-2xl relative">
                 
                 <!-- Terminal Shell Header -->
                 <div class="bg-surface-container-lowest px-5 py-3.5 border-b border-outline-variant/30 flex items-center justify-between">
@@ -94,7 +94,7 @@
                 @endif
 
                 <!-- Form -->
-                <form action="{{ route('contact.store') }}" method="POST" class="p-6 md:p-8 space-y-6" id="contactForm">
+                <form action="{{ route('contact.store') }}" method="POST" class="p-6 md:p-9 space-y-7" id="contactForm">
                     @csrf
 
                     <!-- Name and Email Row -->
@@ -205,7 +205,7 @@
             </div>
 
             <!-- RIGHT COLUMN: Direct Coordonnées & Context (5 cols) -->
-            <div class="lg:col-span-5 space-y-6">
+            <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
 
                 <!-- Availability Card -->
                 <div class="specular-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/30 space-y-3 relative overflow-hidden">
