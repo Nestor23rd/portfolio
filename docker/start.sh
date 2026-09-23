@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "${APP_KEY:-}" ]; then
-    echo "ERROR: APP_KEY is missing. Add a generated Laravel APP_KEY in Render environment variables."
+    echo "ERROR: APP_KEY is missing. Generate one with: php artisan key:generate --show"
     exit 1
 fi
 
@@ -11,6 +11,9 @@ php -r '$key = getenv("APP_KEY"); $decoded = str_starts_with($key, "base64:") ? 
 php artisan config:clear
 php artisan migrate --force
 php artisan db:seed --class=AdminUserSeeder --force
+if [ "${RUN_DATABASE_SEED:-false}" = "true" ]; then
+    php artisan db:seed --force
+fi
 php artisan storage:link --force || true
 php artisan config:cache
 php artisan route:cache
