@@ -30,34 +30,34 @@
                     <div>
                         <div class="mb-5 flex items-start justify-between gap-4">
                             <div class="min-w-0">
-                                <span class="block truncate font-mono text-xs font-semibold uppercase tracking-wider text-secondary">{{ __($certification->issuer ?: (app()->getLocale() === 'en' ? 'Issuer not specified' : 'Organisme non renseigné')) }}</span>
+                                <span class="block truncate font-mono text-xs font-semibold uppercase tracking-wider text-secondary">{{ __($certification->issuer ?: __('site.issuer_not_specified')) }}</span>
                                 <h2 class="mt-2 font-headline-sm text-headline-sm font-bold leading-tight text-on-surface">{{ __($certification->title) }}</h2>
                             </div>
                             <span class="shrink-0 rounded border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-xs font-medium text-emerald-400">{{ __($certification->status) }}</span>
                         </div>
-                        <p class="leading-7 text-on-surface-variant font-body-md text-body-md">{{ __($certification->description ?: (app()->getLocale() === 'en' ? 'No description provided.' : 'Aucune description renseignée.')) }}</p>
+                        <p class="leading-7 text-on-surface-variant font-body-md text-body-md">{{ __($certification->description ?: __('site.certification_description_missing')) }}</p>
                         <div class="mt-6 grid gap-3 rounded-lg border border-outline-variant/30 bg-surface-container-lowest p-4 font-mono text-xs text-on-surface-variant sm:grid-cols-2">
-                            <div><span class="text-outline">{{ __('site.credential_id') }}</span> {{ $certification->credential_id ?: (app()->getLocale() === 'en' ? 'Not provided' : 'Non renseigné') }}</div>
-                            <div><span class="text-outline">{{ __('site.issue_date') }}</span> {{ $certification->issued_at?->format('d/m/Y') ?: (app()->getLocale() === 'en' ? 'Not provided' : 'Non renseignée') }}</div>
+                            <div><span class="text-outline">{{ __('site.credential_id') }}</span> {{ $certification->credential_id ?: __('site.not_provided') }}</div>
+                            <div><span class="text-outline">{{ __('site.issue_date') }}</span> {{ $certification->issued_at?->format('d/m/Y') ?: __('site.not_provided') }}</div>
                         </div>
                         @if($certification->document_url)
                             <a href="{{ $certification->document_type === 'application/pdf' ? $certification->document_url : route('certifications.show', $certification) }}" @if($certification->document_type === 'application/pdf') target="_blank" rel="noopener noreferrer" @endif class="mt-5 block overflow-hidden rounded-lg border border-outline-variant/30 bg-surface-container-lowest transition hover:border-primary/60">
                                 @if($certification->document_type === 'application/pdf')
-                                    <div class="flex items-center gap-3 p-4 font-mono text-sm text-primary"><span class="rounded bg-primary/15 px-2 py-1 text-xs">PDF</span> Lire le certificat en détail <span aria-hidden="true">↗</span></div>
+                                    <div class="flex items-center gap-3 p-4 font-mono text-sm text-primary"><span class="rounded bg-primary/15 px-2 py-1 text-xs">PDF</span> {{ __('site.read_certification_details') }} <span aria-hidden="true">↗</span></div>
                                 @else
-                                    <img src="{{ $certification->document_url }}" alt="Aperçu du certificat {{ $certification->title }}" class="h-40 w-full object-cover object-top opacity-90 transition hover:opacity-100">
-                                    <div class="p-3 font-mono text-sm text-primary">Voir le certificat en détail <span aria-hidden="true">↗</span></div>
+                                    <img src="{{ $certification->document_url }}" alt="{{ __('site.certificate_preview', ['title' => $certification->title]) }}" class="h-40 w-full object-cover object-top opacity-90 transition hover:opacity-100">
+                                    <div class="p-3 font-mono text-sm text-primary">{{ __('site.view_certification_details') }} <span aria-hidden="true">↗</span></div>
                                 @endif
                             </a>
                         @else
                             <div class="mt-5 rounded-lg border border-dashed border-outline-variant/40 bg-surface-container-lowest p-4 font-mono text-xs text-on-surface-variant">
-                                Document du certificat non téléversé dans l’administration.
+                                {{ __('site.certification_document_not_uploaded') }}
                             </div>
                         @endif
                     </div>
                     <div class="mt-6 border-t border-outline-variant/30 pt-5">
                         @if($certification->document_url)
-                            <a href="{{ $certification->document_type === 'application/pdf' ? $certification->document_url : route('certifications.show', $certification) }}" @if($certification->document_type === 'application/pdf') target="_blank" rel="noopener noreferrer" @endif class="mr-5 inline-flex items-center gap-2 font-mono text-sm font-semibold text-primary transition hover:text-primary-container hover:underline">{{ $certification->document_type === 'application/pdf' ? 'Ouvrir uniquement le PDF' : 'Consulter le certificat' }} ↗</a>
+                            <a href="{{ $certification->document_type === 'application/pdf' ? $certification->document_url : route('certifications.show', $certification) }}" @if($certification->document_type === 'application/pdf') target="_blank" rel="noopener noreferrer" @endif class="mr-5 inline-flex items-center gap-2 font-mono text-sm font-semibold text-primary transition hover:text-primary-container hover:underline">{{ $certification->document_type === 'application/pdf' ? __('site.open_pdf_only') : __('site.consult_certification') }} ↗</a>
                         @endif
                         @if($certification->credential_url)
                             <a href="{{ $certification->credential_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-sm font-semibold text-primary transition hover:text-primary-container hover:underline">{{ __('site.verify_certification') }} <span aria-hidden="true">↗</span></a>

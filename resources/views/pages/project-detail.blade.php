@@ -150,7 +150,7 @@
         <div class="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-8 max-w-7xl mx-auto">
             {{-- Breadcrumb --}}
             <div class="flex items-center gap-2 font-mono text-xs text-on-surface-variant mb-4">
-                <a href="{{ route('home') }}" class="hover:text-primary transition-colors">Accueil</a>
+                <a href="{{ route('home') }}" class="hover:text-primary transition-colors">{{ __('site.home') }}</a>
                 <span class="text-outline">/</span>
                 <a href="{{ route('projects') }}" class="hover:text-primary transition-colors">{{ __('site.projects') }}</a>
                 <span class="text-outline">/</span>
@@ -161,7 +161,7 @@
             @if($project->category)
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md badge-animated border border-primary/30 mb-3">
                     <span class="material-symbols-outlined text-primary" style="font-size:14px;">category</span>
-                    <span class="font-mono text-xs uppercase tracking-widest text-primary font-semibold">{{ $project->category }}</span>
+                    <span class="font-mono text-xs uppercase tracking-widest text-primary font-semibold">{{ __($project->category) }}</span>
                 </div>
             @endif
 
@@ -185,14 +185,14 @@
         <div class="project-section mt-8 flex flex-wrap items-start justify-between gap-6">
             {{-- Technologies pills --}}
             <div class="flex flex-wrap gap-2 items-center">
-                <span class="font-mono text-xs text-outline uppercase tracking-wider mr-1">Stack ·</span>
+                <span class="font-mono text-xs text-outline uppercase tracking-wider mr-1">{{ __('site.stack_label') }}</span>
                 @forelse($project->technologies ?? [] as $tech)
                     <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1.5 font-mono text-xs font-semibold text-primary">
                         <span class="w-1.5 h-1.5 rounded-full bg-primary/60"></span>
                         {{ $tech }}
                     </span>
                 @empty
-                    <span class="text-xs text-outline font-mono italic">Non précisé</span>
+                    <span class="text-xs text-outline font-mono italic">{{ __('site.not_specified') }}</span>
                 @endforelse
             </div>
 
@@ -215,7 +215,7 @@
                 <a href="{{ route('projects') }}"
                    class="inline-flex items-center gap-2 rounded-xl border border-outline-variant/40 px-4 py-2.5 font-mono text-sm text-on-surface-variant hover:border-primary/40 hover:text-primary transition-all duration-150">
                     <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
-                    Retour
+                    {{ __('site.back') }}
                 </a>
             </div>
         </div>
@@ -245,7 +245,7 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-6">
                         <span class="inline-flex items-center gap-2 text-white font-mono text-sm bg-black/60 backdrop-blur-md rounded-lg px-3 py-2 border border-white/20">
                             <span class="material-symbols-outlined" style="font-size:16px;">zoom_in</span>
-                            Agrandir
+                            {{ __('site.enlarge') }}
                         </span>
                     </div>
 
@@ -270,7 +270,7 @@
                                        {{ $idx === 0 ? 'active border-primary' : 'border-outline-variant/40 hover:border-primary/60' }}"
                                 style="width: clamp(80px, 14vw, 120px); height: clamp(60px, 10vw, 90px);">
                             <img src="{{ $imgUrl }}"
-                                 alt="{{ $project->title }} — image {{ $idx + 1 }}"
+                                 alt="{{ $project->title }} — {{ __('site.image_number', ['number' => $idx + 1]) }}"
                                  loading="lazy"
                                  class="w-full h-full object-cover">
                             {{-- Numéro --}}
@@ -352,12 +352,12 @@
                 @if($primaryImage)
                     <div class="relative overflow-hidden cursor-pointer" style="height: clamp(240px, 42vw, 480px);"
                          onclick="openLightbox('{{ $primaryImage }}')">
-                        <img src="{{ $primaryImage }}" alt="Aperçu {{ $project->title }}"
+                        <img src="{{ $primaryImage }}" alt="{{ __('site.preview') }} {{ $project->title }}"
                              class="w-full h-full object-cover object-top hover:scale-[1.015] transition duration-700">
                         <div class="absolute inset-0 flex items-center justify-center bg-black/0 hover:bg-black/30 transition-all group">
                             <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/70 backdrop-blur-md rounded-xl px-5 py-3 flex items-center gap-2 text-white font-mono text-sm border border-white/20">
                                 <span class="material-symbols-outlined" style="font-size:18px;">zoom_in</span>
-                                Voir en grand
+                                {{ __('site.view_large') }}
                             </div>
                         </div>
                     </div>
@@ -367,34 +367,36 @@
         @endif
 
         {{-- ─── PROJECT METADATA FOOTER ─────────────── --}}
+        @php($technologyCount = count($project->technologies ?? []))
+        @php($imageCount = count($project->gallery_urls ?? []) + ($project->image_url ? 1 : 0))
         <section class="project-section mt-12" style="transition-delay: 0.3s">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {{-- Categorie --}}
                 <div class="rounded-xl border border-outline-variant/30 bg-surface-container-low/50 p-5 text-center">
                     <span class="material-symbols-outlined text-secondary block mb-2" style="font-size:22px;">category</span>
-                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">Catégorie</div>
-                    <div class="font-semibold text-sm text-on-surface">{{ $project->category ?: '—' }}</div>
+                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">{{ __('site.category') }}</div>
+                    <div class="font-semibold text-sm text-on-surface">{{ $project->category ? __($project->category) : '—' }}</div>
                 </div>
                 {{-- Technologies count --}}
                 <div class="rounded-xl border border-outline-variant/30 bg-surface-container-low/50 p-5 text-center">
                     <span class="material-symbols-outlined text-primary block mb-2" style="font-size:22px;">code_blocks</span>
-                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">Technologies</div>
-                    <div class="font-semibold text-sm text-on-surface">{{ count($project->technologies ?? []) }} outil{{ count($project->technologies ?? []) > 1 ? 's' : '' }}</div>
+                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">{{ __('site.technologies') }}</div>
+                    <div class="font-semibold text-sm text-on-surface">{{ trans_choice('site.project_tools_count', $technologyCount, ['count' => $technologyCount]) }}</div>
                 </div>
                 {{-- Gallery count --}}
                 <div class="rounded-xl border border-outline-variant/30 bg-surface-container-low/50 p-5 text-center">
                     <span class="material-symbols-outlined text-tertiary block mb-2" style="font-size:22px;">photo_library</span>
-                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">Galerie</div>
-                    <div class="font-semibold text-sm text-on-surface">{{ count($project->gallery_urls ?? []) + ($project->image_url ? 1 : 0) }} image{{ (count($project->gallery_urls ?? []) + ($project->image_url ? 1 : 0)) > 1 ? 's' : '' }}</div>
+                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">{{ __('site.gallery') }}</div>
+                    <div class="font-semibold text-sm text-on-surface">{{ trans_choice('site.project_images_count', $imageCount, ['count' => $imageCount]) }}</div>
                 </div>
                 {{-- Lien live --}}
                 <div class="rounded-xl border border-outline-variant/30 bg-surface-container-low/50 p-5 text-center">
                     <span class="material-symbols-outlined text-emerald-400 block mb-2" style="font-size:22px;">public</span>
-                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">Site en ligne</div>
+                    <div class="font-mono text-xs text-outline uppercase tracking-wider mb-1">{{ __('site.live_site') }}</div>
                     @if($project->project_url)
                         <a href="{{ $project->project_url }}" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center justify-center gap-1 font-semibold text-sm text-emerald-400 hover:underline">
-                            Visiter <span class="material-symbols-outlined" style="font-size:13px;">north_east</span>
+                            {{ __('site.visit') }} <span class="material-symbols-outlined" style="font-size:13px;">north_east</span>
                         </a>
                     @else
                         <div class="font-semibold text-sm text-outline">—</div>
@@ -412,20 +414,20 @@
 
                 <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
                     <div>
-                        <div class="font-mono text-xs text-primary uppercase tracking-widest mb-3">Un projet similaire en tête ?</div>
-                        <h3 class="font-display text-2xl md:text-3xl font-bold text-on-surface">Travaillons ensemble</h3>
-                        <p class="mt-2 text-on-surface-variant max-w-md">Discutons de votre prochain projet et voyons comment je peux vous aider à le réaliser.</p>
+                        <div class="font-mono text-xs text-primary uppercase tracking-widest mb-3">{{ __('site.similar_project_prompt') }}</div>
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-on-surface">{{ __('site.work_together') }}</h3>
+                        <p class="mt-2 text-on-surface-variant max-w-md">{{ __('site.project_cta_desc') }}</p>
                     </div>
                     <div class="flex flex-wrap gap-3 shrink-0">
                         <a href="{{ route('contact') }}"
                            class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-on-primary shadow-lg shadow-primary/25 hover:bg-primary/90 active:scale-95 transition-all duration-150">
                             <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
-                            Me contacter
+                            {{ __('site.contact') }}
                         </a>
                         <a href="{{ route('projects') }}"
                            class="inline-flex items-center gap-2 rounded-xl border border-outline-variant/60 px-6 py-3 font-semibold text-on-surface hover:border-primary/50 hover:bg-surface-container-low active:scale-95 transition-all duration-150">
                             <span class="material-symbols-outlined" style="font-size:18px;">grid_view</span>
-                            Voir tous les projets
+                            {{ __('site.see_all_projects') }}
                         </a>
                     </div>
                 </div>
@@ -435,13 +437,13 @@
     </main>
 
     {{-- ─── LIGHTBOX ─────────────────────────────────── --}}
-    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse d'image"
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="{{ __('site.image_viewer') }}"
          onclick="closeLightbox(event)">
         <div class="relative max-w-6xl w-full">
             <button onclick="closeLightbox(null)"
                     class="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors font-mono text-sm flex items-center gap-1">
                 <span class="material-symbols-outlined" style="font-size:20px;">close</span>
-                Fermer (Esc)
+                {{ __('site.close_esc') }}
             </button>
             <img id="lightbox-img" src="" alt="">
         </div>
