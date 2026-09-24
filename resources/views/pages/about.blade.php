@@ -32,22 +32,6 @@
                 <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold tracking-tight">
                     {{ __('site.about_heading_pre') }} <span class="text-primary">Nestor KPADJA</span>
                 </h1>
-                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl font-normal leading-relaxed">
-                    {{ __('site.about_tagline') }}
-                </p>
-            </div>
-            <!-- Quick Status Badge -->
-            <div class="flex flex-col items-start lg:items-end gap-2 shrink-0">
-                <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 font-code-sm text-code-sm text-on-surface-variant shadow-inner">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-outline">{{ __('site.status_label') }}</span>
-                    <span class="text-emerald-400 font-semibold">{{ __('site.available') }}</span>
-                    <span class="text-outline-variant">|</span>
-                    <span class="text-on-surface">{{ __('site.remote_hybrid') }}</span>
-                </div>
-                <p class="font-code-sm text-code-sm text-outline">
-                    {{ __('site.location_val') }}
-                </p>
             </div>
         </div>
     </section>
@@ -56,7 +40,7 @@
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-20">
         
         <!-- COLONNE GAUCHE (5 cols) : Identity Card -->
-        <div class="lg:col-span-5 flex flex-col gap-6">
+        <div class="lg:col-span-4 flex flex-col gap-6">
             <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 overflow-hidden">
                 <!-- Image Wrapper with dual glow gradient border -->
                 <div class="relative mx-auto w-full max-w-[280px] aspect-[4/5] rounded-xl p-1 bg-gradient-to-tr from-primary via-outline-variant to-secondary">
@@ -66,85 +50,11 @@
                     </div>
                 </div>
 
-                <!-- Identity Details -->
-                <div class="mt-6 text-center">
-                    <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">
-                        Kokoussè Nestor KPADJA
-                    </h2>
-                    <div class="font-code-sm text-code-sm text-primary mt-1 font-semibold">
-                        {{ __('site.backend_blockchain') }}
-                    </div>
-                </div>
-
-                <!-- Structured Key Info Badges -->
-                <div class="mt-6 flex flex-col gap-2.5">
-                    <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
-                        <span class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-base text-primary">location_on</span>
-                            <span>{{ __('site.location_label') }}</span>
-                        </span>
-                        <span class="text-on-surface font-semibold">Lomé, Togo</span>
-                    </div>
-
-                    <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
-                        <span class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-base text-secondary">school</span>
-                            <span>{{ __('site.education_label') }}</span>
-                        </span>
-                        <span class="text-on-surface font-semibold">{{ __('site.education_val') }}</span>
-                    </div>
-
-                    <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
-                        <span class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-base text-emerald-400">deployed_code</span>
-                            <span>{{ __('site.specialization_label') }}</span>
-                        </span>
-                        <span class="text-on-surface font-semibold">{{ __('site.specialization_val') }}</span>
-                    </div>
-
-                    <div class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant font-code-sm text-code-sm">
-                        <span class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-base text-primary">work_outline</span>
-                            <span>{{ __('site.availability_label') }}</span>
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            {{ __('site.immediate_val') }}
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Action Links -->
-                <div class="mt-6 pt-5 border-t border-outline-variant/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
-                    <a class="px-4 py-2.5 rounded-lg bg-secondary-container hover:bg-secondary text-on-secondary-container font-label-md font-bold text-center transition-all duration-150 active:scale-95 shadow-sm flex items-center justify-center gap-2" href="{{ route('contact') }}">
-                        <span class="material-symbols-outlined text-base">mail</span>
-                        <span>{{ __('site.contact') }}</span>
-                    </a>
-                    <div class="flex items-center justify-center gap-2">
-                        @if(!empty($siteSettings['github_url']))
-                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="{{ $siteSettings['github_url'] }}" rel="noopener noreferrer" target="_blank" title="Profil GitHub">
-                            <span class="material-symbols-outlined text-base">code</span>
-                        </a>
-                        @endif
-                        @if(!empty($siteSettings['linkedin_url']))
-                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="{{ $siteSettings['linkedin_url'] }}" rel="noopener noreferrer" target="_blank" title="Profil LinkedIn">
-                            <span class="material-symbols-outlined text-base">link</span>
-                        </a>
-                        @endif
-                        @if(isset($socialLinks))
-                        @foreach($socialLinks as $sLink)
-                        <a class="p-2.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:border-emerald-400 text-on-surface-variant hover:text-emerald-400 transition-colors flex items-center justify-center" href="{{ $sLink->url }}" rel="noopener noreferrer" target="_blank" title="{{ $sLink->label }}">
-                            <span class="material-symbols-outlined text-base">open_in_new</span>
-                        </a>
-                        @endforeach
-                        @endif
-                    </div>
-                </div>
             </div>
         </div>
 
         <!-- COLONNE DROITE (7 cols) : Mon Histoire & Vision -->
-        <div class="lg:col-span-7 flex flex-col gap-6">
+        <div class="lg:col-span-8 flex flex-col gap-6">
             
             <!-- Biography Card with Terminal Header -->
             <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6 md:p-8">
@@ -208,25 +118,6 @@
                     @endif
                 </div>
 
-                <!-- Stats Ribbon inside Bio Card -->
-                <div class="mt-8 pt-6 border-t border-outline-variant/30 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-                    <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
-                        <span class="font-headline-md text-headline-md font-bold text-primary block">{{ $projectsCount }}+</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_projects') }}</span>
-                    </div>
-                    <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
-                        <span class="font-headline-md text-headline-md font-bold text-secondary block">{{ $skillsCount }}</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_skills') }}</span>
-                    </div>
-                    <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
-                        <span class="font-headline-md text-headline-md font-bold text-emerald-400 block">{{ $certificationsCount }}</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_certifications') }}</span>
-                    </div>
-                    <div class="p-3 rounded-lg bg-surface-container/60 border border-outline-variant/20">
-                        <span class="font-headline-md text-headline-md font-bold text-on-surface block">{{ $experiences->count() }}</span>
-                        <span class="font-code-sm text-[11px] text-on-surface-variant uppercase tracking-wider">{{ __('site.stat_experiences') }}</span>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -314,157 +205,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== PARCOURS & EXPÉRIENCES CHRONOLOGIQUES ==================== -->
-    <section class="mb-20">
-        <div class="flex items-center justify-between gap-3 mb-8">
-            <div class="flex items-center gap-3">
-                <span class="text-secondary font-code-md text-code-md font-bold">&gt;_</span>
-                <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
-                    {{ __('site.career_title') }}
-                </h2>
-            </div>
-            <a class="text-primary font-code-sm text-code-sm hover:underline flex items-center gap-1" href="{{ route('experience') }}">
-                <span>{{ __('site.see_details') }}</span>
-                <span class="material-symbols-outlined text-sm">arrow_forward</span>
-            </a>
-        </div>
-
-        <div class="space-y-4">
-            @forelse($experiences as $exp)
-            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 hover:border-primary/40 rounded-xl p-6 transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center text-primary shrink-0 mt-0.5">
-                        <span class="material-symbols-outlined text-xl">
-                            {{ $exp->is_current ? 'terminal' : ($exp->company === 'Formation' ? 'school' : 'business_center') }}
-                        </span>
-                    </div>
-                    <div>
-                        <div class="flex flex-wrap items-center gap-2 mb-1">
-                            <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
-                                {{ __($exp->role) }}
-                            </h3>
-                            @if($exp->is_current)
-                            <span class="font-code-sm text-[11px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">
-                                {{ __('site.current_position') }}
-                            </span>
-                            @endif
-                        </div>
-                        <div class="font-code-sm text-code-sm text-secondary mb-2">
-                            {{ __($exp->company ?: 'Indépendant / Projet') }}
-                        </div>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-3xl">
-                            {{ __($exp->description) }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="shrink-0 md:text-right font-code-sm text-code-sm text-outline border-t md:border-t-0 border-outline-variant/20 pt-3 md:pt-0">
-                    <div>{{ $exp->start_date ? $exp->start_date->format('Y') : '' }} — {{ $exp->is_current ? __('site.current_position') : ($exp->end_date ? $exp->end_date->format('Y') : '') }}</div>
-                    @if($exp->location)
-                    <div class="text-[11px] text-on-surface-variant mt-0.5">{{ $exp->location }}</div>
-                    @endif
-                </div>
-            </div>
-            @empty
-            <div class="p-8 text-center text-on-surface-variant bg-surface-container-low border border-outline-variant/30 rounded-xl">
-                {{ __('site.no_experience') }}
-            </div>
-            @endforelse
-        </div>
-    </section>
-
-    <!-- ==================== MÉTHODOLOGIE & ENVIRONNEMENT DE TRAVAIL ==================== -->
-    <section class="mb-20">
-        <div class="flex items-center gap-3 mb-8">
-            <span class="text-secondary font-code-md text-code-md font-bold">&gt;_</span>
-            <h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">
-                {{ __('site.workflow_title') }}
-            </h2>
-            <div class="h-px bg-outline-variant/30 flex-grow ml-4"></div>
-            <span class="font-code-sm text-code-sm text-outline hidden sm:inline">WORKFLOW_STACK</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Box 1 -->
-            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
-                <div class="flex items-center gap-3 mb-4 text-primary">
-                    <span class="material-symbols-outlined text-2xl">terminal</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.tools_title') }}</h3>
-                </div>
-                <ul class="space-y-2.5 font-code-sm text-code-sm text-on-surface-variant">
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Linux & Bash environment' : 'Environnement Linux & Bash' }}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Docker &amp; Docker Compose</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>Git, Gitflow, GitHub / GitLab</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Automated CI/CD pipelines' : 'Pipelines CI/CD automatisés' }}</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Box 2 -->
-            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
-                <div class="flex items-center gap-3 mb-4 text-secondary">
-                    <span class="material-symbols-outlined text-2xl">api</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.quality_title') }}</h3>
-                </div>
-                <ul class="space-y-2.5 font-code-sm text-code-sm text-on-surface-variant">
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'RESTful APIs & OpenAPI contracts' : 'APIs RESTful & Contrats OpenAPI' }}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Unit & integration testing' : "Tests unitaires & d'intégration" }}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Layered architecture & MVC' : 'Architecture en couches & MVC' }}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Secure authentication (OAuth2, JWT)' : 'Authentification sécurisée (OAuth2, JWT)' }}</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Box 3 -->
-            <div class="reveal-card specular-card bg-surface-container-low border border-outline-variant/40 rounded-xl p-6">
-                <div class="flex items-center gap-3 mb-4 text-emerald-400">
-                    <span class="material-symbols-outlined text-2xl">handshake</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">{{ __('site.collaboration_title') }}</h3>
-                </div>
-                <ul class="space-y-2.5 font-code-sm text-code-sm text-on-surface-variant">
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Scrum methodology & Sprints' : 'Méthodologie Scrum / Sprints' }}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Systematic code reviews' : 'Revues de code systématiques' }}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Careful technical documentation' : 'Documentation technique soignée' }}</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                        <span>{{ app()->getLocale() === 'en' ? 'Autonomy & proactive initiative' : "Autonomie et prise d'initiative" }}</span>
-                    </li>
-                </ul>
             </div>
         </div>
     </section>
