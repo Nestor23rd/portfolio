@@ -62,11 +62,13 @@
 @php
     $categoryIcons = [
         'Langages' => 'code',
+        'Languages' => 'code',
         'Frameworks' => 'deployed_code',
         'Data & Infra' => 'database',
+        'Data & Infrastructure' => 'database',
         'Workflow' => 'schema',
     ];
-    $groupedSkills = $skills->groupBy('category');
+    $groupedSkills = $skills->groupBy(fn ($skill) => $skill->localizedCategory());
 @endphp
 
 <section class="mb-20">
@@ -83,7 +85,7 @@
 </div>
 <div>
 <span class="font-code-sm text-code-sm text-secondary block leading-none mb-1">MODULE_{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-<h2 class="font-headline-sm text-headline-sm text-on-surface">{{ __($category) }}</h2>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">{{ $category }}</h2>
 </div>
 </div>
 <span class="font-code-sm text-code-sm text-outline px-2 py-0.5 rounded bg-surface-container">{{ $categorySkills->count() }} ITEMS</span>
@@ -95,15 +97,15 @@
 <div class="flex items-center justify-between mb-1.5">
 <div class="flex items-center gap-2">
 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-<span class="font-code-md text-code-md font-semibold text-on-surface">{{ $skill->name }}</span>
+<span class="font-code-md text-code-md font-semibold text-on-surface">{{ $skill->localizedName() }}</span>
 </div>
 @if($skill->proficiency)
 <span class="font-label-sm text-label-sm uppercase px-1.5 py-0.5 rounded bg-surface-container-high text-primary border border-primary/20">{{ $skill->proficiency }}%</span>
 @endif
 </div>
-@if($skill->description)
+@if($skill->localizedDescription())
 <p class="text-on-surface-variant font-body-sm text-body-sm pl-3.5">
-                  {{ __($skill->description) }}
+                  {{ $skill->localizedDescription() }}
                 </p>
 @endif
 </div>

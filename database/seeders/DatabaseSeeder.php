@@ -2,16 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Experience;
 use App\Models\Certification;
-use App\Models\SiteSetting;
-use App\Models\SocialLink;
+use App\Models\Experience;
 use App\Models\Project;
-use App\Models\Skill;
 use App\Models\Service;
-use Illuminate\Support\Str;
+use App\Models\SiteSetting;
+use App\Models\Skill;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -58,8 +57,26 @@ class DatabaseSeeder extends Seeder
             'Architecture propre' => 'Séparation claire des responsabilités et code évolutif.',
         ];
 
+        $skillTranslations = [
+            'PHP' => ['name_en' => 'PHP', 'category_en' => 'Languages', 'description_en' => 'Robust backend development, object-oriented programming, and maintainable web services.'],
+            'JavaScript' => ['name_en' => 'JavaScript', 'category_en' => 'Languages', 'description_en' => 'Interactive interfaces, frontend logic, and API integrations.'],
+            'Python' => ['name_en' => 'Python', 'category_en' => 'Languages', 'description_en' => 'System scripting, automation, data processing, and FastAPI services.'],
+            'Laravel' => ['name_en' => 'Laravel', 'category_en' => 'Frameworks', 'description_en' => 'Business applications, authentication, APIs, and MVC architecture.'],
+            'Node.js' => ['name_en' => 'Node.js', 'category_en' => 'Frameworks', 'description_en' => 'Asynchronous services, REST APIs, and real-time integrations.'],
+            'REST API' => ['name_en' => 'REST API', 'category_en' => 'Frameworks', 'description_en' => 'Clear, secure, and well-documented HTTP contracts.'],
+            'PostgreSQL' => ['name_en' => 'PostgreSQL', 'category_en' => 'Data & Infrastructure', 'description_en' => 'Relational data modeling, advanced queries, and JSONB data.'],
+            'Redis' => ['name_en' => 'Redis', 'category_en' => 'Data & Infrastructure', 'description_en' => 'Caching, job queues, and fast-access data.'],
+            'Docker' => ['name_en' => 'Docker', 'category_en' => 'Data & Infrastructure', 'description_en' => 'Reproducible environments and containerized service deployments.'],
+            'Git / CI-CD' => ['name_en' => 'Git / CI-CD', 'category_en' => 'Workflow', 'description_en' => 'Version control, automated checks, and continuous delivery.'],
+            'Tests automatisés' => ['name_en' => 'Automated Testing', 'category_en' => 'Workflow', 'description_en' => 'Unit and feature tests that make changes safer to deliver.'],
+            'Architecture propre' => ['name_en' => 'Clean Architecture', 'category_en' => 'Workflow', 'description_en' => 'Clear separation of responsibilities and maintainable code.'],
+        ];
+
         foreach ($skills as $skill) {
-            Skill::updateOrCreate(['name' => $skill['name'], 'category' => $skill['category']], $skill + ['description' => $skillDescriptions[$skill['name']] ?? null]);
+            Skill::updateOrCreate(
+                ['name' => $skill['name'], 'category' => $skill['category']],
+                $skill + ['description' => $skillDescriptions[$skill['name']] ?? null] + ($skillTranslations[$skill['name']] ?? []),
+            );
         }
 
         $services = [
@@ -68,7 +85,9 @@ class DatabaseSeeder extends Seeder
             ['title' => 'Blockchain', 'description' => 'Exploration de registres distribués, logique métier décentralisée et cas d’usage institutionnels.', 'icon' => 'hub', 'sort_order' => 3],
             ['title' => 'Data & Infrastructure', 'description' => 'PostgreSQL, Redis, Docker et automatisation pour des environnements fiables et reproductibles.', 'icon' => 'database', 'sort_order' => 4],
         ];
-        foreach ($services as $service) Service::updateOrCreate(['title' => $service['title']], $service + ['is_visible' => true]);
+        foreach ($services as $service) {
+            Service::updateOrCreate(['title' => $service['title']], $service + ['is_visible' => true]);
+        }
 
         $experiences = [
             ['role' => 'Développeur Backend — Projet CBDC (Blockchain)', 'company' => 'Projet professionnel', 'start_date' => '2025-01-01', 'is_current' => true, 'description' => 'Conception de services backend robustes, intégration de règles métier et travail sur des architectures distribuées.', 'sort_order' => 1],

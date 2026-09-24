@@ -1,6 +1,6 @@
 @php
     $journeySteps = $experiences->sortBy('start_date')->values();
-    $journeySkills = $skills->pluck('name')->unique()->take(7)->values();
+    $journeySkills = $skills->map(fn ($skill) => $skill->localizedName())->unique()->take(7)->values();
 @endphp
 
 <section id="journey" class="guided-journey relative overflow-hidden border-y border-outline-variant/20 bg-surface-container-lowest/70 px-6 py-20 md:px-12 md:py-28" aria-labelledby="journey-title">

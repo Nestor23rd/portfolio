@@ -275,6 +275,12 @@
 <span>{{ __('site.start_conversation') }}</span>
 <span class="material-symbols-outlined text-[18px]">send</span>
 </a>
+@if(!empty($siteSettings['cv_path']))
+<a class="inline-flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-6 py-3.5 font-label-md text-label-md font-semibold text-primary transition hover:bg-primary/20" href="{{ asset('storage/'.$siteSettings['cv_path']) }}" download>
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>{{ __('site.download_cv') }}</span>
+</a>
+@endif
 <a class="border border-outline-variant/60 text-on-surface hover:border-primary font-code-md text-code-md px-5 py-3.5 rounded-lg text-center transition-colors bg-surface-container hover:bg-surface-container-high" href="{{ route('about') }}">
 {{ __('site.about') }} &gt;
 </a>

@@ -76,7 +76,7 @@
                         $dbBackendFrameworks = $skills->where('category', 'Frameworks')->values();
                     }
                     $joinWord = app()->getLocale() === 'en' ? ' and ' : ' et ';
-                    $frameworksHtml = $dbBackendFrameworks->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', $joinWord);
+                    $frameworksHtml = $dbBackendFrameworks->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->localizedName()) . '</strong>')->join(', ', $joinWord);
 
                     $dbDatabases = $skills->where('category', 'Data & Infra')
                         ->filter(fn($s) => in_array(strtolower($s->name), ['postgresql', 'mysql', 'sqlite', 'mongodb']))
@@ -84,7 +84,7 @@
                     if ($dbDatabases->isEmpty()) {
                         $databasesHtml = '<strong class="text-on-surface font-semibold">PostgreSQL</strong>';
                     } else {
-                        $databasesHtml = $dbDatabases->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->name) . '</strong>')->join(', ', $joinWord);
+                        $databasesHtml = $dbDatabases->map(fn($s) => '<strong class="text-on-surface font-semibold">' . e($s->localizedName()) . '</strong>')->join(', ', $joinWord);
                     }
                 @endphp
 
