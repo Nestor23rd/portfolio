@@ -20,13 +20,13 @@ trait TranslatesModelAttributes
 
         if (! is_string($key)
             || ! is_string($value)
-            || app()->getLocale() !== 'en'
+            || app()->getLocale() === 'fr'
             || ! in_array($key, $this->automaticTranslationAttributes(), true)
             || (app()->bound('request') && request()->routeIs('admin.*'))) {
             return $value;
         }
 
-        $existingTranslation = parent::getAttribute($key.'_en');
+        $existingTranslation = parent::getAttribute($key.'_'.app()->getLocale());
 
         if (is_string($existingTranslation) && trim($existingTranslation) !== '') {
             return $existingTranslation;

@@ -80,6 +80,18 @@ return [
 
     'locale' => env('APP_LOCALE', 'en'),
 
+    'supported_locales' => [
+        'fr' => 'Français',
+        'en' => 'English',
+        'es' => 'Español',
+        'zh-Hans' => '中文',
+        'pt' => 'Português',
+        'ar' => 'العربية',
+        'de' => 'Deutsch',
+        'hi' => 'हिन्दी',
+        'ja' => '日本語',
+    ],
+
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),

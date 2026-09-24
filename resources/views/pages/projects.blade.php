@@ -101,11 +101,12 @@
             </a>
             @foreach($categories as $category)
                 @php($isCatActive = ($selectedCategory === $category))
+                @php($localizedCategory = __($category))
                 <a href="{{ route('projects', ['category' => $category]) }}"
                    class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-mono text-xs transition-all
                           {{ $isCatActive ? 'bg-primary text-on-primary font-semibold shadow-sm' : 'bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:border-primary/50 hover:bg-surface-container-high hover:text-on-surface' }}">
                     @if($isCatActive)<span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>@endif
-                    {{ $category }}
+                    {{ $localizedCategory !== $category ? $localizedCategory : app(\App\Services\LibreTranslate::class)->translate($category, app()->getLocale()) }}
                 </a>
             @endforeach
         </div>

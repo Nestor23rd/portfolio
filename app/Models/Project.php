@@ -21,7 +21,7 @@ class Project extends Model
 
     protected function automaticTranslationAttributes(): array
     {
-        return ['title', 'excerpt', 'description', 'challenge', 'solution', 'results'];
+        return ['title', 'category', 'excerpt', 'description', 'challenge', 'solution', 'results'];
     }
 
     public function getImageUrlAttribute(): ?string

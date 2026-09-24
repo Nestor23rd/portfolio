@@ -14,7 +14,7 @@ class LibreTranslate
         $text = trim($text);
         $baseUrl = rtrim((string) config('services.libretranslate.url'), '/');
 
-        if ($text === '' || $baseUrl === '' || $targetLocale !== 'en') {
+        if ($text === '' || $baseUrl === '' || ! in_array($targetLocale, array_keys(config('app.supported_locales', [])), true) || $targetLocale === 'fr') {
             return $text;
         }
 

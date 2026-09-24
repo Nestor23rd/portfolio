@@ -79,12 +79,7 @@
         </nav>
 
         <div class="flex items-center gap-3">
-            {{-- Lang switcher --}}
-            <div class="flex items-center gap-1 rounded-lg border border-outline-variant/40 px-2 py-1" aria-label="{{ __('site.language') }}">
-                <a class="px-1.5 py-0.5 text-xs font-semibold {{ app()->getLocale() === 'fr' ? 'text-primary' : 'text-on-surface-variant' }}" href="{{ route('language.switch', 'fr') }}">FR</a>
-                <span class="text-outline-variant">/</span>
-                <a class="px-1.5 py-0.5 text-xs font-semibold {{ app()->getLocale() === 'en' ? 'text-primary' : 'text-on-surface-variant' }}" href="{{ route('language.switch', 'en') }}">EN</a>
-            </div>
+            @include('partials.language-switcher', ['locale' => app()->getLocale(), 'mobile' => false])
             {{-- Theme Toggle --}}
             <button id="theme-toggle" type="button" class="w-9 h-9 rounded-lg border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary transition-all flex items-center justify-center cursor-pointer bg-surface-container-low/50" aria-label="{{ __('site.toggle_theme') }}" title="{{ __('site.toggle_theme') }}">
                 <span class="material-symbols-outlined text-[18px] hidden dark:inline-block text-secondary">light_mode</span>
@@ -149,16 +144,7 @@
                 <span>{{ __('site.download_cv') }}</span>
             </a>
             @endif
-            {{-- Lang switcher --}}
-            <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container border border-outline-variant/30">
-                <span class="material-symbols-outlined text-[16px] text-on-surface-variant">language</span>
-                <span class="text-xs text-on-surface-variant font-code-sm">{{ __('site.language') }}</span>
-                <div class="ml-auto flex items-center gap-1">
-                    <a class="px-2 py-0.5 text-xs font-semibold rounded {{ app()->getLocale() === 'fr' ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-on-surface' }}" href="{{ route('language.switch', 'fr') }}">FR</a>
-                    <span class="text-outline-variant text-xs">/</span>
-                    <a class="px-2 py-0.5 text-xs font-semibold rounded {{ app()->getLocale() === 'en' ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-on-surface' }}" href="{{ route('language.switch', 'en') }}">EN</a>
-                </div>
-            </div>
+            @include('partials.language-switcher', ['locale' => app()->getLocale(), 'mobile' => true])
             {{-- Theme toggle --}}
             <button id="theme-toggle-mobile" type="button" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-surface-container border border-outline-variant/30 hover:border-primary text-on-surface-variant hover:text-primary transition-all">
                 <span class="material-symbols-outlined text-[18px] hidden dark:inline-block text-secondary">light_mode</span>

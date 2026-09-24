@@ -92,7 +92,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 Route::get('/lang/{locale}', function (string $locale) {
-    abort_unless(in_array($locale, ['fr', 'en'], true), 404);
+    abort_unless(in_array($locale, array_keys(config('app.supported_locales', [])), true), 404);
     session(['locale' => $locale]);
+
     return redirect()->back();
 })->name('language.switch');
