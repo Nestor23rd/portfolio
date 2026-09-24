@@ -32,6 +32,6 @@ trait TranslatesModelAttributes
             return $existingTranslation;
         }
 
-        return app(LibreTranslate::class)->translate($value, 'en');
+        return app(LibreTranslate::class)->translate($value, app()->getLocale());
     }
 }
