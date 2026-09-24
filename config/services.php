@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'libretranslate' => [
+        'url' => env('LIBRETRANSLATE_URL'),
+        'api_key' => env('LIBRETRANSLATE_API_KEY'),
+        'timeout' => (int) env('LIBRETRANSLATE_TIMEOUT', 15),
+    ],
+
 ];
