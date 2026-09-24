@@ -339,7 +339,6 @@
     </div>
 </footer>
 
-@include('partials.navigation')
 @include('partials.hero-globe', ['global' => true, 'compact' => true])
 </body>
 </html>

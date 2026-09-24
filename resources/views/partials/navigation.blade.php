@@ -4,8 +4,8 @@
     html.dark .portfolio-topbar { background-color: rgba(8,14,29,.94) !important; border-color: rgba(148,163,184,.25) !important; }
     html:not(.dark) .portfolio-topbar { background-color: rgba(255,255,255,.94) !important; border-color: rgba(203,213,225,.7) !important; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05); }
     .portfolio-topbar > div { width: 100% !important; max-width: none !important; height: 4rem !important; display: flex !important; align-items: center !important; justify-content: space-between !important; }
-    .portfolio-topbar nav { display: flex !important; align-items: center !important; gap: 2rem !important; }
-    .portfolio-topbar nav a { white-space: nowrap; flex: 0 1 auto; }
+    .portfolio-topbar nav { display: flex !important; align-items: center !important; justify-content: center; gap: .25rem !important; flex: 1 1 auto; min-width: 0; }
+    .portfolio-topbar nav a { white-space: nowrap; flex: 0 1 auto; padding-left: .5rem; padding-right: .5rem; font-size: .75rem; }
     .portfolio-topbar .portfolio-brand { white-space: nowrap; flex-shrink: 0; }
     .portfolio-topbar .portfolio-contact { white-space: nowrap; flex-shrink: 0; min-width: 8.5rem; justify-content: center; }
     .portfolio-topbar .portfolio-cv { white-space: nowrap; flex-shrink: 0; }
@@ -37,6 +37,14 @@
         .portfolio-topbar .portfolio-contact { display: none !important; }
         .portfolio-topbar .portfolio-cv { display: none !important; }
         #hamburger-btn { display: flex !important; }
+    }
+    @media (min-width: 1024px) and (max-width: 1199px) {
+        .portfolio-topbar > div { padding-left: 1rem !important; padding-right: 1rem !important; gap: .5rem; }
+        .portfolio-topbar .portfolio-brand { font-size: .8rem; gap: .35rem; }
+        .portfolio-topbar .portfolio-cv { display: none !important; }
+        .portfolio-topbar .portfolio-contact { min-width: auto; padding-left: .65rem; padding-right: .65rem; }
+        .portfolio-topbar nav a { padding-left: .35rem; padding-right: .35rem; font-size: .6875rem; }
+        .portfolio-topbar > div > div { gap: .375rem; }
     }
     @media (min-width: 1024px) {
         #hamburger-btn { display: none !important; }
@@ -174,18 +182,34 @@
             hamburgerBtn.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         }
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('open')) {
+                closeMenu();
+                return;
+            }
+
+            openMenu();
+        }
         function toggleTheme() {
             var isDark = document.documentElement.classList.contains('dark');
             if (isDark) {
                 document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
+                try {
+                    localStorage.setItem('theme', 'light');
+                } catch (error) {
+                    // The selected theme still applies for the current page.
+                }
             } else {
                 document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
+                try {
+                    localStorage.setItem('theme', 'dark');
+                } catch (error) {
+                    // The selected theme still applies for the current page.
+                }
             }
         }
 
-        if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
         if (mobileClose)  mobileClose.addEventListener('click', closeMenu);
         if (backdrop)     backdrop.addEventListener('click', closeMenu);
         // Close on Escape
