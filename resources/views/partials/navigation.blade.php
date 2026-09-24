@@ -41,12 +41,15 @@
     @media (min-width: 1024px) and (max-width: 1199px) {
         .portfolio-topbar > div { padding-left: 1rem !important; padding-right: 1rem !important; gap: .5rem; }
         .portfolio-topbar .portfolio-brand { font-size: .8rem; gap: .35rem; }
-        .portfolio-topbar .portfolio-cv { display: none !important; }
-        .portfolio-topbar .portfolio-contact { min-width: auto; padding-left: .65rem; padding-right: .65rem; }
-        .portfolio-topbar nav a { padding-left: .35rem; padding-right: .35rem; font-size: .6875rem; }
+        .portfolio-topbar nav { display: none !important; }
+        .portfolio-topbar .portfolio-contact { display: none !important; }
+        #hamburger-btn { display: flex !important; }
         .portfolio-topbar > div > div { gap: .375rem; }
     }
     @media (min-width: 1024px) {
+        .mobile-menu-cv { display: none !important; }
+    }
+    @media (min-width: 1200px) {
         #hamburger-btn { display: none !important; }
         #mobile-menu { display: none !important; }
     }
@@ -140,6 +143,12 @@
         </nav>
         {{-- Drawer Footer --}}
         <div class="px-4 py-4 border-t border-outline-variant/30 space-y-3 shrink-0">
+            @if(!empty($publicSettings['cv_path']))
+            <a class="mobile-menu-cv w-full inline-flex items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-2.5 font-code-sm text-code-sm font-semibold text-primary transition hover:bg-primary/20" href="{{ asset('storage/'.$publicSettings['cv_path']) }}" download>
+                <span class="material-symbols-outlined text-[18px]">download</span>
+                <span>{{ __('site.download_cv') }}</span>
+            </a>
+            @endif
             {{-- Lang switcher --}}
             <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container border border-outline-variant/30">
                 <span class="material-symbols-outlined text-[16px] text-on-surface-variant">language</span>
