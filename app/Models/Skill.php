@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\TranslatesModelAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
+    use TranslatesModelAttributes;
+
     protected $fillable = [
         'name',
         'name_en',
@@ -43,6 +46,11 @@ class Skill extends Model
         return $locale === 'en' && filled($this->category_en)
             ? $this->category_en
             : $this->category;
+    }
+
+    protected function automaticTranslationAttributes(): array
+    {
+        return ['name', 'description', 'category'];
     }
 
     protected function casts(): array

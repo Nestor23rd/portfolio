@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\AI\Contracts\ChatProvider;
+use App\AI\Providers\AsiOneChatProvider;
+use App\Models\SiteSetting;
+use App\Models\SocialLink;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(ChatProvider::class, AsiOneChatProvider::class);
     }
 
     /**
@@ -24,12 +30,12 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        \Illuminate\Support\Facades\View::composer('*', function ($view) {
+        View::composer('*', function ($view) {
             try {
-                if (\Illuminate\Support\Facades\Schema::hasTable('site_settings')) {
-                    $settings = \App\Models\SiteSetting::pluck('value', 'key');
-                    $socialLinks = \Illuminate\Support\Facades\Schema::hasTable('social_links')
-                        ? \App\Models\SocialLink::where('is_visible', true)->orderBy('sort_order')->get()
+                if (Schema::hasTable('site_settings')) {
+                    $settings = SiteSetting::pluck('value', 'key');
+                    $socialLinks = Schema::hasTable('social_links')
+                        ? SocialLink::where('is_visible', true)->orderBy('sort_order')->get()
                         : collect();
                     $view->with('siteSettings', $settings)->with('socialLinks', $socialLinks);
                 }

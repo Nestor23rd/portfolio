@@ -35,4 +35,18 @@ return [
         ],
     ],
 
+    'libretranslate' => [
+        'url' => env('LIBRETRANSLATE_URL'),
+        'api_key' => env('LIBRETRANSLATE_API_KEY'),
+        'timeout' => (int) env('LIBRETRANSLATE_TIMEOUT', 15),
+    ],
+
+    'asi_one' => [
+        'base_url' => env('ASI_ONE_BASE_URL', 'https://api.asi1.ai/v1'),
+        'api_key' => env('ASI_ONE_API_KEY'),
+        'model' => env('ASI_ONE_MODEL', 'asi1-mini'),
+        'timeout' => (int) env('ASI_ONE_TIMEOUT', 18),
+        'max_tokens' => (int) env('ASI_ONE_MAX_TOKENS', 700),
+    ],
+
 ];

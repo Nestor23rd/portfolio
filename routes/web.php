@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\ContactMessageController as AdminMessageController;
 use App\Http\Controllers\Admin\CertificationController as AdminCertificationController;
+use App\Http\Controllers\Admin\ContactMessageController as AdminMessageController;
 use App\Http\Controllers\Admin\ExperienceController as AdminExperienceController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\Admin\SkillController as AdminSkillController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\SkillController as AdminSkillController;
 use App\Http\Controllers\Admin\SocialLinkController;
-use App\Models\ContactMessage;
+use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\NestorAiController;
 use App\Models\Certification;
+use App\Models\ContactMessage;
 use App\Models\Experience;
 use App\Models\Project;
-use App\Models\Skill;
 use App\Models\Service;
-use App\Models\SiteSetting;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +34,7 @@ Route::get('/a-propos', function () {
     $skillsCount = $skills->count();
     $experiences = Experience::query()->orderBy('sort_order')->orderByDesc('start_date')->get();
     $certificationsCount = Certification::query()->where('is_visible', true)->count();
+
     return view('pages.about', compact('projectsCount', 'skills', 'skillsCount', 'experiences', 'certificationsCount'));
 })->name('about');
 Route::get('/projets', function () {
@@ -40,28 +42,34 @@ Route::get('/projets', function () {
     $categories = (clone $baseQuery)->whereNotNull('category')->where('category', '!=', '')->distinct()->orderBy('category')->pluck('category');
     $selectedCategory = request('category');
     $projects = $baseQuery->when($selectedCategory, fn ($query) => $query->where('category', $selectedCategory))->orderBy('sort_order')->latest('published_at')->paginate(6)->withQueryString();
+
     return view('pages.projects', compact('projects', 'categories', 'selectedCategory'));
 })->name('projects');
 Route::get('/projets/{project:slug}', function (Project $project) {
     abort_unless($project->is_published, 404);
+
     return view('pages/project-detail', compact('project'));
 })->name('projects.show');
 Route::get('/competences', function () {
     $skills = Skill::query()->where('is_visible', true)->orderBy('category')->orderBy('sort_order')->get();
     $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
+
     return view('pages.skills', compact('skills', 'certifications'));
 })->name('skills');
 Route::get('/certifications', function () {
     $certifications = Certification::query()->where('is_visible', true)->orderBy('sort_order')->get();
+
     return view('pages.certifications', compact('certifications'));
 })->name('certifications');
 
 Route::get('/certifications/{certification}', function (Certification $certification) {
     abort_unless($certification->is_visible, 404);
+
     return view('pages.certification-detail', compact('certification'));
 })->name('certifications.show');
 Route::get('/experience', function () {
     $experiences = Experience::query()->orderBy('sort_order')->orderByDesc('start_date')->get();
+
     return view('pages.experience', compact('experiences'));
 })->name('experience');
 Route::view('/contact', 'pages.contact')->name('contact');
@@ -73,7 +81,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/logout', [AuthController::class, 'destroy'])->middleware('auth')->name('logout');
 
     Route::middleware(['auth', 'admin'])->group(function () {
-        Route::get('/', function () { return view('admin.dashboard', ['counts' => ['projects' => Project::count(), 'skills' => Skill::count(), 'experiences' => Experience::count(), 'certifications' => Certification::count(), 'messages' => ContactMessage::whereNull('read_at')->count()]]); })->name('dashboard');
+        Route::get('/', function () {
+            return view('admin.dashboard', ['counts' => ['projects' => Project::count(), 'skills' => Skill::count(), 'experiences' => Experience::count(), 'certifications' => Certification::count(), 'messages' => ContactMessage::whereNull('read_at')->count()]]);
+        })->name('dashboard');
         Route::resource('projects', AdminProjectController::class)->except(['show']);
         Route::resource('skills', AdminSkillController::class)->except(['show']);
         Route::resource('certifications', AdminCertificationController::class)->except(['show']);
@@ -83,7 +93,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('social-links/{socialLink}', [SocialLinkController::class, 'update'])->name('social-links.update');
         Route::delete('social-links/{socialLink}', [SocialLinkController::class, 'destroy'])->name('social-links.destroy');
         Route::resource('experiences', AdminExperienceController::class)->except(['show']);
-        Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class)->except(['show']);
+        Route::resource('services', ServiceController::class)->except(['show']);
         Route::get('messages', [AdminMessageController::class, 'index'])->name('messages.index');
         Route::patch('messages/{message}/read', [AdminMessageController::class, 'read'])->name('messages.read');
         Route::delete('messages/{message}', [AdminMessageController::class, 'destroy'])->name('messages.destroy');
@@ -91,8 +101,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+Route::post('/nestor-ai/chat', NestorAiController::class)->middleware('throttle:8,1')->name('nestor-ai.chat');
 Route::get('/lang/{locale}', function (string $locale) {
-    abort_unless(in_array($locale, ['fr', 'en'], true), 404);
+    abort_unless(in_array($locale, array_keys(config('app.supported_locales', [])), true), 404);
     session(['locale' => $locale]);
+
     return redirect()->back();
 })->name('language.switch');

@@ -101,11 +101,12 @@
             </a>
             @foreach($categories as $category)
                 @php($isCatActive = ($selectedCategory === $category))
+                @php($localizedCategory = __($category))
                 <a href="{{ route('projects', ['category' => $category]) }}"
                    class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-mono text-xs transition-all
                           {{ $isCatActive ? 'bg-primary text-on-primary font-semibold shadow-sm' : 'bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:border-primary/50 hover:bg-surface-container-high hover:text-on-surface' }}">
                     @if($isCatActive)<span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>@endif
-                    {{ $category }}
+                    {{ $localizedCategory !== $category ? $localizedCategory : app(\App\Services\LibreTranslate::class)->translate($category, app()->getLocale()) }}
                 </a>
             @endforeach
         </div>
@@ -192,6 +193,11 @@
                         Site live
                     </a>
                     @endif
+                    <button type="button" data-ai-explain data-project-slug="{{ $featuredProject->slug }}" data-project-title="{{ $featuredProject->title }}"
+                       class="inline-flex items-center gap-2 rounded-xl border border-primary/30 px-4 py-2.5 font-semibold text-primary transition hover:border-primary/60 hover:bg-primary/10">
+                        <span class="material-symbols-outlined" style="font-size:16px;">auto_awesome</span>
+                        {{ app()->getLocale() === 'fr' ? 'Expliquer avec l’IA' : 'Explain with AI' }}
+                    </button>
                 </div>
             </div>
         </article>
@@ -265,6 +271,11 @@
                             <span class="material-symbols-outlined" style="font-size:12px;">north_east</span>
                         </a>
                         <div class="flex items-center gap-1.5">
+                            <button type="button" data-ai-explain data-project-slug="{{ $project->slug }}" data-project-title="{{ $project->title }}"
+                               class="inline-flex items-center gap-1 rounded-lg border border-primary/30 px-2 py-1.5 text-[10px] font-semibold text-primary transition hover:bg-primary/10" aria-label="{{ app()->getLocale() === 'fr' ? 'Expliquer avec Nestor AI' : 'Explain with Nestor AI' }}">
+                                <span class="material-symbols-outlined" style="font-size:13px;">auto_awesome</span>
+                                AI
+                            </button>
                             @if($project->project_url)
                                 <a href="{{ $project->project_url }}" target="_blank" rel="noopener noreferrer"
                                    class="w-7 h-7 flex items-center justify-center rounded-lg border border-outline-variant/40 text-on-surface-variant hover:border-primary/50 hover:text-primary transition-all"
