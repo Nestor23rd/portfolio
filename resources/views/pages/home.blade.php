@@ -57,6 +57,10 @@
 <span class="material-symbols-outlined">mail</span>
 <span>{{ __('site.contact') }}</span>
 </a>
+<a class="inline-flex items-center justify-center gap-2.5 rounded-lg border border-outline-variant/70 bg-surface-container-low px-6 py-3 font-body-md text-label-md font-medium text-on-surface transition hover:border-primary" href="{{ route('readme.show') }}">
+<span class="material-symbols-outlined">description</span>
+<span>Consulter le README Oracle</span>
+</a>
 @if(!empty($siteSettings['cv_path']))<a class="inline-flex items-center justify-center gap-2.5 rounded-lg border border-secondary/50 px-6 py-3 font-body-md text-label-md font-semibold text-secondary transition hover:bg-secondary/10" href="{{ asset('storage/'.$siteSettings['cv_path']) }}" download><span class="material-symbols-outlined">download</span>{{ __('site.download_cv') }}</a>@endif
 </div>
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SkillController as AdminSkillController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\NestorAiController;
+use App\Http\Controllers\ReadmeController;
 use App\Models\Certification;
 use App\Models\ContactMessage;
 use App\Models\Experience;
@@ -73,6 +74,7 @@ Route::get('/experience', function () {
     return view('pages.experience', compact('experiences'));
 })->name('experience');
 Route::view('/contact', 'pages.contact')->name('contact');
+Route::get('/readme', [ReadmeController::class, 'show'])->name('readme.show');
 Route::redirect('/administration', '/admin')->name('admin');
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -81,6 +83,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/logout', [AuthController::class, 'destroy'])->middleware('auth')->name('logout');
 
     Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('readme', [ReadmeController::class, 'edit'])->name('readme.edit');
+        Route::put('readme', [ReadmeController::class, 'update'])->name('readme.update');
         Route::get('/', function () {
             return view('admin.dashboard', ['counts' => ['projects' => Project::count(), 'skills' => Skill::count(), 'experiences' => Experience::count(), 'certifications' => Certification::count(), 'messages' => ContactMessage::whereNull('read_at')->count()]]);
         })->name('dashboard');

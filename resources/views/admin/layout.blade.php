@@ -20,6 +20,7 @@
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.skills.index') }}">Compétences</a>
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.certifications.index') }}">Certifications</a>
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.settings.edit') }}">Paramètres du site</a>
+            <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.readme.edit') }}">README Oracle</a>
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.experiences.index') }}">Expériences</a>
             <a class="block rounded-lg px-3 py-2 transition hover:bg-[#131c31]" href="{{ route('admin.services.index') }}">Services</a>
             @php($unreadMessages = \App\Models\ContactMessage::whereNull('read_at')->count())
