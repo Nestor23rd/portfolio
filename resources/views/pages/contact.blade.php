@@ -96,6 +96,7 @@
                 <!-- Form -->
                 <form action="{{ route('contact.store') }}" method="POST" class="p-6 md:p-9 space-y-7" id="contactForm">
                     @csrf
+                    <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                     <!-- Name and Email Row -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">

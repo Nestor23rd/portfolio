@@ -104,7 +104,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactMessageController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
 Route::post('/nestor-ai/chat', NestorAiController::class)->middleware('throttle:8,1')->name('nestor-ai.chat');
 Route::get('/lang/{locale}', function (string $locale) {
     abort_unless(in_array($locale, array_keys(config('app.supported_locales', [])), true), 404);

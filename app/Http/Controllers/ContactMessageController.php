@@ -2,24 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessageAcknowledged;
+use App\Mail\ContactMessageReceived;
 use App\Models\ContactMessage;
 use App\Models\SiteSetting;
-use App\Mail\ContactMessageReceived;
-use App\Mail\ContactMessageAcknowledged;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContactMessageController extends Controller
 {
     public function store(Request $request)
     {
+        if ($request->filled('website')) {
+            return back()->with('contact_success', 'Merci pour votre envoi.');
+        }
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:120'],
-            'email' => ['required', 'email', 'max:255'],
+            'email' => ['required', 'email:rfc', 'max:255'],
             'phone' => ['nullable', 'string', 'max:40'],
             'project_type' => ['nullable', 'string', 'max:80'],
-            'message' => ['required', 'string', 'min:20', 'max:5000'],
+            'message' => [
+                'required',
+                'string',
+                'min:20',
+                'max:5000',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    if (! is_string($value)) {
+                        return;
+                    }
+
+                    $wordCount = preg_match_all('/[\p{L}\p{N}]{2,}/u', $value, $words);
+
+                    if ($wordCount === false || $wordCount < 3) {
+                        $fail('Veuillez décrire votre demande en au moins trois mots.');
+                    }
+                },
+            ],
         ], [
             'name.required' => 'Veuillez renseigner votre nom.',
             'name.max' => 'Votre nom ne peut pas dépasser :max caractères.',
